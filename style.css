@@ -1,0 +1,133 @@
+#welcome {font-family: sans-serif,serif;
+          font-size: 50px;
+          font-weight: normal;
+          padding: 10px;
+          color: black;
+          text-align: center;
+        }
+  body {
+    margin: 0px;
+  }
+ header {
+  text-align: center;
+   top: 0px;
+ }
+ img {
+   height: 400px;
+   width: 70%;
+ }
+
+
+.heading {
+  background-color:#DBE9EE;
+  height: 200px;
+  margin-left: 230px;
+  margin-right: 230px;
+}
+.main {font-family: times-newroman,serif;
+      font-size: 20px;
+      margin-left: 230px;
+      margin-right: 230px;
+      text-align:center;
+      padding: 10px;
+}
+button {
+  background-color: gray;
+  cursor: pointer;
+  width: 190px;
+  height: 60px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  margin-left: 50px;
+  margin-right: 50px;
+
+
+}
+button a {
+  text-decoration: none;
+  color: black;
+}
+
+#drop-down{
+  margin: 0px;
+  text-align: center;
+  margin-top: 100px;
+}
+#wrapper{
+  margin: 40px;
+  text-align: center;
+  position: relative;
+}
+
+ button:hover , button a:hover {
+  background-color: green;
+}
+
+
+select {
+  font-size: 20px;
+  width: 150px;
+  height: 40px;
+  margin: 30px;
+}
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+/*#nav {
+  text-align: center;
+  margin-top: 80px;
+
+}
+.main-menu li {
+  padding:0px;
+  margin: 0px;
+  background-color: gray;
+  border: 1px solid white;
+  float: left;
+  list-style-type: none;
+  height: 40px;
+  width: 150px;
+
+
+}
+ul li a {
+  font-size: 20px;
+  font-weight: normal;
+  color: black;
+  text-decoration:none;
+  padding: 10px;
+  display: block;
+  text-align: center;
+  position: relative;
+
+
+}
+ul li a:hover{
+  color: white;
+  background-color:#364785;
+}
+
+.signin a {
+  text-decoration: none;
+  color: black;
+}
+.signin a:hover{
+  color: blue;
+}
+.sub-menu {
+   width: 100%;
+   display: none;
+   position: relative;
+}
+.main-menu li:hover .sub-menu{
+  display: block;
+}*/
