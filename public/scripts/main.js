@@ -24,6 +24,7 @@ function FriendlyChat() {
   this.userName = document.getElementById('user-name');
   this.signInButton = document.getElementById('sign-in');
   this.signOutButton = document.getElementById('sign-out');
+  this.settingsButton = document.getElementById('btn-settings');
   this.signInSnackbar = document.getElementById('must-signin-snackbar');
 
   this.signOutButton.addEventListener('click', this.signOut.bind(this));
@@ -214,7 +215,7 @@ FriendlyChat.prototype.authStateObserver = function(user) {
     // Show user's profile and sign-out button.
     this.userName.removeAttribute('hidden');
     this.userPic.removeAttribute('hidden');
-    this.signOutButton.removeAttribute('hidden');
+    this.settingsButton.removeAttribute('hidden');
 
     // Hide sign-in button.
     this.signInButton.setAttribute('hidden', 'true');
@@ -225,7 +226,7 @@ FriendlyChat.prototype.authStateObserver = function(user) {
     // Hide user's profile and sign-out button.
     this.userName.setAttribute('hidden', 'true');
     this.userPic.setAttribute('hidden', 'true');
-    this.signOutButton.setAttribute('hidden', 'true');
+    this.settingsButton.setAttribute('hidden', 'true');
 
     // Show sign-in button.
     this.signInButton.removeAttribute('hidden');
