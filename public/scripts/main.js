@@ -47,8 +47,21 @@ FriendlyChat.prototype.initFirebase = function() {
 // Signs-in Friendly Chat.
 FriendlyChat.prototype.signIn = function() {
   // Sign in Firebase using popup auth and Google as the identity provider.
-  var provider = new firebase.auth.GoogleAuthProvider();
-  this.auth.signInWithPopup(provider);
+  var provider = new firebase.auth.FacebookAuthProvider();
+  this.auth.signInWithPopup(provider).then(function(result) {
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+  });
 };
 
 // Signs-out of Friendly Chat.
