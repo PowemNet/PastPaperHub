@@ -1,0 +1,111 @@
+[debug] [2018-07-02T08:43:09.236Z] ----------------------------------------------------------------------
+[debug] [2018-07-02T08:43:09.238Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-07-02T08:43:09.238Z] CLI Version:   3.19.0
+[debug] [2018-07-02T08:43:09.238Z] Platform:      darwin
+[debug] [2018-07-02T08:43:09.238Z] Node Version:  v8.10.0
+[debug] [2018-07-02T08:43:09.239Z] Time:          Mon Jul 02 2018 11:43:09 GMT+0300 (EAT)
+[debug] [2018-07-02T08:43:09.239Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-02T08:43:09.251Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-02T08:43:09.251Z] > authorizing via signed-in user
+[debug] [2018-07-02T08:43:09.252Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-07-02T08:43:09.252Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/doykPHS4IC6UDYlzUPi_474gaic7gZu1y36dY7cbU3Y',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Jul 02 2018 11:43:09 GMT+0300 (EAT)
+[debug] [2018-07-02T08:43:09.654Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-02T08:43:09.670Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/past-paper-hub  
+  
+ Mon Jul 02 2018 11:43:09 GMT+0300 (EAT)
+[debug] [2018-07-02T08:43:10.882Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-02T08:43:10.883Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/past-paper-hub/tokens  
+  
+ Mon Jul 02 2018 11:43:10 GMT+0300 (EAT)
+[debug] [2018-07-02T08:43:11.851Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-02T08:43:11.852Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/past-paper-hub  
+  
+ Mon Jul 02 2018 11:43:11 GMT+0300 (EAT)
+[debug] [2018-07-02T08:43:13.515Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/power/powem/code/PastPaperHub'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-02T08:43:14.299Z] Fetching environment
+[debug] [2018-07-02T08:43:14.302Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581:getServerAppConfig  
+  
+ Mon Jul 02 2018 11:43:14 GMT+0300 (EAT)
+[debug] [2018-07-02T08:43:14.302Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581/clients/_:getWebAppConfig  
+  
+ Mon Jul 02 2018 11:43:14 GMT+0300 (EAT)
+[debug] [2018-07-02T08:43:15.093Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
+[debug] [2018-07-02T08:43:15.131Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-02T08:43:15.131Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-02T08:43:16.699Z] Parsing function triggers
+[info] ✔  functions: app: http://localhost:5001/past-paper-hub/us-central1/app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /styles/main.css to local function app
+[info] [hosting] Rewriting /scripts/main.js to local function app
+[info] [hosting] Rewriting /images/profile_placeholder.png to local function app
+[info] [hosting] Rewriting /manifest.json to local function app
+[info] [hosting] Rewriting /firebase-messaging-sw.js to local function app
+[info] [hosting] Rewriting /styles/main.css to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /styles/main.css to local function app
+[info] [hosting] Rewriting /scripts/main.js to local function app
+[info] [hosting] Rewriting /images/profile_placeholder.png to local function app
+[info] [hosting] Rewriting /manifest.json to local function app
+[info] [hosting] Rewriting /firebase-messaging-sw.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /styles/main.css to local function app
+[info] [hosting] Rewriting /scripts/main.js to local function app
+[info] [hosting] Rewriting /images/profile_placeholder.png to local function app
+[info] [hosting] Rewriting /manifest.json to local function app
+[info] [hosting] Rewriting /firebase-messaging-sw.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /styles/main.css to local function app
+[info] [hosting] Rewriting /scripts/main.js to local function app
+[info] [hosting] Rewriting /images/profile_placeholder.png to local function app
+[info] [hosting] Rewriting /manifest.json to local function app
+[info] [hosting] Rewriting /firebase-messaging-sw.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /styles/main.css to local function app
+[info] [hosting] Rewriting /scripts/main.js to local function app
+[info] [hosting] Rewriting /images/profile_placeholder.png to local function app
+[info] [hosting] Rewriting /manifest.json to local function app
+[info] [hosting] Rewriting /firebase-messaging-sw.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /styles/main.css to local function app
+[info] [hosting] Rewriting /manifest.json to local function app
+[info] [hosting] Rewriting /firebase-messaging-sw.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /styles/main.css to local function app
+[info] [hosting] Rewriting /scripts/main.js to local function app
+[info] [hosting] Rewriting /images/profile_placeholder.png to local function app
+[info] [hosting] Rewriting /manifest.json to local function app
+[info] [hosting] Rewriting /firebase-messaging-sw.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /styles/main.css to local function app
+[info] [hosting] Rewriting /manifest.json to local function app
+[info] [hosting] Rewriting /firebase-messaging-sw.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /styles/main.css to local function app
+[info] [hosting] Rewriting /scripts/main.js to local function app
+[info] [hosting] Rewriting /images/profile_placeholder.png to local function app
+[info] [hosting] Rewriting /manifest.json to local function app
+[info] [hosting] Rewriting /firebase-messaging-sw.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /styles/main.css to local function app
+[info] [hosting] Rewriting /scripts/main.js to local function app
+[info] [hosting] Rewriting /images/profile_placeholder.png to local function app
+[info] [hosting] Rewriting /manifest.json to local function app
+[info] [hosting] Rewriting /firebase-messaging-sw.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /styles/main.css to local function app
+[info] [hosting] Rewriting /manifest.json to local function app
+[info] [hosting] Rewriting /firebase-messaging-sw.js to local function app
