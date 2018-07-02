@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+.header{
+     height:500px;
+     background-image: url("student studying.jpg"); 
+     background-size: cover;
+     position: relative;
+     opacity: 0.6;
+     
+     
+     
+}
+.Menu{
+    height: 60px;
+    background-color: gray; 
+    margin-top: 40px;
+}
+.main {
+    float: left;
+    list-style: none;   
+}
+.main li {
+    display:block;
+    float: left;
+    position: relative;  
+    width:  250px;
+    text-align: center;
+
+}
+.main li a {
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    padding: 10px;   
+    line-height: 65px;
+}
+.Menulist {
+    display: none;
+}
+.Menulist li {
+    font-size: 18px;
+    line-height: 55px;
+    
+}
+.main li:hover a {
+    color: #f2f2f2;
+}
+.main li:hover .Menulist {
+    display: block;
+    position: absolute;
+    background-color: gray;
+    border-radius: 0px 0px 5px 5px;
+}
+ .Subhead {
+     height: 0px;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     
+     
+ }
+
+.Mainbody {
+    height: 400px;
+    margin-top: 50px;
+    
+}
+.footer {
+    background-color: #eee;
+    height: 60px;
+    margin-bottom: 20px;
+    clear:both;
+}
+
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 60px;
+    padding: 10px;  
+    color:  black;
+}
+.Mainbody p {
+    font-family:  'Times New Roman', Arial, sans-serif;
+    font-size: 25px;
+    text-align: justify;
+    margin: 80px;
+}
+.footer p {
+    text-align: center;
+    padding: 20px;
+}
+
+
+

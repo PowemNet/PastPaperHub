@@ -1,0 +1,54 @@
+[debug] [2018-07-02T09:47:14.699Z] ----------------------------------------------------------------------
+[debug] [2018-07-02T09:47:14.701Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] [2018-07-02T09:47:14.701Z] CLI Version:   3.19.0
+[debug] [2018-07-02T09:47:14.701Z] Platform:      darwin
+[debug] [2018-07-02T09:47:14.701Z] Node Version:  v8.10.0
+[debug] [2018-07-02T09:47:14.702Z] Time:          Mon Jul 02 2018 12:47:14 GMT+0300 (EAT)
+[debug] [2018-07-02T09:47:14.702Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-02T09:47:14.711Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-02T09:47:14.711Z] > authorizing via signed-in user
+[debug] [2018-07-02T09:47:14.713Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-07-02T09:47:14.713Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/doykPHS4IC6UDYlzUPi_474gaic7gZu1y36dY7cbU3Y',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Jul 02 2018 12:47:14 GMT+0300 (EAT)
+[debug] [2018-07-02T09:47:15.114Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-02T09:47:15.135Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/past-paper-hub  
+  
+ Mon Jul 02 2018 12:47:15 GMT+0300 (EAT)
+[debug] [2018-07-02T09:47:16.369Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-02T09:47:16.369Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/past-paper-hub/tokens  
+  
+ Mon Jul 02 2018 12:47:16 GMT+0300 (EAT)
+[debug] [2018-07-02T09:47:17.481Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-02T09:47:17.482Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/past-paper-hub  
+  
+ Mon Jul 02 2018 12:47:17 GMT+0300 (EAT)
+[debug] [2018-07-02T09:47:19.129Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/power/powem/code/PastPaperHub'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-02T09:47:19.881Z] Fetching environment
+[debug] [2018-07-02T09:47:19.883Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581:getServerAppConfig  
+  
+ Mon Jul 02 2018 12:47:19 GMT+0300 (EAT)
+[debug] [2018-07-02T09:47:19.883Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581/clients/_:getWebAppConfig  
+  
+ Mon Jul 02 2018 12:47:19 GMT+0300 (EAT)
+[debug] [2018-07-02T09:47:20.737Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-02T09:47:20.737Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-02T09:47:20.770Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
+[debug] [2018-07-02T09:47:21.808Z] Parsing function triggers
+[info] [hosting] Rewriting /main.css to local function app
+[info] ✔  functions: app: http://localhost:5001/past-paper-hub/us-central1/app
+[info] [hosting] Rewriting /main.css to local function app
+[info] [hosting] Rewriting /main.css to local function app
+[info] [hosting] Rewriting /main.css to local function app
