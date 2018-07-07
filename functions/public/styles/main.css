@@ -20,9 +20,13 @@
      opacity: 0.6;
 }
 .Menu{
-    height: 60px;
-    background-color: gray; 
-    margin-top: 40px;
+    width: 100%;
+  text-align: center; 
+}
+
+.Menu_item{
+    width: 100px;
+    display: inline-block;
 }
 .main {
     float: left;
