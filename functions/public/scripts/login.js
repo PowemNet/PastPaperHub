@@ -21,11 +21,25 @@ Login.prototype.signIn = function() {
   this.auth.signInWithPopup(provider).then(function(result) {
     var token = result.credential.accessToken;
     var user = result.user;
-    window.location.href = "/";
+    //if first time user, create new user node uder users node in firebase db
+    if(!this.userExists()){
+        addUserToUsersDb();
+        launchHomeScreen();
+    } else {
+      launchHomeScreen();
+    }
   }).catch(function(error) {
     var errorMessage = error.message;
     console.log("error loggin in: "+errorMessage);
   });
+};
+
+Login.prototype.userExists = function() {
+  return true;
+};
+
+Login.prototype.launchHomeScreen = function() {
+  window.location.href = "/";
 };
 
 window.addEventListener('load' , function() {
