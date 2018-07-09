@@ -7,7 +7,7 @@
   <meta name="description" content="Learn how to use the Firebase platform on the Web">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PastPaper Hub</title>
-
+  
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
 
@@ -41,6 +41,10 @@
   <!-- App Styling -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="styles/main.css">
+  <!--Sliding menu styling-->
+  <link rel="stylesheet" href="styles/slidingmenu.css">
+  <!--script for sliding menu-->
+  <script src="scripts/slidingmenu.js"></script>
 </head>
 <body>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -60,16 +64,38 @@
   
     </div>
   </header>
+</div>
+     <!-- Slideshow container-- >
+<div class="slideshow-container">
 
-  <body>
-      
-  </body>
-
-  <div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
-    <div class="mdl-snackbar__text"></div>
-    <button class="mdl-snackbar__action" type="button"></button>
+  <div class="mySlides fade">
+    <img src="images\muk.jpg" style="width:100%" >
   </div>
 
+  <div class="mySlides fade ">
+    <img src="images\must.jpg" style="width:100%">
+  </div>
+
+  <div class="mySlides fade ">
+    <img src="images\ucu.jpg" style="width:100%">
+  </div>
+
+  <!--Next and previous buttons-- >
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles-- >
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span> 
+  <span class="dot" onclick="currentSlide(2)"></span> 
+  <span class="dot" onclick="currentSlide(3)"></span> 
+</div> 
+
+<div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
+    <div class="mdl-snackbar__text"></div>
+    <button class="mdl-snackbar__action" type="button"></button>
 </div>
 
 <!-- Import and configure the Firebase SDK -->
