@@ -17,20 +17,21 @@ Login.prototype.initFirebase = function() {
 };
 
 Login.prototype.signIn = function() {
+  var self = this;
   var provider = new firebase.auth.FacebookAuthProvider();
   this.auth.signInWithPopup(provider).then(function(result) {
     var token = result.credential.accessToken;
     var user = result.user;
     //if first time user, create new user node uder users node in firebase db
-    if(!this.userExists()){
-        addUserToUsersDb();
-        launchHomeScreen();
+    if(!self.userExists()){
+        self.addUserToUsersDb();
+        self.launchHomeScreen();
     } else {
-      launchHomeScreen();
+      self.launchHomeScreen();
     }
   }).catch(function(error) {
     var errorMessage = error.message;
-    console.log("error loggin in: "+errorMessage);
+    console.log("error logging in: "+errorMessage);
   });
 };
 
