@@ -8,12 +8,10 @@ function Login() {
 
 Login.prototype.initFirebase = function() {
   this.auth = firebase.auth();
-
 };
 
 Login.prototype.initFirebase = function() {
   this.auth = firebase.auth();
-
 };
 
 Login.prototype.signIn = function() {
