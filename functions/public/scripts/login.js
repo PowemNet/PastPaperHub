@@ -12,6 +12,7 @@ Login.prototype.initFirebase = function() {
 
 Login.prototype.initFirebase = function() {
   this.auth = firebase.auth();
+  this.database = firebase.database();
 };
 
 Login.prototype.signIn = function() {
@@ -22,8 +23,8 @@ Login.prototype.signIn = function() {
     var user = result.user;
     //if first time user, create new user node uder users node in firebase db
     if(!self.userExists()){
-        self.addUserToUsersDb();
-        self.launchHomeScreen();
+        self.addUserToUsersDb(user);
+        // self.launchHomeScreen();
     } else {
       self.launchHomeScreen();
     }
@@ -34,11 +35,20 @@ Login.prototype.signIn = function() {
 };
 
 Login.prototype.userExists = function() {
-  return true;
+  return false;
 };
 
 Login.prototype.launchHomeScreen = function() {
   window.location.href = "/";
+};
+
+Login.prototype.addUserToUsersDb = function(user) {
+  return this.database.ref('users/' + user.uid).set({
+    displayName: user.displayName,
+    profilePicUrl: user.photoURL
+  }).catch(function(error) {
+    console.error('Error adding new user to Firebase Database', error);
+  });
 };
 
 window.addEventListener('load' , function() {
