@@ -15,7 +15,7 @@ function Profile() {
 }
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
-FriendlyChat.prototype.initFirebase = function() {
+Profile.prototype.initFirebase = function() {
   // Shortcuts to Firebase SDK features.
   this.auth = firebase.auth();
   this.database = firebase.database();
@@ -24,7 +24,7 @@ FriendlyChat.prototype.initFirebase = function() {
 };
 
 // Saves a new message on the Firebase DB.
-FriendlyChat.prototype.saveProfile = function(messageText) { //todo : continue from here
+Profile.prototype.saveProfile = function(messageText) { //todo : continue from here
   // Add a new message entry to the Firebase Database.
   return this.database.ref('/messages/').push({
     name: this.getUserName(),
@@ -36,7 +36,7 @@ FriendlyChat.prototype.saveProfile = function(messageText) { //todo : continue f
 };
 
 // Triggered when the send new message form is submitted.
-FriendlyChat.prototype.onProfileFormSubmit = function(e) {
+Profile.prototype.onProfileFormSubmit = function(e) {
   e.preventDefault();
   if (this.checkSignedIn()) {
     this.saveProfile("dummy text").then(function() {
@@ -45,7 +45,7 @@ FriendlyChat.prototype.onProfileFormSubmit = function(e) {
 };
 
 // Returns true if user is signed-in. Otherwise false and displays a message.
-FriendlyChat.prototype.checkSignedIn = function() {
+Profile.prototype.checkSignedIn = function() {
   // Return true if the user is signed in Firebase
   if (this.isUserSignedIn()) {
     return true;
@@ -61,5 +61,5 @@ FriendlyChat.prototype.checkSignedIn = function() {
 };
 
 window.addEventListener('load' , function() {
-  window.friendlyChat = new FriendlyChat();
+  window.friendlyChat = new Profile();
 });
