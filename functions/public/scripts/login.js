@@ -6,8 +6,10 @@ function Login() {
   this.initFirebase();
 }
 
+var user;
 var university = "";
 var userProfileIsSet = false;
+const dbRef = firebase.database().ref();
 
 Login.prototype.initFirebase = function () {
   this.auth = firebase.auth();
@@ -18,35 +20,56 @@ Login.prototype.initFirebase = function () {
   this.database = firebase.database();
 };
 
-var user;
+var userExists = false;
 
-Login.prototype.signIn = function () {
+Login.prototype.signIn = async function () {
   var self = this;
-  var provider = new firebase.auth.FacebookAuthProvider();
-  this.auth.signInWithPopup(provider).then(function (result) {
-    var token = result.credential.accessToken;
-    user = result.user;
-    if (!self.userExistsInDb()) {
-      self.addUserToUsersDb(user);
-      self.checkForProfile();
-    } else {
-      self.checkForProfile();
-    }
-
-  }).catch(function (error) {
-    var errorMessage = error.message;
-    console.log("error logging in: " + errorMessage);
-  });
+  await this.signInWithFacebook();
+  await this.checkIfUserExistsInDb();
+  this.sampleFunction();
+  console.log("-----esits???  "+userExists);
+  if (!userExists) {
+    console.log("Adding user--");
+    this.addUserToUsersDb(user);
+    // this.checkForProfile();
+  } else {
+    console.log("NOT Adding user--");
+    // this.checkForProfile();
+  }
+  return "done!!";
 };
 
-Login.prototype.userExistsInDb = function () {
-  return true;
+Login.prototype.signInWithFacebook = function () {
+  return new Promise((resolve, reject) => {
+    console.log("signInWithFacebook");
+    var provider = new firebase.auth.FacebookAuthProvider();
+    this.auth.signInWithPopup(provider).then(function (result) {
+      var token = result.credential.accessToken;
+      user = result.user;
+      console.log("created user object");
+      resolve();
+    }).catch(function (error) {
+      var errorMessage = error.message;
+      console.log("error logging in: " + errorMessage);
+    });
+  })
+}
+
+Login.prototype.checkIfUserExistsInDb = function () {
+  console.log("checkIfUserExistsInDb");
+  return new Promise((resolve, reject) => {
+    dbRef.child('users').child(user.uid).once('value', function (snapshot) {
+      var exists = (snapshot.val() !== null);
+      console.log("EXISTS???  " + exists);
+      return exists;
+    });
+  })
 };
 
 Login.prototype.getUniversity = function () {
   var self = this;
-  return new Promise(function(resolve, reject) {
-    self.getUniversityFromDb();  
+  return new Promise(function (resolve, reject) {
+    self.getUniversityFromDb();
     resolve("get Univeristy db Promise completed successfully");
   });
 }
@@ -61,22 +84,19 @@ Login.prototype.checkForProfile = async function () {
   }
 }
 
-Login.prototype.getUniversityFromDb = function () { 
+Login.prototype.getUniversityFromDb = function () {
   console.log("getUniversityFromDb");
   return firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
-  university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
-  console.log("1");
+    university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
     console.log(university);
   });
 };
 
-Login.prototype.setUserProfileBoolean = function () { 
+Login.prototype.setUserProfileBoolean = function () {
   console.log("setUserProfileBoolean");
-  console.log("2");
   if (university != "NOT_SET") {
     userProfileIsSet = true;
   }
-console.log("User profile set? " + userProfileIsSet);
 };
 
 Login.prototype.launchHomeScreen = function () {
