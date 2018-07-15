@@ -20,21 +20,20 @@ Login.prototype.initFirebase = function () {
   this.database = firebase.database();
 };
 
-var userExists = false;
+var userExists;
 
 Login.prototype.signIn = async function () {
   var self = this;
   await this.signInWithFacebook();
   await this.checkIfUserExistsInDb();
-  this.sampleFunction();
   console.log("-----esits???  "+userExists);
   if (!userExists) {
     console.log("Adding user--");
     this.addUserToUsersDb(user);
-    // this.checkForProfile();
+    this.checkForProfile();
   } else {
     console.log("NOT Adding user--");
-    // this.checkForProfile();
+    this.checkForProfile();
   }
   return "done!!";
 };
@@ -59,9 +58,9 @@ Login.prototype.checkIfUserExistsInDb = function () {
   console.log("checkIfUserExistsInDb");
   return new Promise((resolve, reject) => {
     dbRef.child('users').child(user.uid).once('value', function (snapshot) {
-      var exists = (snapshot.val() !== null);
-      console.log("EXISTS???  " + exists);
-      return exists;
+      userExists = (snapshot.val() !== null);
+      console.log("EXISTS???  " + userExists);
+      resolve();
     });
   })
 };
