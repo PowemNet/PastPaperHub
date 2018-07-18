@@ -34,7 +34,7 @@ PastPaperHub.prototype.signOut = function() {
 
 // Returns the signed-in user's profile Pic URL.
 PastPaperHub.prototype.getProfilePicUrl = function() {
-  return this.auth.currentUser.photoURL || 'images/profile_placeholder.png';
+  return this.auth.currentUser.photoURL || 'images/profile_placeholder.png'; //todo check why this doesnt work
 }
 
 // Returns the signed-in user's display name.

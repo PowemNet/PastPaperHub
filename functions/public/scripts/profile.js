@@ -1,5 +1,4 @@
 'use strict';
-
 // Initializes FriendlyChat.
 function Profile() {
   // Shortcuts to DOM Elements.
@@ -15,14 +14,60 @@ function Profile() {
 //   this.profileForm.addEventListener('submit', this.onProfileFormSubmit.bind(this));
   this.saveButton.addEventListener('click', this.onProfileFormSubmit.bind(this));
 
-  this.initFirebase();
+  this.initFirebaseAndSetUpData();
 }
 
-Profile.prototype.initFirebase = function() {
+var user;
+var course;
+var university;
+var year;
+
+Profile.prototype.initFirebaseAndSetUpData = function() {
   this.auth = firebase.auth();
   this.database = firebase.database();
-//   this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
+  this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
 };
+
+Profile.prototype.authStateObserver = async function (userObject) {
+  if (userObject) {
+    user = userObject; //set user global object
+    console.log(user);
+    await this.fetchUserMetadata();
+    await this.initUI();
+    // this.saveMessagingDeviceToken();
+  } else { 
+    this.showLoginScreen();
+  }
+};
+
+Profile.prototype.fetchUserMetadata = function () {
+  return new Promise((resolve, reject) => {
+    firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
+      course = (snapshot.val() && snapshot.val().course) || 'NOT_SET';
+      university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
+      year = (snapshot.val() && snapshot.val().year) || 'NOT_SET';
+    });
+    resolve();
+  });
+};
+
+Profile.prototype.initUI = function () {
+  return new Promise((resolve, reject) => {
+    this.selectElement("course", course);
+    this.selectElement("university", university);
+    this.selectElement("year", year);
+    resolve();
+  });
+
+};
+
+Profile.prototype.selectElement = function (id, valueToSelect)
+{    
+    var element = document.getElementById(id);
+    element.value = valueToSelect;
+}
+
+
 
 const dbRef = firebase.database().ref();
 
