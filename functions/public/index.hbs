@@ -41,7 +41,6 @@
   <!-- App Styling -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
   <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/main_mdl.css">
 </head>
 <body>
@@ -51,116 +50,84 @@
   <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
       <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-        <h3><i class="material-icons">account_balance</i> PastPaper Hub</h3>
+        <h3><i class="material-icons"> account_balance </i> PastPaper Hub</h3>
       </div>
       <div id="user-container">
-        <div hidden id="user-pic"></div>
+        <div hidden id="user-pic">
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="user-pic">
           <a href="/profile"><li class="mdl-menu__item">Profile</li></a>
           <li id="sign-out" class="mdl-menu__item">Sign Out</li>
           </ul>
-        <div hidden id="user-name"></div>
-        </button>
+        </div>
+        <div hidden id="user-name">
         <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
           <i class="material-icons">account_circle</i>Sign-in with Facebook
         </button>
+        </div>
       </div>
     </div>
   </header>
-
-  {{!-- Main body --}}
-  <div id="container">
-    <div class="header">
-      <div class="Subhead">
-        <h1>
-          <strong> PastPaper Hub </strong>
-        </h1>
-      </div>
-    </div>
-
-<div class="Menu">
-
-  <div class = "Menu_item">
-    <form>
-      <h5>With floating label</h5>
-      <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-        <select class="mdl-selectfield__select" id="professsion2" name="professsion">
-          <option value=""></option>
-          <option value="option1">Makerere</option>
-          <option value="option2">Gulu</option>
-          <option value="option3">MUST</option>
-          <option value="option4">MUBS</option>
-        </select>
-        <label class="mdl-selectfield__label" for="professsion2">University</label>
-      </div>
-    </form>
-  </div>
-
-  <div class = "Menu_item">
-    <form>
-      <h5>With floating label</h5>
-      <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-        <select class="mdl-selectfield__select" id="professsion2" name="professsion">
-          <option value=""></option>
-          <option value="option1">Medicine</option>
-          <option value="option2">Engineering</option>
-          <option value="option3">Business Administration</option>
-          <option value="option4">Econimics</option>
-        </select>
-        <label class="mdl-selectfield__label" for="professsion2">Course</label>
-      </div>
-    </form>
-  </div>
-  <div class = "Menu_item">
-    <form>
-      <h5>With floating label</h5>
-      <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-        <select class="mdl-selectfield__select" id="professsion2" name="professsion">
-          <option value=""></option>
-          <option value="option1">Biochemistry</option>
-          <option value="option2">Applied Mathematics</option>
-          <option value="option3">Marketing</option>
-          <option value="option4">Tax</option>
-        </select>
-        <label class="mdl-selectfield__label" for="professsion2">Course Unit</label>
-      </div>
-    </form>
-  </div>
-  <div class = "Menu_item">
-    <form>
-      <h5>With floating label</h5>
-      <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-        <select class="mdl-selectfield__select" id="professsion2" name="professsion">
-          <option value=""></option>
-          <option value="option1">2017</option>
-          <option value="option2">2016</option>
-          <option value="option3">2015</option>
-          <option value="option4">2014</option>
-        </select>
-        <label class="mdl-selectfield__label" for="professsion2">Year</label>
-      </div>
-    </form>
-  </div>
-
 </div>
-    <div class="Mainbody">
-      <p> Preparing for exams and tests is one of the hard times most students go through while in school. PastPaper Hub was
-        created bearing in mind the frustration of such students ; giving access to past papers and answers and also creating
-        interactive discussions to enable students discuss some of the solutions. </p>
-    </div>
-    <div class="footer">
-      <p>
-        <em> Goodluck! </em>
-      </p>
+  {{!-- Main body --}}
+<div id="container">
+  <div class="header"> 
+    <div class="Subhead">
+      <h1>
+        <strong> PastPaper Hub </strong>
+      </h1>
     </div>
   </div>
-
+<div class="nav">
+  <ul>
+    <li class="dropdown">
+      <a href= "#" class="dropbtn"> University</a>
+        <div class="dropdown-content">
+          <a href= "#"> Makerere</a>
+          <a href= "#"> MUBS</a>
+          <a href= "#"> MUST</a>
+        </div>
+    </li>
+    <li  class="dropdown"> 
+      <a href= "#" class="dropbtn"> Course</a>
+        <div class="dropdown-content">
+          <a href= "#"> Medicine</a>
+          <a href= "#"> Engineering</a>
+          <a href= "#"> Business Administration</a>
+        </div>
+    </li>
+    <li  class="dropdown">
+      <a href= "#" class="dropbtn"> Course unit</a>
+        <div class="dropdown-content">
+          <a href= "#"> Biochemistry</a>
+          <a href= "#"> Data analysis</a>
+          <a href= "#"> Taxation</a>
+        </div>
+    </li>
+    <li  class="dropdown">
+      <a href= "#" class="dropbtn"> Year</a>
+        <div class="dropdown-content">
+          <a href= "#"> one</a>
+          <a href= "#"> Two</a>
+          <a href= "#"> Three</a>
+        </div>
+    </li>
+  </ul>
+</div>
+<div class="Mainbody">
+  <p> Preparing for exams and tests is one of the hard times most students go through while in school. PastPaper Hub was
+        created bearing in mind the frustration of such students ; giving access to past papers and answers and also creating
+        interactive discussions to enable students discuss the problems and solutions. </p>
+</div>
+<div class="footer">
+  <p>
+    <em> Goodluck! </em>
+  </p>
+</div>
   {{!-- snack bar --}}
   <div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
     <div class="mdl-snackbar__text"></div>
     <button class="mdl-snackbar__action" type="button"></button>
   </div>
-
 </div>
 
 <!-- Import and configure the Firebase SDK -->
