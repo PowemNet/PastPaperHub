@@ -67,19 +67,25 @@ Profile.prototype.selectElement = function (id, valueToSelect)
     element.value = valueToSelect;
 }
 
-
-
 const dbRef = firebase.database().ref();
 
-// Saves profile on the Firebase DB.
-Profile.prototype.saveProfile = function (year, course, university) { //todo : continue from here
-    return this.database.ref('/users/bMfuLi40eYdEl9dsO0bRVCOQvxG2').update({ //TODO USER  user.id
-        year: year,
-        course: course,
-        university: university
-    }).catch(function (error) {
-        console.error('Error updating profile', error);
-    });
+Profile.prototype.saveProfile = function (year, course, university) {
+  var self = this;
+  return this.database.ref('/users/bMfuLi40eYdEl9dsO0bRVCOQvxG2').update({ //TODO!!!! USE  user.id
+    year: year,
+    course: course,
+    university: university
+  }, function (error) {
+    if (error) {
+      console.log("failed to update");
+    } else {
+      var data = {
+        message: 'Profile saved!',
+        timeout: 2000
+      };
+      self.signInSnackbar.MaterialSnackbar.showSnackbar(data);
+    }
+  });
 };
 
 // Triggered when the send new message form is submitted.
