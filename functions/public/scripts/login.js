@@ -26,7 +26,6 @@ Login.prototype.signIn = async function () {
   var self = this;
   await this.signInWithFacebook();
   await this.checkIfUserExistsInDb();
-  console.log("-----esits???  "+userExists);
   if (!userExists) {
     console.log("Adding user--");
     this.addUserToUsersDb(user);
@@ -35,7 +34,7 @@ Login.prototype.signIn = async function () {
     console.log("NOT Adding user--");
     this.checkForProfile();
   }
-  return "done!!";
+  return "done!!"; //test if this is really required here
 };
 
 Login.prototype.signInWithFacebook = function () {
