@@ -68,7 +68,7 @@ Login.prototype.getUniversity = function () {
   var self = this;
   return new Promise(function (resolve, reject) {
     self.getUniversityFromDb();
-    resolve("get Univeristy db Promise completed successfully");
+    resolve("get Univeristy db Promise completed successfully"); //
   });
 }
 
