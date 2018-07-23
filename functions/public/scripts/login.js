@@ -42,10 +42,17 @@ Login.prototype.signInWithFacebook = function () {
     console.log("signInWithFacebook");
     var provider = new firebase.auth.FacebookAuthProvider();
     this.auth.signInWithPopup(provider).then(function (result) {
-      var token = result.credential.accessToken;
-      user = result.user;
-      console.log("created user object");
-      resolve();
+      if (result){
+        var token = result.credential.accessToken;
+        user = result.user;
+        console.log("created user object");
+        return user;
+        // resolve();
+      }
+      else{
+        throw new Error("error logging in" );
+      }
+      
     }).catch(function (error) {
       var errorMessage = error.message;
       console.log("error logging in: " + errorMessage);
@@ -85,14 +92,20 @@ Login.prototype.checkForProfile = async function () {
 Login.prototype.getUniversityFromDb = function () {
   console.log("getUniversityFromDb");
   return firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
-    university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
-    console.log(university);
+    if(snapshot){
+      university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
+      console.log(university);
+      return university;
+    }
+    else{
+      throw new Error("error getUniversityFromDb" );
+    }
   });
 };
 
 Login.prototype.setUserProfileBoolean = function () {
   console.log("setUserProfileBoolean");
-  if (university != "NOT_SET") {
+  if (university !== "NOT_SET") {
     userProfileIsSet = true;
   }
 };
