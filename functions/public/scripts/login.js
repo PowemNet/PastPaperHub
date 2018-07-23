@@ -46,8 +46,8 @@ Login.prototype.signInWithFacebook = function () {
         var token = result.credential.accessToken;
         user = result.user;
         console.log("created user object");
+        resolve();
         return user;
-        // resolve();
       }
       else{
         throw new Error("error logging in" );

@@ -47,8 +47,8 @@ Profile.prototype.fetchUserMetadata = function () {
         course = (snapshot.val() && snapshot.val().course) || 'NOT_SET';
         university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
         year = (snapshot.val() && snapshot.val().year) || 'NOT_SET';
+        resolve();
         return snapshot;
-        // resolve();
       }
       else{
         throw new Error("error getUniversityFromDb" );
