@@ -5,6 +5,7 @@ function PastPaperHub() {
   this.checkSetup();
 
   // Shortcuts to DOM Elements.
+  this.messageList = document.getElementById('messages');
   this.userPic = document.getElementById('user-pic');
   this.userName = document.getElementById('user-name');
   this.signOutButton = document.getElementById('sign-out');
@@ -52,11 +53,11 @@ PastPaperHub.prototype.loadMessages = function() {
   // Loads the last 12 messages and listen for new ones.
   var setMessage = function(snap) {
     var data = snap.val();
-    this.displayMessage(snap.key, data.name, data.text, data.profilePicUrl, data.imageUrl);
+    this.displayMessage(snap.key, data.title, "Computer Engineering");
   }.bind(this);
 
-  this.database.ref('/messages/').limitToLast(12).on('child_added', setMessage);
-  this.database.ref('/messages/').limitToLast(12).on('child_changed', setMessage);
+  this.database.ref('/pastpapers/university/makerere/comp_eng/year_1/electronics/').limitToLast(12).on('child_added', setMessage);
+  this.database.ref('/pastpapers/university/makerere/comp_eng/year_1/electronics/').limitToLast(12).on('child_changed', setMessage);
 };
 
 // Saves a new message on the Firebase DB.
@@ -96,35 +97,6 @@ PastPaperHub.prototype.saveImageMessage = function(file) {
     console.error('There was an error uploading a file to Cloud Storage:', error);
   });
 };
-
-// Saves the messaging device token to the datastore.
-PastPaperHub.prototype.saveMessagingDeviceToken = function() {
-  this.messaging.getToken().then(function(currentToken) {
-    if (currentToken) {
-      console.log('Got FCM device token:', currentToken);
-      // Saving the Device Token to the datastore.
-      this.database.ref('/fcmTokens').child(currentToken)
-          .set(this.auth.currentUser.uid);
-    } else {
-      // Need to request permissions to show notifications.
-      this.requestNotificationsPermissions();
-    }
-  }.bind(this)).catch(function(error){
-    console.error('Unable to get messaging token.', error);
-  });
-};
-
-// Requests permissions to show notifications.
-PastPaperHub.prototype.requestNotificationsPermissions = function() {
-  console.log('Requesting notifications permission...');
-  this.messaging.requestPermission().then(function() {
-    // Notification permission granted.
-    this.saveMessagingDeviceToken();
-  }.bind(this)).catch(function(error) {
-    console.error('Unable to get permission to notify.', error);
-  });
-};
-
 
 // Triggered when a file is selected via the media picker.
 PastPaperHub.prototype.onMediaFileSelected = function(event) {
@@ -177,13 +149,11 @@ PastPaperHub.prototype.authStateObserver = function(user) {
     this.userName.removeAttribute('hidden');
     this.userPic.removeAttribute('hidden');
 
-    // We save the Firebase Messaging Device token and enable notifications.
-    this.saveMessagingDeviceToken();
   } else { // User is signed out!
     window.location.href = "/login";
   }
 
-  // We load currently existing chat messages.
+  // Load existing past papers.
   this.loadMessages();
 };
 
@@ -212,7 +182,6 @@ PastPaperHub.resetMaterialTextfield = function(element) {
 // Template for messages.
 PastPaperHub.MESSAGE_TEMPLATE =
     '<div class="message-container">' +
-      '<div class="spacing"><div class="pic"></div></div>' +
       '<div class="message"></div>' +
       '<div class="name"></div>' +
     '</div>';
@@ -221,18 +190,15 @@ PastPaperHub.MESSAGE_TEMPLATE =
 PastPaperHub.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
 
 // Displays a Message in the UI.
-PastPaperHub.prototype.displayMessage = function(key, name, text, picUrl, imageUrl) {
+PastPaperHub.prototype.displayMessage = function(key, name, text) {
   var div = document.getElementById(key);
   // If an element for that message does not exists yet we create it.
   if (!div) {
     var container = document.createElement('div');
     container.innerHTML = PastPaperHub.MESSAGE_TEMPLATE;
     div = container.firstChild;
-    div.setAttribute('id', key);
+    div.setAttribute('id', "key"); //todo POWER remove quotes from "key"
     this.messageList.appendChild(div);
-  }
-  if (picUrl) {
-    div.querySelector('.pic').style.backgroundImage = 'url(' + picUrl + ')';
   }
   div.querySelector('.name').textContent = name;
   var messageElement = div.querySelector('.message');
@@ -240,19 +206,10 @@ PastPaperHub.prototype.displayMessage = function(key, name, text, picUrl, imageU
     messageElement.textContent = text;
     // Replace all line breaks by <br>.
     messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
-  } else if (imageUrl) { // If the message is an image.
-    var image = document.createElement('img');
-    image.addEventListener('load', function() {
-      this.messageList.scrollTop = this.messageList.scrollHeight;
-    }.bind(this));
-    image.src = imageUrl;
-    messageElement.innerHTML = '';
-    messageElement.appendChild(image);
   }
   // Show the card fading-in and scroll to view the new message.
   setTimeout(function() {div.classList.add('visible')}, 1);
   this.messageList.scrollTop = this.messageList.scrollHeight;
-  this.messageInput.focus();
 };
 
 // Enables or disables the submit button depending on the values of the input

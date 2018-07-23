@@ -46,7 +46,7 @@
 <body>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
-  <!-- Header section containing logo -->
+  <!-- Header -->
   <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
       <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
@@ -68,112 +68,29 @@
   </header>
 
   {{!-- Main body --}}
-  <div id="container">
-    <div class="header">
-      <div class="Subhead">
-        <h1>
-          <strong> PastPaper Hub </strong>
-        </h1>
+
+    <main class="mdl-layout__content mdl-color--grey-100">
+    <div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
+
+      <!-- Messages container -->
+      <div id="messages-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
+        <div class="mdl-card__supporting-text mdl-color-text--grey-600">
+          <div id="messages">
+            <span id="message-filler"></span>
+          </div>
+        </div>
       </div>
+
+      <div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+        <button class="mdl-snackbar__action" type="button"></button>
+      </div>
+
     </div>
-
-<div class="Menu">
-
-  <div class = "Menu_item">
-    <form>
-      <h5>With floating label</h5>
-      <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-        <select class="mdl-selectfield__select" id="professsion2" name="professsion">
-          <option value=""></option>
-          <option value="option1">option 1</option>
-          <option value="option2">option 2</option>
-          <option value="option3">option 3</option>
-          <option value="option4">option 4</option>
-          <option value="option5">option 5</option>
-        </select>
-        <label class="mdl-selectfield__label" for="professsion2">Profession</label>
-      </div>
-    </form>
-  </div>
-
-  <div class = "Menu_item">
-    <form>
-      <h5>With floating label</h5>
-      <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-        <select class="mdl-selectfield__select" id="professsion2" name="professsion">
-          <option value=""></option>
-          <option value="option1">option 1</option>
-          <option value="option2">option 2</option>
-          <option value="option3">option 3</option>
-          <option value="option4">option 4</option>
-          <option value="option5">option 5</option>
-        </select>
-        <label class="mdl-selectfield__label" for="professsion2">Profession</label>
-      </div>
-    </form>
-  </div>
-
+  </main>
+  
 </div>
 
-    {{!-- <div class="Menu">
-      <ul class="main">
-        <li>
-          <a href="#"> University </a>
-          <ul class="Menulist">
-            <li> Makerere </li>
-            <li> Gulu </li>
-            <li> MUST </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Year</a>
-          <ul class="Menulist">
-            <li>One</li>
-            <li>Two</li>
-            <li>Three</li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Course </a>
-          <ul class="Menulist">
-            <li>Medicine</li>
-            <li>Engineering</li>
-            <li> Economics</li>
-          </ul>
-        </li>
-        <li>
-          <a href="#"> Course Unit </a>
-          <ul class="Menulist">
-            <li>Biochemistry</li>
-            <li>Machine language</li>
-            <li> Bsiness computing</li>
-          </ul>
-        </li>
-      </ul>
-    </div> --}}
-    <div class="Mainbody">
-      <p> Preparing for exams and tests is one of the hard times most students go through while in school. PastPaper Hub was
-        created bearing in mind the frustration of such students ; giving access to past papers and answers and also creating
-        interactive discussions to enable students discuss some of the solutions. </p>
-    </div>
-    <div class="footer">
-      <p>
-        <em> Goodluck! </em>
-      </p>
-    </div>
-  </div>
-
-  {{!-- snack bar --}}
-  <div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
-    <div class="mdl-snackbar__text"></div>
-    <button class="mdl-snackbar__action" type="button"></button>
-  </div>
-
-</div>
-
-<!-- Import and configure the Firebase SDK -->
-<!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
-<!-- If you do not want to serve/host your project using Firebase Hosting see https://firebase.google.com/docs/web/setup -->
 <script src="/__/firebase/5.1.0/firebase-app.js"></script>
 <script src="/__/firebase/5.1.0/firebase-auth.js"></script>
 <script src="/__/firebase/5.1.0/firebase-database.js"></script>
