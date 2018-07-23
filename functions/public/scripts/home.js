@@ -53,6 +53,9 @@ PastPaperHub.prototype.loadMessages = function() {
   // Loads the last 12 messages and listen for new ones.
   var setMessage = function(snap) {
     var data = snap.val();
+    console.log("----");
+    console.log(snap.key);
+    console.log(data.title);
     this.displayMessage(snap.key, data.title, "Computer Engineering");
   }.bind(this);
 
@@ -192,12 +195,13 @@ PastPaperHub.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
 // Displays a Message in the UI.
 PastPaperHub.prototype.displayMessage = function(key, name, text) {
   var div = document.getElementById(key);
+  console.log(div);
   // If an element for that message does not exists yet we create it.
   if (!div) {
     var container = document.createElement('div');
     container.innerHTML = PastPaperHub.MESSAGE_TEMPLATE;
     div = container.firstChild;
-    div.setAttribute('id', "key"); //todo POWER remove quotes from "key"
+    div.setAttribute('id', key);
     this.messageList.appendChild(div);
   }
   div.querySelector('.name').textContent = name;
