@@ -12,19 +12,13 @@
     margin-bottom: 10px;
     
 }
-.header{
-     height:500px;
-     background-image: url("/images/main_image.jpg"); 
-     background-size: cover;
-     position: relative;
-     opacity: 0.6;
-}
 .Menu{
     width: 100%;
   text-align: center; 
 }
 
 .Menu_item{
+    padding: 20px;
     width: 100px;
     display: inline-block;
 }
@@ -91,7 +85,7 @@ h1 {
 }
 .Mainbody p {
     font-family:  'Times New Roman', Arial, sans-serif;
-    font-size: 25px;
+    font-size: 18px;
     text-align: justify;
     margin: 80px;
 }
@@ -99,6 +93,22 @@ h1 {
     text-align: center;
     padding: 20px;
 }
+#select{
+    float: left;
+    margin: 0 auto;
+}
+#save-profile:hover {
+   background-color: blue;
+}
+h3 {
+    text-align: center
+}
+h3 a {
+    text-decoration: none;
+    color: white;
+}
+
+
 
 
 
