@@ -2,9 +2,6 @@
 
 // Initializes PastPaperHub.
 function PastPaperHub() {
-  this.checkSetup();
-
-  // Shortcuts to DOM Elements.
   this.messageList = document.getElementById('messages');
   this.userPic = document.getElementById('user-pic');
   this.userName = document.getElementById('user-name');
@@ -53,9 +50,6 @@ PastPaperHub.prototype.loadMessages = function() {
   // Loads the last 12 messages and listen for new ones.
   var setMessage = function(snap) {
     var data = snap.val();
-    console.log("----");
-    console.log(snap.key);
-    console.log(data.title);
     this.displayMessage(snap.key, data.title, "Computer Engineering");
   }.bind(this);
 
@@ -124,19 +118,6 @@ PastPaperHub.prototype.onMediaFileSelected = function(event) {
   }
 };
 
-// Triggered when the send new message form is submitted.
-PastPaperHub.prototype.onMessageFormSubmit = function(e) {
-  e.preventDefault();
-  // Check that the user entered a message and is signed in.
-  if (this.messageInput.value && this.checkSignedInWithMessage()) {
-    this.saveMessage(this.messageInput.value).then(function() {
-      // Clear message text field and re-enable the SEND button.
-      PastPaperHub.resetMaterialTextfield(this.messageInput);
-      this.toggleButton();
-    }.bind(this));
-  }
-};
-
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
 PastPaperHub.prototype.authStateObserver = function(user) {
   if (user) { // User is signed in!
@@ -195,6 +176,10 @@ PastPaperHub.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
 // Displays a Message in the UI.
 PastPaperHub.prototype.displayMessage = function(key, name, text) {
   var div = document.getElementById(key);
+  console.log("----");
+  console.log(key);
+  console.log(name);
+  console.log(text);
   console.log(div);
   // If an element for that message does not exists yet we create it.
   if (!div) {
@@ -223,15 +208,6 @@ PastPaperHub.prototype.toggleButton = function() {
     this.submitButton.removeAttribute('disabled');
   } else {
     this.submitButton.setAttribute('disabled', 'true');
-  }
-};
-
-// Checks that the Firebase SDK has been correctly setup and configured.
-PastPaperHub.prototype.checkSetup = function() {
-  if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
-    window.alert('You have not configured and imported the Firebase SDK. ' +
-        'Make sure you go through the codelab setup instructions and make ' +
-        'sure you are running the codelab using `firebase serve`');
   }
 };
 
