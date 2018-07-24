@@ -50,8 +50,15 @@ PastPaperHub.prototype.isUserSignedIn = function() {
 PastPaperHub.prototype.loadMessages = function() {
   var setMessage = function(snap) {
       var li = document.createElement("li");
+      var a = document.createElement("a");
       var data = snap.val();
-      li.appendChild(document.createTextNode(data.title));
+
+      a.textContent = data.title;
+      a.setAttribute('href', "http://www.msn.com");
+      li.appendChild(a);
+      // li.appendChild(document.createTextNode(data.title));
+      // li.href = "link";
+      // li.innerHTML = '<a href="#hOME">HTML</a>';
       this.pastPaperList.appendChild(li);
   }.bind(this)
 
