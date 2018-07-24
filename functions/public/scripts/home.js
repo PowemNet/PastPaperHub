@@ -49,7 +49,7 @@ PastPaperHub.prototype.isUserSignedIn = function() {
 var pastPaperClickedDbRef = "ble";
 var hardCodedPastPaperDbRef = '/pastpapers/university/makerere/comp_eng/year_1/electronics/';
 // Loads pastpapers and listens for upcoming ones.
-PastPaperHub.prototype.loadMessages = function() {
+PastPaperHub.prototype.loadPastPapers = function() {
   var setItem = function(snap) {
       var li = document.createElement("li");
       var a = document.createElement("a");
@@ -89,7 +89,7 @@ PastPaperHub.prototype.authStateObserver = function(user) {
   }
 
   // Load existing past papers.
-  this.loadMessages();
+  this.loadPastPapers();
 };
 
 // Returns true if user is signed-in. Otherwise false and displays a message.

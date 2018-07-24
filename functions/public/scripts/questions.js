@@ -46,26 +46,27 @@ PastPaperHub.prototype.isUserSignedIn = function() {
   return !!this.auth.currentUser;
 }
 
-// Loads pastpapers and listens for upcoming ones.
-PastPaperHub.prototype.loadMessages = function() {
-  console.log("pastPaperClickedDbRef :---" + localStorage.getItem("pastPaperClickedDbRef"));
+const pastPaperDbRef = localStorage.getItem("pastPaperClickedDbRef");
+var questionsDbRef = pastPaperDbRef + "/questions";
+PastPaperHub.prototype.loadQuestions = function() {
   var setItem = function(snap) {
-    var li = document.createElement("li");
-    var a = document.createElement("a");
-    var data = snap.val();
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      var data = snap.val();
 
-    a.textContent = data.title;
-    a.setAttribute('href', "/questions");
-    li.appendChild(a);
-    li.onclick = function(){
-      pastPaperClickedDbRef = hardCodedPastPaperDbRef + snap.key;
-      localStorage.setItem("pastPaperClickedDbRef",pastPaperClickedDbRef);
-    }
-    this.pastPaperList.appendChild(li);
-}.bind(this)
+      a.textContent = data.text;
+      a.setAttribute('href', "/question");
+      li.appendChild(a);
+      li.onclick = function(){
+        var questionClickedDbRef = questionsDbRef + snap.key;
+        localStorage.setItem("questionClickedDbRef", questionClickedDbRef);
+        console.log("questionClickedDbRef-" + questionClickedDbRef);
+      }
+      this.pastPaperList.appendChild(li);
+  }.bind(this)
 
-  this.database.ref('/pastpapers/university/makerere/comp_eng/year_1/electronics/').limitToLast(12).on('child_added', setItem);
-  this.database.ref('/pastpapers/university/makerere/comp_eng/year_1/electronics/').limitToLast(12).on('child_changed', setItem);
+  this.database.ref(questionsDbRef).limitToLast(12).on('child_added', setItem);
+  this.database.ref(questionsDbRef).limitToLast(12).on('child_changed', setItem);
 };
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
@@ -88,7 +89,7 @@ PastPaperHub.prototype.authStateObserver = function(user) {
   }
 
   // Load existing past papers.
-  this.loadMessages();
+  this.loadQuestions();
 };
 
 // Returns true if user is signed-in. Otherwise false and displays a message.
