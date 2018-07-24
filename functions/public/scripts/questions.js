@@ -46,27 +46,22 @@ PastPaperHub.prototype.isUserSignedIn = function() {
   return !!this.auth.currentUser;
 }
 
-var questionClickedDbRef = "ble";
-var hardCodedPastPaperDbRef = '/pastpapers/university/makerere/comp_eng/year_1/electronics/';
 // Loads pastpapers and listens for upcoming ones.
 PastPaperHub.prototype.loadMessages = function() {
+  console.log("item clicked:---" + localStorage.getItem("questionClickedDbRef"));
   var setMessage = function(snap) {
       var li = document.createElement("li");
       var a = document.createElement("a");
       var data = snap.val();
 
       a.textContent = data.title;
-      a.setAttribute('href', "/questions");
+      a.setAttribute('href', "http://www.msn.com");
       li.appendChild(a);
-      li.onclick = function(){
-        questionClickedDbRef = hardCodedPastPaperDbRef + snap.key;
-        localStorage.setItem("questionClickedDbRef",questionClickedDbRef);
-      }
       this.pastPaperList.appendChild(li);
   }.bind(this)
 
-  this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_added', setMessage);
-  this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_changed', setMessage);
+  this.database.ref('/pastpapers/university/makerere/comp_eng/year_1/electronics/').limitToLast(12).on('child_added', setMessage);
+  this.database.ref('/pastpapers/university/makerere/comp_eng/year_1/electronics/').limitToLast(12).on('child_changed', setMessage);
 };
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
