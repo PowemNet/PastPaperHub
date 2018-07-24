@@ -46,26 +46,25 @@ PastPaperHub.prototype.isUserSignedIn = function() {
   return !!this.auth.currentUser;
 }
 
-const pastPaperDbRef = localStorage.getItem("pastPaperClickedDbRef");
-var questionsDbRef = pastPaperDbRef + "/questions";
-PastPaperHub.prototype.loadQuestions = function() {
-  var setItem = function(snap) {
-      var li = document.createElement("li");
-      var a = document.createElement("a");
-      var data = snap.val();
-
-      a.textContent = data.text;
-      a.setAttribute('href', "/question");
-      li.appendChild(a);
-      li.onclick = function(){
-        var questionClickedDbRef = questionsDbRef + "/"+snap.key;
-        localStorage.setItem("questionClickedDbRef", questionClickedDbRef);
+const questionClickedDbRef = localStorage.getItem("questionClickedDbRef");
+PastPaperHub.prototype.loadQuestion = function () {
+  return new Promise((resolve, reject) => {
+    firebase.database().ref(questionClickedDbRef).once('value').then(function (snapshot) {
+      if(snapshot){
+        //set question text
+        console.log("quesion text: "+ snapshot.val().text);
+        //do facebook stuff
+        resolve();
+        return snapshot;
       }
-      this.pastPaperList.appendChild(li);
-  }.bind(this)
-
-  this.database.ref(questionsDbRef).limitToLast(12).on('child_added', setItem);
-  this.database.ref(questionsDbRef).limitToLast(12).on('child_changed', setItem);
+      else{
+        throw new Error("error fetching question" );
+      }
+    }).catch(function (error) {
+      var errorMessage = error.message;
+      console.log("error fetching question:" + errorMessage);
+    });
+  });
 };
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
@@ -88,7 +87,7 @@ PastPaperHub.prototype.authStateObserver = function(user) {
   }
 
   // Load existing past papers.
-  this.loadQuestions();
+  this.loadQuestion();
 };
 
 // Returns true if user is signed-in. Otherwise false and displays a message.
