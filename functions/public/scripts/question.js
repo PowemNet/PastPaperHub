@@ -3,7 +3,7 @@
 // Initializes PastPaperHub.
 function PastPaperHub() {
   this.messageList = document.getElementById('messages');
-  this.pastPaperList = document.getElementById("past-paper-list");
+  this.question = document.getElementById("question");
   this.userPic = document.getElementById('user-pic');
   this.userName = document.getElementById('user-name');
   this.signOutButton = document.getElementById('sign-out');
@@ -48,11 +48,13 @@ PastPaperHub.prototype.isUserSignedIn = function() {
 
 const questionClickedDbRef = localStorage.getItem("questionClickedDbRef");
 PastPaperHub.prototype.loadQuestion = function () {
+  var self = this;
   return new Promise((resolve, reject) => {
     firebase.database().ref(questionClickedDbRef).once('value').then(function (snapshot) {
       if(snapshot){
         //set question text
         console.log("quesion text: "+ snapshot.val().text);
+        self.question.textContent = snapshot.val().text;
         //do facebook stuff
         resolve();
         return snapshot;
