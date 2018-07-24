@@ -3,6 +3,7 @@
 // Initializes PastPaperHub.
 function PastPaperHub() {
   this.messageList = document.getElementById('messages');
+  this.pastPaperList = document.getElementById("past-paper-list");
   this.userPic = document.getElementById('user-pic');
   this.userName = document.getElementById('user-name');
   this.signOutButton = document.getElementById('sign-out');
@@ -45,77 +46,17 @@ PastPaperHub.prototype.isUserSignedIn = function() {
   return !!this.auth.currentUser;
 }
 
-// Loads chat messages history and listens for upcoming ones.
+// Loads pastpapers and listens for upcoming ones.
 PastPaperHub.prototype.loadMessages = function() {
-  // Loads the last 12 messages and listen for new ones.
   var setMessage = function(snap) {
-    var data = snap.val();
-    this.displayMessage(snap.key, data.title, "Computer Engineering");
-  }.bind(this);
+      var li = document.createElement("li");
+      var data = snap.val();
+      li.appendChild(document.createTextNode(data.title));
+      this.pastPaperList.appendChild(li);
+  }.bind(this)
 
   this.database.ref('/pastpapers/university/makerere/comp_eng/year_1/electronics/').limitToLast(12).on('child_added', setMessage);
   this.database.ref('/pastpapers/university/makerere/comp_eng/year_1/electronics/').limitToLast(12).on('child_changed', setMessage);
-};
-
-// Saves a new message on the Firebase DB.
-PastPaperHub.prototype.saveMessage = function(messageText) {
-  // Add a new message entry to the Firebase Database.
-  return this.database.ref('/messages/').push({
-    name: this.getUserName(),
-    text: messageText,
-    profilePicUrl: this.getProfilePicUrl()
-  }).catch(function(error) {
-    console.error('Error writing new message to Firebase Database', error);
-  });
-};
-
-// Saves a new message containing an image URI in Firebase.
-// This first saves the image in Firebase storage.
-PastPaperHub.prototype.saveImageMessage = function(file) {
-  // 1 - We add a message with a loading icon that will get updated with the shared image.
-  this.database.ref('/messages/').push({
-    name: this.getUserName(),
-    imageUrl: PastPaperHub.LOADING_IMAGE_URL,
-    profilePicUrl: this.getProfilePicUrl()
-  }).then(function(messageRef) {
-    // 2 - Upload the image to Cloud Storage.
-    var filePath = this.auth.currentUser.uid + '/' + messageRef.key + '/' + file.name;
-    return this.storage.ref(filePath).put(file).then(function(fileSnapshot) {
-      // 3 - Generate a public URL for the file.
-      return fileSnapshot.ref.getDownloadURL().then((url) => {
-        // 4 - Update the chat message placeholder with the image’s URL.
-        return messageRef.update({
-          imageUrl: url,
-          storageUri: fileSnapshot.metadata.fullPath
-        });
-      });
-    }.bind(this));
-  }.bind(this)).catch(function(error) {
-    console.error('There was an error uploading a file to Cloud Storage:', error);
-  });
-};
-
-// Triggered when a file is selected via the media picker.
-PastPaperHub.prototype.onMediaFileSelected = function(event) {
-  event.preventDefault();
-  var file = event.target.files[0];
-
-  // Clear the selection in the file picker input.
-  this.imageForm.reset();
-
-  // Check if the file is an image.
-  if (!file.type.match('image.*')) {
-    var data = {
-      message: 'You can only share images',
-      timeout: 2000
-    };
-    this.signInSnackbar.MaterialSnackbar.showSnackbar(data);
-    return;
-  }
-  // Check if the user is signed-in
-  if (this.checkSignedInWithMessage()) {
-    this.saveImageMessage(file);
-  }
 };
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
@@ -163,43 +104,8 @@ PastPaperHub.resetMaterialTextfield = function(element) {
   element.parentNode.MaterialTextfield.boundUpdateClassesHandler();
 };
 
-// Template for messages.
-PastPaperHub.MESSAGE_TEMPLATE =
-    '<div class="message-container">' +
-      '<div class="message"></div>' +
-      '<div class="name"></div>' +
-    '</div>';
-
 // A loading image URL.
 PastPaperHub.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
-
-// Displays a Message in the UI.
-PastPaperHub.prototype.displayMessage = function(key, name, text) {
-  var div = document.getElementById(key);
-  console.log("----");
-  console.log(key);
-  console.log(name);
-  console.log(text);
-  console.log(div);
-  // If an element for that message does not exists yet we create it.
-  if (!div) {
-    var container = document.createElement('div');
-    container.innerHTML = PastPaperHub.MESSAGE_TEMPLATE;
-    div = container.firstChild;
-    div.setAttribute('id', key);
-    this.messageList.appendChild(div);
-  }
-  div.querySelector('.name').textContent = name;
-  var messageElement = div.querySelector('.message');
-  if (text) { // If the message is text.
-    messageElement.textContent = text;
-    // Replace all line breaks by <br>.
-    messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
-  }
-  // Show the card fading-in and scroll to view the new message.
-  setTimeout(function() {div.classList.add('visible')}, 1);
-  this.messageList.scrollTop = this.messageList.scrollHeight;
-};
 
 // Enables or disables the submit button depending on the values of the input
 // fields.
