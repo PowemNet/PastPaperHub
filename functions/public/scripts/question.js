@@ -60,8 +60,9 @@ PastPaperHub.prototype.loadQuestion = function () {
         //load facebook div
         // {{!-- <div class="fb-comments" data-href="https://www.pastpaperhub.com/question1" data-numposts="5"></div> --}}
         // self.facebookDiv.classList.add('fb-comments');
-        self.facebookDiv.setAttribute('data-href', 'https://www.pastpaperhub.com/question1');
-        self.facebookDiv.setAttribute("hidden", false);
+        // self.facebookDiv.setAttribute('data-href', 'https://www.pastpaperhub.com/question1');
+        // self.facebookDiv.setAttribute("hidden", false);
+
         // self.facebookDiv.setAttribute("data-numposts", "5");
 
         // self.facebookDiv.innerHTML="<fb:comments data-href='https://www.pastpaperhub.com/question1' data-numposts='5'></fb:comments>"

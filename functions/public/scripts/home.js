@@ -58,7 +58,7 @@ PastPaperHub.prototype.loadPastPapers = function() {
       a.setAttribute('href', "/questions");
       li.appendChild(a);
       li.onclick = function(){
-        pastPaperClickedDbRef = hardCodedPastPaperDbRef + snap.key;
+        var pastPaperClickedDbRef = hardCodedPastPaperDbRef + snap.key;
         localStorage.setItem("pastPaperClickedDbRef",pastPaperClickedDbRef);
       }
       this.pastPaperList.appendChild(li);
