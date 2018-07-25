@@ -4,6 +4,7 @@
 function PastPaperHub() {
   this.messageList = document.getElementById('messages');
   this.question = document.getElementById("question");
+  this.facebookDiv = document.getElementById("facebook-div");
   this.userPic = document.getElementById('user-pic');
   this.userName = document.getElementById('user-name');
   this.signOutButton = document.getElementById('sign-out');
@@ -53,9 +54,19 @@ PastPaperHub.prototype.loadQuestion = function () {
     firebase.database().ref(questionClickedDbRef).once('value').then(function (snapshot) {
       if(snapshot){
         //set question text
-        console.log("quesion text: "+ snapshot.val().text);
+        console.log("quesion text--: "+ snapshot.val().text);
         self.question.textContent = snapshot.val().text;
-        //do facebook stuff
+        //set url for use in facebook div
+        //load facebook div
+        // {{!-- <div class="fb-comments" data-href="https://www.pastpaperhub.com/question1" data-numposts="5"></div> --}}
+        // self.facebookDiv.classList.add('fb-comments');
+        self.facebookDiv.setAttribute('data-href', 'https://www.pastpaperhub.com/question1');
+        self.facebookDiv.setAttribute("hidden", false);
+        // self.facebookDiv.setAttribute("data-numposts", "5");
+
+        // self.facebookDiv.innerHTML="<fb:comments data-href='https://www.pastpaperhub.com/question1' data-numposts='5'></fb:comments>"
+        // FB.XFBML.parse(self.facebookDiv);
+
         resolve();
         return snapshot;
       }

@@ -46,7 +46,6 @@ PastPaperHub.prototype.isUserSignedIn = function() {
   return !!this.auth.currentUser;
 }
 
-var pastPaperClickedDbRef = "ble";
 var hardCodedPastPaperDbRef = '/pastpapers/university/makerere/comp_eng/year_1/electronics/';
 // Loads pastpapers and listens for upcoming ones.
 PastPaperHub.prototype.loadPastPapers = function() {
