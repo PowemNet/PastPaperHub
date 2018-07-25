@@ -12,52 +12,6 @@
     margin-bottom: 10px;
     
 }
-.Menu{
-    width: 100%;
-  text-align: center; 
-}
-
-.Menu_item{
-    padding: 20px;
-    width: 100px;
-    display: inline-block;
-}
-.main {
-    float: left;
-    list-style: none;   
-}
-.main li {
-    display:block;
-    float: left;
-    position: relative;  
-    width:  250px;
-    text-align: center;
-
-}
-.main li a {
-    font-size: 18px;
-    text-decoration: none;
-    color: black;
-    padding: 10px;   
-    line-height: 65px;
-}
-.Menulist {
-    display: none;
-}
-.Menulist li {
-    font-size: 18px;
-    line-height: 55px;
-    
-}
-.main li:hover a {
-    color: #f2f2f2;
-}
-.main li:hover .Menulist {
-    display: block;
-    position: absolute;
-    background-color: gray;
-    border-radius: 0px 0px 5px 5px;
-}
  .Subhead {
      height: 0px;
      position: absolute;
@@ -93,12 +47,10 @@ h1 {
     text-align: center;
     padding: 20px;
 }
-#select{
-    float: left;
-    margin: 0 auto;
-}
+
 #save-profile:hover {
-   background-color: blue;
+   background-color: #9E9E9E;
+
 }
 h3 {
     text-align: center
@@ -107,8 +59,12 @@ h3 a {
     text-decoration: none;
     color: white;
 }
-
-
-
+.create_profile {
+    padding: 5px;
+    margin-left: 30px;
+}
+h6 {
+    font-weight: bold;
+}
 
 
