@@ -47,27 +47,28 @@ PastPaperHub.prototype.isUserSignedIn = function() {
   return !!this.auth.currentUser;
 }
 
-var hardCodedPastPaperDbRef = '/pastpapers/university/makerere/comp_eng/year_1/electronics/';
-// Loads pastpapers and listens for upcoming ones.
-PastPaperHub.prototype.loadPastPapers = function() {
+const pastPaperDbRef = localStorage.getItem("pastPaperClickedDbRef");
+var questionsDbRef = pastPaperDbRef + "/questions";
+PastPaperHub.prototype.loadQuestions = function() {
   var setItem = function(snap) {
       var li = document.createElement("li");
       var a = document.createElement("a");
       var data = snap.val();
 
-      a.textContent = data.title;
-      a.setAttribute('href', "/questions");
+      a.textContent = data.text;
+      a.setAttribute('href', "/question");
       li.appendChild(a);
       li.onclick = function(){
-        var pastPaperClickedDbRef = hardCodedPastPaperDbRef + snap.key;
-        localStorage.setItem("pastPaperClickedText", data.title);
+        var questionClickedDbRef = questionsDbRef + "/"+snap.key;
+        localStorage.setItem("questionClickedDbRef", questionClickedDbRef);
+        localStorage.setItem("questionClickedText", data.text);
       }
       this.pastPaperList.appendChild(li);
       this.pleaseWaitText.style.visibility = "hidden";
   }.bind(this)
 
-  this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_added', setItem);
-  this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_changed', setItem);
+  this.database.ref(questionsDbRef).limitToLast(12).on('child_added', setItem);
+  this.database.ref(questionsDbRef).limitToLast(12).on('child_changed', setItem);
 };
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
@@ -90,7 +91,7 @@ PastPaperHub.prototype.authStateObserver = function(user) {
   }
 
   // Load existing past papers.
-  this.loadPastPapers();
+  this.loadQuestions();
 };
 
 // Returns true if user is signed-in. Otherwise false and displays a message.

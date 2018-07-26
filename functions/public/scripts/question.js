@@ -4,7 +4,10 @@
 function PastPaperHub() {
   this.messageList = document.getElementById('messages');
   this.pleaseWaitText = document.getElementById("please-wait-text");
-  this.pastPaperList = document.getElementById("past-paper-list");
+  this.pleaseWaitFbText = document.getElementById("please-wait-fb-text");
+  this.pastPaperText = document.getElementById("pastpaper-text");
+  this.question = document.getElementById("question");
+  this.facebookDiv = document.getElementById("facebook-div");
   this.userPic = document.getElementById('user-pic');
   this.userName = document.getElementById('user-name');
   this.signOutButton = document.getElementById('sign-out');
@@ -47,27 +50,13 @@ PastPaperHub.prototype.isUserSignedIn = function() {
   return !!this.auth.currentUser;
 }
 
-var hardCodedPastPaperDbRef = '/pastpapers/university/makerere/comp_eng/year_1/electronics/';
-// Loads pastpapers and listens for upcoming ones.
-PastPaperHub.prototype.loadPastPapers = function() {
-  var setItem = function(snap) {
-      var li = document.createElement("li");
-      var a = document.createElement("a");
-      var data = snap.val();
-
-      a.textContent = data.title;
-      a.setAttribute('href', "/questions");
-      li.appendChild(a);
-      li.onclick = function(){
-        var pastPaperClickedDbRef = hardCodedPastPaperDbRef + snap.key;
-        localStorage.setItem("pastPaperClickedText", data.title);
-      }
-      this.pastPaperList.appendChild(li);
-      this.pleaseWaitText.style.visibility = "hidden";
-  }.bind(this)
-
-  this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_added', setItem);
-  this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_changed', setItem);
+const questionClickedDbRef = localStorage.getItem("questionClickedDbRef");
+const questionClickedText = localStorage.getItem("questionClickedText");
+const pastPaperClickedText = localStorage.getItem("pastPaperClickedText");
+PastPaperHub.prototype.loadQuestion = function () {
+  //set question text
+  this.pastPaperText.textContent = pastPaperClickedText;
+  this.question.textContent = questionClickedText;
 };
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
@@ -90,7 +79,7 @@ PastPaperHub.prototype.authStateObserver = function(user) {
   }
 
   // Load existing past papers.
-  this.loadPastPapers();
+  this.loadQuestion();
 };
 
 // Returns true if user is signed-in. Otherwise false and displays a message.

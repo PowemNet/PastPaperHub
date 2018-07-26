@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Learn how to use the Firebase platform on the Web">
+  <meta name="description" content="Find questions and popular answers to past papers!">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PastPaper Hub</title>
 
@@ -47,9 +47,8 @@
     <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
       <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
         <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-          <h3>
-            <i class="material-icons">account_balance</i> PastPaper Hub</h3>
-        </div>
+        <h3><a href = "/" style="text-decoration:none; color: white"><i class="material-icons">account_balance</i> PastPaper Hub</a></h3>
+      </div>
         <div id="user-container">
           <div hidden id="user-pic"></div>
           <div hidden id="user-name"></div>
@@ -80,7 +79,7 @@
         <form id="profile-form" action="#">
           <form>
             <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
-              <select class="mdl-selectfield__select" id="year" name="year">
+              <select class= "dropdown-content" id="year" name="year">
                 <option value=""></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
