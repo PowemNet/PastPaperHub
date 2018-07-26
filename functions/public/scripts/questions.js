@@ -3,6 +3,7 @@
 // Initializes PastPaperHub.
 function PastPaperHub() {
   this.messageList = document.getElementById('messages');
+  this.pleaseWaitText = document.getElementById("please-wait-text");
   this.pastPaperList = document.getElementById("past-paper-list");
   this.userPic = document.getElementById('user-pic');
   this.userName = document.getElementById('user-name');
@@ -60,8 +61,10 @@ PastPaperHub.prototype.loadQuestions = function() {
       li.onclick = function(){
         var questionClickedDbRef = questionsDbRef + "/"+snap.key;
         localStorage.setItem("questionClickedDbRef", questionClickedDbRef);
+        localStorage.setItem("questionClickedText", data.text);
       }
       this.pastPaperList.appendChild(li);
+      this.pleaseWaitText.style.visibility = "hidden";
   }.bind(this)
 
   this.database.ref(questionsDbRef).limitToLast(12).on('child_added', setItem);

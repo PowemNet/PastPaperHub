@@ -60,9 +60,10 @@ PastPaperHub.prototype.loadPastPapers = function() {
       li.appendChild(a);
       li.onclick = function(){
         var pastPaperClickedDbRef = hardCodedPastPaperDbRef + snap.key;
+        localStorage.setItem("pastPaperClickedText", data.title);
       }
       this.pastPaperList.appendChild(li);
-      this.pleaseWaitText.style.visibility = "hidden";  //todo: why isnt this working?
+      this.pleaseWaitText.style.visibility = "hidden";
   }.bind(this)
 
   this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_added', setItem);

@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
   <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.7.1.min.js"></script>
 
   <!-- <link rel="stylesheet" href="/functions/node_modules/material-design-lite/material.min.css">
   <script src="/functions/node_modules/material-design-lite/material.min.js"></script>
@@ -76,7 +77,15 @@
       <div id="messages-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--12-col-desktop">
         <div class="mdl-card__supporting-text mdl-color-text--grey-600">
           <div id="messages">
-            <p id =  "please-wait-text">Please wait for questions to load.. </p> 
+            <script type="text/javascript">
+              $(document).ready(function () {
+                const pastPaperClickedText = localStorage.getItem("pastPaperClickedText");
+                $(".pastPaperClickedText").text(pastPaperClickedText);
+              });
+            </script>
+            <h4 class = "pastPaperClickedText"></h4> 
+            <hr></h1>
+            <p id =  "please-wait-text">Please wait.. </p>           
             <ul id="past-paper-list"></ul>
           </div>
         </div>

@@ -3,6 +3,9 @@
 // Initializes PastPaperHub.
 function PastPaperHub() {
   this.messageList = document.getElementById('messages');
+  this.pleaseWaitText = document.getElementById("please-wait-text");
+  this.pleaseWaitFbText = document.getElementById("please-wait-fb-text");
+  this.pastPaperText = document.getElementById("pastpaper-text");
   this.question = document.getElementById("question");
   this.facebookDiv = document.getElementById("facebook-div");
   this.userPic = document.getElementById('user-pic');
@@ -48,37 +51,12 @@ PastPaperHub.prototype.isUserSignedIn = function() {
 }
 
 const questionClickedDbRef = localStorage.getItem("questionClickedDbRef");
+const questionClickedText = localStorage.getItem("questionClickedText");
+const pastPaperClickedText = localStorage.getItem("pastPaperClickedText");
 PastPaperHub.prototype.loadQuestion = function () {
-  var self = this;
-  return new Promise((resolve, reject) => {
-    firebase.database().ref(questionClickedDbRef).once('value').then(function (snapshot) {
-      if(snapshot){
-        //set question text
-        console.log("quesion text--: "+ snapshot.val().text);
-        self.question.textContent = snapshot.val().text;
-        //set url for use in facebook div
-        //load facebook div
-        // {{!-- <div class="fb-comments" data-href="https://www.pastpaperhub.com/question1" data-numposts="5"></div> --}}
-        // self.facebookDiv.classList.add('fb-comments');
-        // self.facebookDiv.setAttribute('data-href', 'https://www.pastpaperhub.com/question1');
-        // self.facebookDiv.setAttribute("hidden", false);
-
-        // self.facebookDiv.setAttribute("data-numposts", "5");
-
-        // self.facebookDiv.innerHTML="<fb:comments data-href='https://www.pastpaperhub.com/question1' data-numposts='5'></fb:comments>"
-        // FB.XFBML.parse(self.facebookDiv);
-
-        resolve();
-        return snapshot;
-      }
-      else{
-        throw new Error("error fetching question" );
-      }
-    }).catch(function (error) {
-      var errorMessage = error.message;
-      console.log("error fetching question:" + errorMessage);
-    });
-  });
+  //set question text
+  this.pastPaperText.textContent = pastPaperClickedText;
+  this.question.textContent = questionClickedText;
 };
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
