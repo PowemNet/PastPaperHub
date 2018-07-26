@@ -3,6 +3,7 @@
 // Initializes PastPaperHub.
 function PastPaperHub() {
   this.messageList = document.getElementById('messages');
+  this.pleaseWaitText = document.getElementById("please-wait-text");
   this.pastPaperList = document.getElementById("past-paper-list");
   this.userPic = document.getElementById('user-pic');
   this.userName = document.getElementById('user-name');
@@ -59,9 +60,9 @@ PastPaperHub.prototype.loadPastPapers = function() {
       li.appendChild(a);
       li.onclick = function(){
         var pastPaperClickedDbRef = hardCodedPastPaperDbRef + snap.key;
-        localStorage.setItem("pastPaperClickedDbRef",pastPaperClickedDbRef);
       }
       this.pastPaperList.appendChild(li);
+      this.pleaseWaitText.style.visibility = "hidden";  //todo: why isnt this working?
   }.bind(this)
 
   this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_added', setItem);

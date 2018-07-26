@@ -10,8 +10,6 @@ function Profile() {
   this.submitButton = document.getElementById('submit');
   this.signInSnackbar = document.getElementById('must-signin-snackbar');
 
-  // Saves message on form submit.
-//   this.profileForm.addEventListener('submit', this.onProfileFormSubmit.bind(this));
   this.saveButton.addEventListener('click', this.onProfileFormSubmit.bind(this));
 
   this.initFirebaseAndSetUpData();
@@ -80,7 +78,8 @@ const dbRef = firebase.database().ref();
 
 Profile.prototype.saveProfile = function (year, course, university) {
   var self = this;
-  return this.database.ref('/users/bMfuLi40eYdEl9dsO0bRVCOQvxG2').update({ //TODO!!!! USE  user.id
+  console.log ("user.id0-------"+ user.uid);
+  return this.database.ref('/users/'+user.uid).update({ //TODO!!!! USE  user.id //bMfuLi40eYdEl9dsO0bRVCOQvxG2
     year: year,
     course: course,
     university: university

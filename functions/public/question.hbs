@@ -57,7 +57,7 @@
   <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
       <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-        <h3><i class="material-icons">account_balance</i> PastPaper Hub</h3>
+        <h3><a href = "/" style="text-decoration:none; color: white"><i class="material-icons">account_balance</i> PastPaper Hub</a></h3>
       </div>
       <div id="user-container">
         <div hidden id="user-pic"></div>
@@ -83,6 +83,7 @@
       <div id="messages-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--12-col-desktop">
         <div class="mdl-card__supporting-text mdl-color-text--grey-600">
           <div id="messages">
+            <p id =  "please-wait-text">Please wait for quesion to load.. </p> 
             <h4 id="question"></h4>
 
             <script type="text/javascript">
@@ -91,6 +92,7 @@
                 $(".fb-comments").attr('data-href', 'https://www.pastpaperhub.com/'+facebookHref);
               });
             </script>
+            <p id =  "please-wait-text">Please wait for answers to load.. </p> 
             <div id ="facebook-div" class="fb-comments" data-numposts="5"></div>
           </div>
         </div>
