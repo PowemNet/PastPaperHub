@@ -79,7 +79,7 @@ const dbRef = firebase.database().ref();
 Profile.prototype.saveProfile = function (year, course, university) {
   var self = this;
   console.log ("user.id0-------"+ user.uid);
-  return this.database.ref('/users/'+user.uid).update({ //TODO!!!! USE  user.id //bMfuLi40eYdEl9dsO0bRVCOQvxG2
+  return this.database.ref('/users/'+user.uid).update({
     year: year,
     course: course,
     university: university
@@ -96,7 +96,6 @@ Profile.prototype.saveProfile = function (year, course, university) {
   });
 };
 
-// Triggered when the send new message form is submitted.
 Profile.prototype.onProfileFormSubmit = function(e) {
   e.preventDefault();
   if (this.checkSignedIn()) {
