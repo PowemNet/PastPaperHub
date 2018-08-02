@@ -12,58 +12,6 @@
     margin-bottom: 10px;
     
 }
-.header{
-     height:500px;
-     background-image: url("/images/main_image.jpg"); 
-     background-size: cover;
-     position: relative;
-     opacity: 0.6;
-}
-.Menu{
-    width: 100%;
-  text-align: center; 
-}
-
-.Menu_item{
-    width: 100px;
-    display: inline-block;
-}
-.main {
-    float: left;
-    list-style: none;   
-}
-.main li {
-    display:block;
-    float: left;
-    position: relative;  
-    width:  250px;
-    text-align: center;
-
-}
-.main li a {
-    font-size: 18px;
-    text-decoration: none;
-    color: black;
-    padding: 10px;   
-    line-height: 65px;
-}
-.Menulist {
-    display: none;
-}
-.Menulist li {
-    font-size: 18px;
-    line-height: 55px;
-    
-}
-.main li:hover a {
-    color: #f2f2f2;
-}
-.main li:hover .Menulist {
-    display: block;
-    position: absolute;
-    background-color: gray;
-    border-radius: 0px 0px 5px 5px;
-}
  .Subhead {
      height: 0px;
      position: absolute;
@@ -92,7 +40,7 @@ h1 {
 }
 .Mainbody p {
     font-family:  'Times New Roman', Arial, sans-serif;
-    font-size: 25px;
+    font-size: 18px;
     text-align: justify;
     margin: 80px;
 }
@@ -101,5 +49,23 @@ h1 {
     padding: 20px;
 }
 
+#save-profile:hover {
+   background-color: #9E9E9E;
+
+}
+h3 {
+    text-align: center
+}
+h3 a {
+    text-decoration: none;
+    color: white;
+}
+.create_profile {
+    padding: 5px;
+    margin-left: 30px;
+}
+h6 {
+    font-weight: bold;
+}
 
 
