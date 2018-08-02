@@ -10,8 +10,6 @@ function Profile() {
   this.submitButton = document.getElementById('submit');
   this.signInSnackbar = document.getElementById('must-signin-snackbar');
 
-  // Saves message on form submit.
-//   this.profileForm.addEventListener('submit', this.onProfileFormSubmit.bind(this));
   this.saveButton.addEventListener('click', this.onProfileFormSubmit.bind(this));
 
   this.initFirebaseAndSetUpData();
@@ -43,10 +41,19 @@ Profile.prototype.authStateObserver = async function (userObject) {
 Profile.prototype.fetchUserMetadata = function () {
   return new Promise((resolve, reject) => {
     firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
-      course = (snapshot.val() && snapshot.val().course) || 'NOT_SET';
-      university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
-      year = (snapshot.val() && snapshot.val().year) || 'NOT_SET';
-      resolve();
+      if(snapshot){
+        course = (snapshot.val() && snapshot.val().course) || 'NOT_SET';
+        university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
+        year = (snapshot.val() && snapshot.val().year) || 'NOT_SET';
+        resolve();
+        return snapshot;
+      }
+      else{
+        throw new Error("error getUniversityFromDb" );
+      }
+    }).catch(function (error) {
+      var errorMessage = error.message;
+      console.log("error getUniversityFromDb:" + errorMessage);
     });
   });
 };
@@ -71,7 +78,8 @@ const dbRef = firebase.database().ref();
 
 Profile.prototype.saveProfile = function (year, course, university) {
   var self = this;
-  return this.database.ref('/users/GfGg3eHmmHa6HDohbCqg9legToA2').update({ //TODO!!!! USE  user.id
+  console.log ("user.id0-------"+ user.uid);
+  return this.database.ref('/users/'+user.uid).update({
     year: year,
     course: course,
     university: university
@@ -88,7 +96,6 @@ Profile.prototype.saveProfile = function (year, course, university) {
   });
 };
 
-// Triggered when the send new message form is submitted.
 Profile.prototype.onProfileFormSubmit = function(e) {
   e.preventDefault();
   if (this.checkSignedIn()) {
@@ -96,7 +103,9 @@ Profile.prototype.onProfileFormSubmit = function(e) {
         this.yearInput.value, 
         this.courseInput.value, 
         this.universityInput.value).then(function() {
-    }.bind(this));
+    }.bind(this)).catch(function(error) {
+      console.error('Error: ', error);
+    });
   }
 };
 

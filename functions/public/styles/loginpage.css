@@ -1,0 +1,35 @@
+body {
+    overflow: hidden;
+}
+/*  design for sliding images on login page*/
+@keyframes slidy {
+    0% { left: 0%; }
+    20% { left: 0%; }
+    25% { left: -100%; }
+    45% { left: -100%; }
+    50% { left: -200%; }
+    70% { left: -200%; }
+    75% { left: -300%; }
+    95% { left: -300%; }
+    100% { left: -300%; }
+    }
+    #slider { 
+        overflow: hidden;
+     }
+    #slider section img {width: 20% ; float:left; opacity:0.5; }
+    #slider section { 
+      position: relative;
+      width: 500%;
+      margin: 0;
+      left: 0;
+      animation: 30s slidy infinite; 
+      height: 100%;
+      
+    }
+    
+     /*align sign in button to the right side of login page*/
+#user-container {
+        position: absolute;
+        right: 80px;
+        margin-top: 17px;
+}

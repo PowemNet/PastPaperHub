@@ -20,4 +20,12 @@ app.get('/profile', (request, response) => {
     response.render('profile');
 });
 
+app.get('/questions', (request, response) => {
+    response.render('questions');
+});
+
+app.get('/question', (request, response) => {
+    response.render('question');
+});
+
 exports.app = functions.https.onRequest(app);
