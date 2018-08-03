@@ -4,7 +4,7 @@ PastPaperHub (PPHub) is a place where students can find past papers and suggeste
 
 The backend logic is written in JavaScript while the front end is basic HTML, CSS and some Jquery.
 
-# Setting up the environment
+## Setting up the environment
 
 Follow guidlines on how to set up Firebase here: https://firebase.google.com/docs/cli/
 After installing the Firebase CLI; Clone the code, make a few changes, then run `firebase serve` in the project's root folder.
