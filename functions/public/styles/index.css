@@ -1,0 +1,123 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: rgb(240, 240, 240);
+}
+.navigation{
+    background: white;
+    color: rgb(4, 23, 46);
+    font-weight: 500;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.0);
+    position: fixed;
+    font-size: 20px;
+    z-index: 9999999;
+    padding: 10px;
+    font-family: 'Pacifico', sans-serif;
+    transition: ease-in-out all 400ms;
+    display: none;
+    width: 100%;
+    font-weight: 100;
+    text-align: center;
+}
+#account{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 14px;
+    text-align: right;
+    position: absolute;
+    right: 50;
+    margin-top: 10px;
+}
+#img-bck{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+#img-bck img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.brand-bckimage{
+    background: black;
+    position: static;
+    height: 100%;
+    width: auto;
+    opacity: 0.8;
+    text-align: right;
+    z-index: 99999;
+    background-size: 400% 400%;
+	-webkit-animation: Gradient 60s ease infinite;
+    -moz-animation: Gradient 60s ease infinite;
+	animation: Gradient 60s ease infinite;
+}
+.left-cover{
+    margin: 200px 350px 0 250px;
+    background: rgb(240, 240, 240);
+    color: black;
+    width: 30%;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    height: 65%;
+}
+#left-contain{
+    margin: 0 auto;
+    font-family: 'Quicksand Light', sans-serif;
+    text-align: left;
+    width: 70%;
+    vertical-align: middle;
+    font-size: 18.5px;
+    margin-top: 50px;
+}
+#left-contain h4{
+    font-family: 'Pacifico', sans-serif;
+    font-size:30px;
+}
+#sign-in{
+    background: #04172e;
+    padding: 15px 10px;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    margin: 50px auto 0 auto;
+    border-radius: 0px;
+    cursor: pointer;
+}
+#login-button-google{
+    background: rgb(128, 27, 27);
+    padding: 15px 10px;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    width: 200px;
+    margin: 50px auto 0 auto;
+    border-radius: 35px;
+}
+#login-button-twitter{
+    background: rgb(46, 91, 187);
+    padding: 15px 10px;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    width: 200px;
+    margin: 50px auto 0 auto;
+    border-radius: 35px;
+}
+#footer{
+    bottom: 0;
+    background: white;
+    padding: 15px 0;
+    position: absolute;
+    width: 100%;
+    font-size: 13px;
+    display: none;
+    text-align: center;
+}
+#footer li{
+    display: inline-block;
+    cursor: pointer;
+    margin: 0 20px;
+    font-family: 'Cabin', sans-serif;
+    list-style-type: none;
+}

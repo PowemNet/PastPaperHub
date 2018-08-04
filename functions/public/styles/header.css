@@ -1,0 +1,99 @@
+body{
+    margin: 0;
+    background: rgb(240, 240, 240);
+    padding: 0;
+}
+.navigation{
+    padding: 10px 0;
+    font-family: 'Quicksand Light', sans-serif;
+    transition: ease-in-out all 400ms;
+    background: white;
+    width: 100%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+#logo{
+    padding: 25px;
+    font-family: 'Pacifico', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+}
+#account{
+    font-size: 14px;
+}
+
+#cover{
+    padding: 10px 0;
+    background: rgb(16, 72, 141);
+    color: white;
+}
+#text-cover{
+    width: 75%;
+    font-family: 'Quicksand Light', sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 auto;
+}
+a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+#user-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 22px;
+    width: 100%;
+    right: 0;
+    padding-left: 10px;
+    justify-content: flex-end;
+    padding-right: 10px;
+}
+#user-container #user-pic {
+    top: -3px;
+    position: relative;
+    display: inline-block;
+    background-image: url('/images/profile_placeholder.png');
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    background-size: 40px;
+    border-radius: 20px;
+}
+#user-container #user-name {
+    font-size: 16px;
+    line-height: 36px;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+#forms{
+    padding: 15px;
+    margin: 0 auto;
+    background: transparent;
+    width: 50%;
+    font-family: 'Quicksand Light', sans-serif;
+    font-size: 20px;
+    margin-top: 75px;
+    text-align: center;
+}
+.form-design{
+    padding: 10px;
+    font-family: 'Quicksand Light', sans-serif;
+    font-size: 20px;
+    margin: 0;
+    background: rgb(230, 230, 230);
+    border: 0;
+}
+.forms span div{
+    text-align: left;
+}
+.save-button{
+    font-family: 'Quicksand Light', sans-serif;
+    font-size: 20px;
+    width: 250px;
+    background: rgb(4, 23, 46);
+    border: 0;
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+}
