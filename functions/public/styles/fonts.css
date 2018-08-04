@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Quicksand Light';
+    src: url(WoffFonts/Quicksand-Light.woff);
+}
+@font-face {
+    font-family: 'Quicksand';
+    src: url(WoffFonts/Quicksand-Medium.woff);
+} 
+@font-face {
+    font-family: 'Raleway';
+    src: url(WoffFonts/Raleway-Regular.woff);
+} 
+@font-face {
+    font-family: 'Raleway Dots';
+    src: url(WoffFonts/RalewayDots-Regular.woff);
+} 
+@font-face {
+    font-family: 'Roboto';
+    src: url(WoffFonts/Roboto-Regular.woff);
+} 
+@font-face {
+    font-family: 'Cabin';
+    src: url(WoffFonts/Cabin-Regular.woff);
+}
+@font-face {
+    font-family: 'Roboto Light';
+    src: url(WoffFonts/Roboto-Light.woff);
+} 
+@font-face {
+    font-family: 'Unica One';
+    src: url(WoffFonts/UnicaOne-Regular.woff);
+} 
+@font-face {
+    font-family: 'Bungee Hairline';
+    src: url(WoffFonts/BungeeHairline-Regular.woff);
+}  
+@font-face {
+    font-family: 'Bungee';
+    src: url(WoffFonts/Bungee-Regular.woff);
+}   
+@font-face{
+    font-family: 'pacifico';
+    src: url(WoffFonts/Pacifico-Regular.woff);
+}
