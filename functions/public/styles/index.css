@@ -46,36 +46,85 @@ body{
     opacity: 0.8;
     text-align: right;
     z-index: 99999;
-    background-size: 400% 400%;
-	-webkit-animation: Gradient 60s ease infinite;
-    -moz-animation: Gradient 60s ease infinite;
-	animation: Gradient 60s ease infinite;
 }
 .left-cover{
-    margin: 200px 350px 0 250px;
-    background: rgb(240, 240, 240);
-    color: black;
-    width: 30%;
-    position: absolute;
     top: 0;
+    left: 15;
+    background: rgb(240, 240, 240);
+    color: #000000;
+    transition: all ease-in-out 400ms;
+    width: 400px;
+    position: absolute;
     text-align: center;
-    height: 65%;
+    height: 100%;
+    line-height: 1.8em;
+}
+.leftstrip{
+    position: absolute;
+    padding: 0;
+    width: 15px;
+    height: 100%;
+    background: linear-gradient(to top, rgb(165, 24, 83), rgb(4, 45, 95));
+    opacity: 0.8;
+    background-size: 400% 400%;
+	-webkit-animation: Gradient 60s ease infinite;
+	-moz-animation: Gradient 60s ease infinite;
+	animation: Gradient 60s ease infinite;
+    top: 0;
+    left: 0;
 }
 #left-contain{
     margin: 0 auto;
     font-family: 'Quicksand Light', sans-serif;
     text-align: left;
     width: 70%;
+    transition: all ease-in-out 400ms;
     vertical-align: middle;
     font-size: 18.5px;
-    margin-top: 50px;
+    margin-top: 185px;
 }
 #left-contain h4{
     font-family: 'Pacifico', sans-serif;
     font-size:30px;
 }
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+    }
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
 #sign-in{
-    background: #04172e;
+    background: rgb(9, 40, 78);
     padding: 15px 10px;
     font-size: 15px;
     color: white;
@@ -120,4 +169,17 @@ body{
     margin: 0 20px;
     font-family: 'Cabin', sans-serif;
     list-style-type: none;
+}
+@media only screen and (max-width: 500px) {
+    .left-cover{
+        right: 0;
+        width: 95%;
+    }
+    .leftstrip{
+        width: 5%;
+    }
+    #left-contain{
+        margin-top: 90px;
+        transition: all ease-in-out 400ms;
+    }
 }
