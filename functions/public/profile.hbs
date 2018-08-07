@@ -3,6 +3,7 @@
         <!--- more info to be added here e.g favicon -->
         <title>PastPaperHub</title>
         <link rel="stylesheet" type="text/css" href="styles/header.css">
+        <link rel="stylesheet" type="text/css" href="styles/navigation.css">
         <link rel="stylesheet" type="text/css" href="styles/fonts.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#000" />
@@ -16,20 +17,31 @@
     <body>
         <div class="navigation">
             <a href="/"><span id="logo">PastPaperHub</span></a>
-            
+
+                <span>
+                    <input type="text" name="search" placeholder="Search for Past Papers ">
+                </span>
+
+                <span id="top-img">
+                    <img src="icons/search.png"/>
+                </span>
+
+            </div> 
             <span id="account">
                 <div id="user-container">
-        <div hidden id="user-pic"></div>
-          <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="user-pic">
-          <a href="/profile"><a class="mdl-menu__item"></a></a>
-          <a id="sign-out" class="mdl-menu__item"></a>
-          </ul>
-        <div hidden id="user-name"></div>
-        </div>
+                    <div id="user-contain">
+                    <div hidden id="user-pic"></div>
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="user-pic">
+                        <a href="/profile"><a class="mdl-menu__item"></a></a>
+                        <a id="sign-out" class="mdl-menu__item"></a>
+                    </ul>
+                    <span hidden id="user-name"></span>
+                    </div>
+                </div>
             </span>
         </div>
-
         <div id="cover">
+            <div id="space"></div>
             <div id="text-cover">
                 <h4>Setup your profile to improve your experience with PastPaper Hub</h4>
             </div>

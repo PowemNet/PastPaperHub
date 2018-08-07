@@ -3,30 +3,6 @@ body{
     padding: 0;
     background: rgb(240, 240, 240);
 }
-.navigation{
-    background: white;
-    color: rgb(4, 23, 46);
-    font-weight: 500;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.0);
-    position: fixed;
-    font-size: 20px;
-    z-index: 9999999;
-    padding: 10px;
-    font-family: 'Pacifico', sans-serif;
-    transition: ease-in-out all 400ms;
-    display: none;
-    width: 100%;
-    font-weight: 100;
-    text-align: center;
-}
-#account{
-    font-family: 'Quicksand', sans-serif;
-    font-size: 14px;
-    text-align: right;
-    position: absolute;
-    right: 50;
-    margin-top: 10px;
-}
 #img-bck{
     position: relative;
     width: 100%;
@@ -64,12 +40,8 @@ body{
     padding: 0;
     width: 15px;
     height: 100%;
-    background: linear-gradient(to top, rgb(165, 24, 83), rgb(4, 45, 95));
+    background: linear-gradient(45deg, rgb(150, 22, 75), rgb(4, 45, 95));
     opacity: 0.8;
-    background-size: 400% 400%;
-	-webkit-animation: Gradient 60s ease infinite;
-	-moz-animation: Gradient 60s ease infinite;
-	animation: Gradient 60s ease infinite;
     top: 0;
     left: 0;
 }
@@ -87,42 +59,6 @@ body{
     font-family: 'Pacifico', sans-serif;
     font-size:30px;
 }
-
-@-webkit-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-    }
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-@-moz-keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
-
-@keyframes Gradient {
-	0% {
-		background-position: 0% 50%
-	}
-	50% {
-		background-position: 100% 50%
-	}
-	100% {
-		background-position: 0% 50%
-	}
-}
 #sign-in{
     background: rgb(9, 40, 78);
     padding: 15px 10px;
@@ -133,43 +69,7 @@ body{
     border-radius: 0px;
     cursor: pointer;
 }
-#login-button-google{
-    background: rgb(128, 27, 27);
-    padding: 15px 10px;
-    font-size: 15px;
-    color: white;
-    text-align: center;
-    width: 200px;
-    margin: 50px auto 0 auto;
-    border-radius: 35px;
-}
-#login-button-twitter{
-    background: rgb(46, 91, 187);
-    padding: 15px 10px;
-    font-size: 15px;
-    color: white;
-    text-align: center;
-    width: 200px;
-    margin: 50px auto 0 auto;
-    border-radius: 35px;
-}
-#footer{
-    bottom: 0;
-    background: white;
-    padding: 15px 0;
-    position: absolute;
-    width: 100%;
-    font-size: 13px;
-    display: none;
-    text-align: center;
-}
-#footer li{
-    display: inline-block;
-    cursor: pointer;
-    margin: 0 20px;
-    font-family: 'Cabin', sans-serif;
-    list-style-type: none;
-}
+
 @media only screen and (max-width: 500px) {
     .left-cover{
         right: 0;

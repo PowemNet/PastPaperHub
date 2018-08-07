@@ -3,30 +3,13 @@ body{
     background: rgb(240, 240, 240);
     padding: 0;
 }
-.navigation{
-    padding: 10px 0;
-    font-family: 'Quicksand Light', sans-serif;
-    transition: ease-in-out all 400ms;
-    background: white;
-    width: 100%;
-    position: fixed;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-}
-#logo{
-    padding: 25px;
-    font-family: 'Pacifico', sans-serif;
-    font-weight: 700;
-    font-size: 26px;
-    transition: all ease-in-out 400ms;
-}
-#account{
-    font-size: 14px;
-}
-
 #cover{
     padding: 10px 0;
     background: rgb(9, 40, 78);
     color: white;
+}
+#space{
+    margin-top: 100px;
 }
 #text-cover{
     width: 75%;
@@ -35,44 +18,6 @@ body{
     text-align: center;
     transition: all ease-in-out 400ms;
     margin: 0 auto;
-}
-a{
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
-}
-#user-container {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    top: 22px;
-    width: 100%;
-    right: 0;
-    padding-left: 10px;
-    justify-content: flex-end;
-    padding-right: 10px;
-}
-#user-container #user-pic {
-    top: -7.5px;
-    position: relative;
-    display: inline-block;
-    background-image: url('/images/profile_placeholder.png');
-    background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
-    right: -50;
-    transition: all ease-in-out 400ms;
-    background-size: 40px;
-    border-radius: 100%;
-}
-#user-container #user-name {
-    font-size: 16px;
-    line-height: 36px;
-    position: relative;
-    transition: all ease-in-out 400ms;
-    top: -5;
-    padding-right: 10px;
-    padding-left: 20px;
 }
 #forms{
     padding: 15px;
