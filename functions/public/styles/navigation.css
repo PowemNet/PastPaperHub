@@ -1,0 +1,130 @@
+.navigation{
+    padding: 10px 0;
+    font-family: 'Quicksand Light', sans-serif;
+    transition: ease-in-out all 400ms;
+    background: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+#logo{
+    padding: 25px;
+    font-family: 'Pacifico', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    transition: all ease-in-out 400ms;
+}
+#account{
+    font-size: 14px;
+}
+a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+#user-container {
+    position: fixed;
+    display: flex;
+    top: 7.5;
+    height: auto;
+    right: 15;
+    transition: all ease-in-out 400ms;
+    width: auto;
+    font-family: 'Cabin', sans-serif;
+}
+#user-container #user-pic {
+    position: absolute;
+    background-image: url('/images/profile_placeholder.png');
+    background-repeat: no-repeat;
+    width: 45px;
+    height: 45px;
+    right: -2.5;
+    margin-top: 5px;
+    transition: all ease-in-out 400ms;
+    border-radius: 100%;
+}
+
+#user-container #user-name {
+    font-size: 16px;
+    line-height: 36px;
+    position: relative;
+    transition: all ease-in-out 400ms;
+    top: 5;
+    padding-right: 0px;
+    display: none;
+    right: 25;
+    padding-left: 0px;
+}
+input[type=text] {
+    border-radius: 0px;
+    border: 0;
+    position: relative;
+    margin: -15px 15px 0 100px;
+    color: black;
+    width: 50%;
+    top: -2.5;
+    transition: ease-in-out all 400ms;
+    height: 40px;
+    font-family: 'Quicksand Light', sans-serif;
+    text-align: center;
+    border-radius: 3px;
+    background: rgb(236, 236, 236);
+    padding-left: 10px;
+    padding-right: 40px;
+    font-size: 16px;
+}
+#top-img img{
+    width: 25px;
+    position: absolute;
+    margin-left: -50px;
+    margin-top: 15px;
+    height: auto;
+    transition: all ease-in-out 400ms;
+}
+@media only screen and (max-width: 824px) {
+    input[type=text] {
+        border-radius: 0px;
+        border: 0;
+        position: relative;
+        margin: -15px 0px 0 0px;
+        color: black;
+        transition: all ease-in-out 400ms;
+        width: 40%;
+    }
+    #top-img img{
+        margin-left: -30px;
+        transition: all ease-in-out 400ms;
+    }
+}
+@media only screen and (max-width: 500px) {
+    #user-container #user-pic {
+        top: 0;
+        right: -10;
+        transition: all ease-in-out 400ms;
+    }#logo{
+        font-size: 22px;
+        transition: all ease-in-out 400ms;
+    }
+    #user-container {
+        top: 2.5;
+        transition: all ease-in-out 400ms;
+    }
+    input[type=text] {
+        border-radius: 0px;
+        border: 0;
+        position: relative;
+        margin: -15px 15px 0 50px;
+        color: black;
+        transition: all ease-in-out 400ms;
+        width: 50%;
+        display: none;
+    }
+    #top-img img{
+        width: 25px;
+        position: absolute;
+        right: 75;
+        transition: all ease-in-out 400ms;
+        top: 2.5;
+    }
+}

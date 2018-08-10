@@ -3,30 +3,6 @@ body{
     padding: 0;
     background: rgb(240, 240, 240);
 }
-.navigation{
-    background: white;
-    color: rgb(4, 23, 46);
-    font-weight: 500;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.0);
-    position: fixed;
-    font-size: 20px;
-    z-index: 9999999;
-    padding: 10px;
-    font-family: 'Pacifico', sans-serif;
-    transition: ease-in-out all 400ms;
-    display: none;
-    width: 100%;
-    font-weight: 100;
-    text-align: center;
-}
-#account{
-    font-family: 'Quicksand', sans-serif;
-    font-size: 14px;
-    text-align: right;
-    position: absolute;
-    right: 50;
-    margin-top: 10px;
-}
 #img-bck{
     position: relative;
     width: 100%;
@@ -46,36 +22,45 @@ body{
     opacity: 0.8;
     text-align: right;
     z-index: 99999;
-    background-size: 400% 400%;
-	-webkit-animation: Gradient 60s ease infinite;
-    -moz-animation: Gradient 60s ease infinite;
-	animation: Gradient 60s ease infinite;
 }
 .left-cover{
-    margin: 200px 350px 0 250px;
-    background: rgb(240, 240, 240);
-    color: black;
-    width: 30%;
-    position: absolute;
     top: 0;
+    left: 15;
+    background: rgb(240, 240, 240);
+    color: #000000;
+    transition: all ease-in-out 400ms;
+    width: 400px;
+    position: absolute;
     text-align: center;
-    height: 65%;
+    height: 100%;
+    line-height: 1.8em;
+}
+.leftstrip{
+    position: absolute;
+    padding: 0;
+    width: 15px;
+    height: 100%;
+    background: linear-gradient(45deg, rgb(150, 22, 75), rgb(4, 45, 95));
+    opacity: 0.8;
+    top: 0;
+    left: 0;
 }
 #left-contain{
     margin: 0 auto;
     font-family: 'Quicksand Light', sans-serif;
     text-align: left;
     width: 70%;
+    transition: all ease-in-out 400ms;
     vertical-align: middle;
     font-size: 18.5px;
-    margin-top: 50px;
+    margin-top: 185px;
 }
 #left-contain h4{
     font-family: 'Pacifico', sans-serif;
     font-size:30px;
 }
 #sign-in{
-    background: #04172e;
+    background: rgb(9, 40, 78);
     padding: 15px 10px;
     font-size: 15px;
     color: white;
@@ -84,40 +69,17 @@ body{
     border-radius: 0px;
     cursor: pointer;
 }
-#login-button-google{
-    background: rgb(128, 27, 27);
-    padding: 15px 10px;
-    font-size: 15px;
-    color: white;
-    text-align: center;
-    width: 200px;
-    margin: 50px auto 0 auto;
-    border-radius: 35px;
-}
-#login-button-twitter{
-    background: rgb(46, 91, 187);
-    padding: 15px 10px;
-    font-size: 15px;
-    color: white;
-    text-align: center;
-    width: 200px;
-    margin: 50px auto 0 auto;
-    border-radius: 35px;
-}
-#footer{
-    bottom: 0;
-    background: white;
-    padding: 15px 0;
-    position: absolute;
-    width: 100%;
-    font-size: 13px;
-    display: none;
-    text-align: center;
-}
-#footer li{
-    display: inline-block;
-    cursor: pointer;
-    margin: 0 20px;
-    font-family: 'Cabin', sans-serif;
-    list-style-type: none;
+
+@media only screen and (max-width: 500px) {
+    .left-cover{
+        right: 0;
+        width: 95%;
+    }
+    .leftstrip{
+        width: 5%;
+    }
+    #left-contain{
+        margin-top: 90px;
+        transition: all ease-in-out 400ms;
+    }
 }

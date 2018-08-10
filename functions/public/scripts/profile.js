@@ -91,7 +91,8 @@ Profile.prototype.saveProfile = function (year, course, university) {
         message: 'Profile saved!',
         timeout: 2000
       };
-      window.alert("profile saved!"); // eslint-disable-line no-alert
+      //self.signInSnackbar.MaterialSnackbar.showSnackbar(data);
+      window.history.back();
     }
   });
 };

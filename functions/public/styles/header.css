@@ -3,97 +3,101 @@ body{
     background: rgb(240, 240, 240);
     padding: 0;
 }
-.navigation{
-    padding: 10px 0;
-    font-family: 'Quicksand Light', sans-serif;
-    transition: ease-in-out all 400ms;
-    background: white;
-    width: 100%;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-}
-#logo{
-    padding: 25px;
-    font-family: 'Pacifico', sans-serif;
-    font-weight: 700;
-    font-size: 26px;
-}
-#account{
-    font-size: 14px;
-}
-
 #cover{
     padding: 10px 0;
-    background: rgb(16, 72, 141);
+    background: rgb(9, 40, 78);
     color: white;
+}
+#space{
+    margin-top: 100px;
 }
 #text-cover{
     width: 75%;
     font-family: 'Quicksand Light', sans-serif;
     font-size: 20px;
     text-align: center;
+    transition: all ease-in-out 400ms;
     margin: 0 auto;
-}
-a{
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
-}
-#user-container {
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    top: 22px;
-    width: 100%;
-    right: 0;
-    padding-left: 10px;
-    justify-content: flex-end;
-    padding-right: 10px;
-}
-#user-container #user-pic {
-    top: -3px;
-    position: relative;
-    display: inline-block;
-    background-image: url('/images/profile_placeholder.png');
-    background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
-    background-size: 40px;
-    border-radius: 20px;
-}
-#user-container #user-name {
-    font-size: 16px;
-    line-height: 36px;
-    padding-right: 10px;
-    padding-left: 20px;
 }
 #forms{
     padding: 15px;
     margin: 0 auto;
     background: transparent;
     width: 50%;
-    font-family: 'Quicksand Light', sans-serif;
+    font-family: 'Cabin', sans-serif;
     font-size: 20px;
+    transition: all ease-in-out 400ms;
     margin-top: 75px;
     text-align: center;
 }
 .form-design{
-    padding: 10px;
+    padding: 15px 30px;
     font-family: 'Quicksand Light', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     margin: 0;
     background: rgb(230, 230, 230);
     border: 0;
 }
 .forms span div{
     text-align: left;
+    margin-bottom: 5px;
 }
 .save-button{
     font-family: 'Quicksand Light', sans-serif;
     font-size: 20px;
     width: 250px;
-    background: rgb(4, 23, 46);
+    background: rgb(9, 40, 78);
     border: 0;
     cursor: pointer;
     padding: 10px;
     color: white;
+}
+#must-signin-snackbar{
+    background: black;
+    opacity: 0.8;
+    bottom: 0;
+    display: none;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+}
+@media only screen and (max-width: 500px) {
+    #forms{
+        width: 100%;
+        font-size: 18px;
+        padding: 0;
+        margin-bottom: 20px;
+        transition: all ease-in-out 400ms;
+        margin-top: 75px;
+    }
+    #logo{
+        font-size: 22px;
+        transition: all ease-in-out 400ms;
+    }
+    #user-container #user-pic {
+        top: -7.5px;
+        width: 30px;
+        height: 30px;
+        right: -50;
+        transition: all ease-in-out 400ms;
+    }
+    #user-container #user-name {
+        font-size: 14px;
+        line-height: 36px;
+        position: relative;
+        top: -10;
+        padding-right: 10px;
+        transition: all ease-in-out 400ms;
+        padding-left: 20px;
+    }
+    #text-cover{
+        font-size: 16px;
+        transition: all ease-in-out 400ms;
+    }
+    .save-button{
+        font-size: 18px;
+
+        padding: 10px;
+    }
 }
