@@ -240,3 +240,1143 @@
 [info] [hosting] Rewriting /profile to local function app
 [info] [hosting] Rewriting /styles/main.css to local function app
 [info] [hosting] Rewriting /scripts/main.js to local function app
+[debug] [2018-08-03T17:57:41.551Z] ----------------------------------------------------------------------
+[debug] [2018-08-03T17:57:41.628Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\OWNER\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-08-03T17:57:41.628Z] CLI Version:   4.0.2
+[debug] [2018-08-03T17:57:41.628Z] Platform:      win32
+[debug] [2018-08-03T17:57:41.628Z] Node Version:  v8.11.3
+[debug] [2018-08-03T17:57:41.658Z] Time:          Fri Aug 03 2018 20:57:41 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-03T17:57:41.658Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-03T17:57:42.154Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-03T17:57:42.155Z] > authorizing via signed-in user
+[debug] [2018-08-03T17:57:42.160Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-08-03T17:57:42.161Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/nPPeSFJjdIGXzBaEEfBkE4vU-yOFwjzz2fhpQOJdV0AAFyd1G1RjyJjty2XAVJbD',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Fri Aug 03 2018 20:57:42 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-03T17:57:44.999Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-03T17:57:46.810Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/past-paper-hub  
+  
+ Fri Aug 03 2018 20:57:46 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-03T17:57:48.367Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-03T17:57:48.368Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/past-paper-hub/tokens  
+  
+ Fri Aug 03 2018 20:57:48 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-03T17:57:49.483Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-03T17:57:49.484Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/past-paper-hub  
+  
+ Fri Aug 03 2018 20:57:49 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-03T17:57:50.087Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\Code\PastPaperHub'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-08-03T17:58:21.051Z] Fetching environment
+[debug] [2018-08-03T17:58:21.056Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581:getServerAppConfig  
+  
+ Fri Aug 03 2018 20:58:21 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-03T17:58:21.057Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581/clients/_:getWebAppConfig  
+  
+ Fri Aug 03 2018 20:58:21 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-03T17:58:21.908Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-03T17:58:21.908Z] Starting @google-cloud/functions-emulator
+[debug] [2018-08-03T17:58:22.274Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: functions/public
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-08-03T17:58:37.072Z] Parsing function triggers
+[info] +  functions: app: http://localhost:5001/past-paper-hub/us-central1/app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /favicon.ico to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /favicon.ico to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Fonts/fonts.css to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Images/books.jpg to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Images/LOGO.jpg to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Fonts/fonts.css to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Images/books.jpg to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Fonts/fonts.css to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Images/books.jpg to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Fonts/fonts.css to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Images/books.jpg to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Fonts/fonts.css to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Images/books.jpg to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Fonts/fonts.css to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Images/books.jpg to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Fonts/fonts.css to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Images/books.jpg to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Stylesheets/index.css to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Images/book4.jpg to local function app
+[info] [hosting] Rewriting /Assets/Fonts/fonts.css to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /home to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[debug] [2018-08-04T11:58:41.109Z] ----------------------------------------------------------------------
+[debug] [2018-08-04T11:58:41.120Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\OWNER\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-08-04T11:58:41.120Z] CLI Version:   4.0.2
+[debug] [2018-08-04T11:58:41.120Z] Platform:      win32
+[debug] [2018-08-04T11:58:41.121Z] Node Version:  v8.11.3
+[debug] [2018-08-04T11:58:41.157Z] Time:          Sat Aug 04 2018 14:58:41 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-04T11:58:41.157Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-04T11:58:41.377Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-04T11:58:41.379Z] > authorizing via signed-in user
+[debug] [2018-08-04T11:58:41.384Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-08-04T11:58:41.384Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/nPPeSFJjdIGXzBaEEfBkE4vU-yOFwjzz2fhpQOJdV0AAFyd1G1RjyJjty2XAVJbD',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sat Aug 04 2018 14:58:41 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-04T11:58:41.988Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-04T11:58:42.423Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/past-paper-hub  
+  
+ Sat Aug 04 2018 14:58:42 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-04T11:58:43.990Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-04T11:58:43.991Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/past-paper-hub/tokens  
+  
+ Sat Aug 04 2018 14:58:43 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-04T11:58:44.997Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-04T11:58:44.998Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/past-paper-hub  
+  
+ Sat Aug 04 2018 14:58:44 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-04T11:58:46.721Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\Code\PastPaperHub'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-08-04T11:59:03.504Z] Fetching environment
+[debug] [2018-08-04T11:59:03.546Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581:getServerAppConfig  
+  
+ Sat Aug 04 2018 14:59:03 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-04T11:59:03.547Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581/clients/_:getWebAppConfig  
+  
+ Sat Aug 04 2018 14:59:03 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-04T11:59:04.353Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-04T11:59:04.354Z] Starting @google-cloud/functions-emulator
+[debug] [2018-08-04T11:59:04.809Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: functions/public
+[info] +  hosting: Local server: http://localhost:5000
+
+[info] [hosting] Rewriting / to local function app
+[debug] [2018-08-04T11:59:19.965Z] Parsing function triggers
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] +  functions: app: http://localhost:5001/past-paper-hub/us-central1/app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /home to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[debug] [2018-08-05T13:55:41.156Z] ----------------------------------------------------------------------
+[debug] [2018-08-05T13:55:41.181Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\OWNER\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-08-05T13:55:41.182Z] CLI Version:   4.0.2
+[debug] [2018-08-05T13:55:41.182Z] Platform:      win32
+[debug] [2018-08-05T13:55:41.183Z] Node Version:  v8.11.3
+[debug] [2018-08-05T13:55:41.232Z] Time:          Sun Aug 05 2018 16:55:41 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-05T13:55:41.232Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-05T13:55:41.582Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-05T13:55:41.586Z] > authorizing via signed-in user
+[debug] [2018-08-05T13:55:41.597Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-08-05T13:55:41.599Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/nPPeSFJjdIGXzBaEEfBkE4vU-yOFwjzz2fhpQOJdV0AAFyd1G1RjyJjty2XAVJbD',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Aug 05 2018 16:55:41 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-05T13:55:42.084Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-05T13:55:42.244Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/past-paper-hub  
+  
+ Sun Aug 05 2018 16:55:42 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-05T13:55:43.912Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-05T13:55:43.914Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/past-paper-hub/tokens  
+  
+ Sun Aug 05 2018 16:55:43 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-05T13:55:44.919Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-05T13:55:44.921Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/past-paper-hub  
+  
+ Sun Aug 05 2018 16:55:44 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-05T13:55:46.779Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\Code\PastPaperHub'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-08-05T13:56:13.504Z] Fetching environment
+[debug] [2018-08-05T13:56:13.513Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581:getServerAppConfig  
+  
+ Sun Aug 05 2018 16:56:13 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-05T13:56:13.516Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581/clients/_:getWebAppConfig  
+  
+ Sun Aug 05 2018 16:56:13 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-05T13:56:14.199Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-05T13:56:14.200Z] Starting @google-cloud/functions-emulator
+[debug] [2018-08-05T13:56:14.713Z] <<< HTTP RESPONSE 200
+[info] i  hosting: Serving hosting files from: functions/public
+[info] +  hosting: Local server: http://localhost:5000
+
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[debug] [2018-08-05T13:56:40.576Z] Parsing function triggers
+[info] [hosting] Rewriting /favicon.ico to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] +  functions: app: http://localhost:5001/past-paper-hub/us-central1/app
+[info] [hosting] Rewriting /favicon.ico to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Images/LOGO.jpg to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[debug] [2018-08-06T11:44:22.543Z] ----------------------------------------------------------------------
+[debug] [2018-08-06T11:44:22.630Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\OWNER\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-08-06T11:44:22.631Z] CLI Version:   4.0.2
+[debug] [2018-08-06T11:44:22.631Z] Platform:      win32
+[debug] [2018-08-06T11:44:22.631Z] Node Version:  v8.11.3
+[debug] [2018-08-06T11:44:22.748Z] Time:          Mon Aug 06 2018 14:44:22 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T11:44:22.748Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-06T11:44:23.182Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-06T11:44:23.184Z] > authorizing via signed-in user
+[debug] [2018-08-06T11:44:23.188Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-08-06T11:44:23.189Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/nPPeSFJjdIGXzBaEEfBkE4vU-yOFwjzz2fhpQOJdV0AAFyd1G1RjyJjty2XAVJbD',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Aug 06 2018 14:44:23 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T11:44:24.768Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-06T11:44:24.857Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/past-paper-hub  
+  
+ Mon Aug 06 2018 14:44:24 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T11:44:26.719Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-06T11:44:26.720Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/past-paper-hub/tokens  
+  
+ Mon Aug 06 2018 14:44:26 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T11:44:28.150Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-06T11:44:28.152Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/past-paper-hub  
+  
+ Mon Aug 06 2018 14:44:28 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T11:44:30.478Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\Code\PastPaperHub'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-08-06T11:45:01.280Z] Fetching environment
+[debug] [2018-08-06T11:45:01.286Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581:getServerAppConfig  
+  
+ Mon Aug 06 2018 14:45:01 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T11:45:01.287Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581/clients/_:getWebAppConfig  
+  
+ Mon Aug 06 2018 14:45:01 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T11:45:02.638Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-06T11:45:03.776Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-06T11:45:03.776Z] Starting @google-cloud/functions-emulator
+[info] i  hosting: Serving hosting files from: functions/public
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-08-06T11:45:39.754Z] Parsing function triggers
+[info] +  functions: app: http://localhost:5001/past-paper-hub/us-central1/app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Images/LOGO.jpg to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /Assets/Images/LOGO.jpg to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /favicon.ico to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[debug] [2018-08-06T15:50:26.481Z] ----------------------------------------------------------------------
+[debug] [2018-08-06T15:50:26.491Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\OWNER\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-08-06T15:50:26.491Z] CLI Version:   4.0.2
+[debug] [2018-08-06T15:50:26.491Z] Platform:      win32
+[debug] [2018-08-06T15:50:26.491Z] Node Version:  v8.11.3
+[debug] [2018-08-06T15:50:26.512Z] Time:          Mon Aug 06 2018 18:50:26 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T15:50:26.512Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-08-06T15:50:26.712Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-08-06T15:50:26.713Z] > authorizing via signed-in user
+[debug] [2018-08-06T15:50:26.719Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-08-06T15:50:26.719Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/nPPeSFJjdIGXzBaEEfBkE4vU-yOFwjzz2fhpQOJdV0AAFyd1G1RjyJjty2XAVJbD',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Mon Aug 06 2018 18:50:26 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T15:50:27.195Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-06T15:50:27.263Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/past-paper-hub  
+  
+ Mon Aug 06 2018 18:50:27 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T15:50:28.645Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-06T15:50:28.646Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/past-paper-hub/tokens  
+  
+ Mon Aug 06 2018 18:50:28 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T15:50:29.665Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-06T15:50:29.666Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/past-paper-hub  
+  
+ Mon Aug 06 2018 18:50:29 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T15:50:31.568Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\Code\PastPaperHub'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-08-06T15:50:53.453Z] Fetching environment
+[debug] [2018-08-06T15:50:53.460Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581:getServerAppConfig  
+  
+ Mon Aug 06 2018 18:50:53 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T15:50:53.462Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581/clients/_:getWebAppConfig  
+  
+ Mon Aug 06 2018 18:50:53 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-08-06T15:50:54.438Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-06T15:50:56.329Z] <<< HTTP RESPONSE 200
+[debug] [2018-08-06T15:50:56.330Z] Starting @google-cloud/functions-emulator
+[info] i  hosting: Serving hosting files from: functions/public
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-08-06T15:51:12.111Z] Parsing function triggers
+[info] +  functions: app: http://localhost:5001/past-paper-hub/us-central1/app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting /login to local function app
+[info] [hosting] Rewriting /login to local function app
