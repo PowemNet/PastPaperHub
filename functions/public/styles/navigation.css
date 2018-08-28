@@ -6,6 +6,7 @@
     width: 100%;
     position: fixed;
     top: 0;
+    z-index: 1;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
 }
 #logo{
@@ -27,6 +28,7 @@ a{
     position: fixed;
     display: flex;
     top: 7.5;
+    z-index: 10;
     height: auto;
     right: 15;
     transition: all ease-in-out 400ms;
@@ -34,17 +36,47 @@ a{
     font-family: 'Cabin', sans-serif;
 }
 #user-container #user-pic {
-    position: absolute;
-    background-image: url('/images/profile_placeholder.png');
+    position: relative;
+    background-image: url('images/profile_placeholder.png');
     background-repeat: no-repeat;
     width: 45px;
     height: 45px;
-    right: -2.5;
+    background: rgb(190, 190, 190);
+    cursor: pointer;
+    right: 10;
     margin-top: 5px;
     transition: all ease-in-out 400ms;
     border-radius: 100%;
 }
-
+#user-pic:hover .submenu{
+    display: block;
+    transition: all ease-in-out 400ms;
+}
+.submenu{
+    font-family: 'Quicksand', sans-serif;
+    background: white;
+    padding: 5px;
+    transition: all ease-in-out 400ms;
+    position: absolute;
+    right: 10;
+    display: none;
+    margin-top: 40;
+    font-size: 15px;
+    box-shadow: 0 10px 10px  rgba(0, 0, 0, 0.2);
+    width: 100px;
+    line-height: 0.5em;
+    border-radius: 0px;
+    color: #0D1A35;
+}
+.submenu li{
+    list-style-type: none;
+    cursor: pointer;
+    padding: 15px 15px;
+}
+.submenu li:hover{
+    background: rgb(236, 236, 236);
+    border-radius: 5px;
+}
 #user-container #user-name {
     font-size: 16px;
     line-height: 36px;
@@ -56,6 +88,50 @@ a{
     right: 25;
     padding-left: 0px;
 }
+/* Dropdown Button */
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
 input[type=text] {
     border-radius: 0px;
     border: 0;

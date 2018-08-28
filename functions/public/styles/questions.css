@@ -1,0 +1,254 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Light', sans-serif;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    cursor: pointer;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgb(199, 199, 199); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgb(13, 20, 82); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(13, 20, 82); 
+}
+#main{
+    margin-top: 150px;
+}
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+    background-color: rgb(252, 252, 252);
+    color: rgb(13, 20, 82);
+    cursor: pointer;
+    padding: 18px;
+    text-align: left;
+    border: none;
+    width: 100%;
+    font-family: sans-serif;
+    display: table;
+    font-size: 16px;
+    outline: none;
+    transition: 0.4s;
+}
+#space{
+    margin-top: 65px;
+}
+#space-ad{
+    margin-top: 65px;
+}
+#sponsored{
+    text-transform: uppercase;
+    font-size: 10px;
+    padding: 10px 10px 0 10px;
+}
+.accordion:after {
+    /* content: '\02795'; Unicode character for "plus" sign (+) */
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+    background-color: rgb(252, 252, 252);
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+    padding: 0 18px;
+    background-color: rgb(252, 252, 252);
+    /* display: none; */
+    font-size: 14px;
+    overflow: hidden;
+}
+.accordion a{
+    display: table;
+}
+#accordion{
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+.pbox {
+    display: none;
+    font-size: 16px;
+    font-family: 'Quicksand Light', sans-serif;
+}
+.current { 
+    color: rgb(13, 20, 82);
+    font-weight: 500;
+    background: rgb(150, 22, 75);
+    padding: 7.5px;
+    border-radius: 5px;
+    width: auto;
+}
+.panel p{
+    transition: all ease-in-out 400ms;
+    font-weight: 500;
+}
+.panel p:hover {
+    font-weight: 700; 
+    transition: all ease-in-out 400ms;
+    color: rgb(150, 22, 75);
+}
+.master-container{
+    width: 100%;
+    background: rgb(252, 252, 252);
+}
+.master-container::after{
+    content: "";
+    clear: both;
+}
+#content{
+    padding: 0;
+    width: 100%;
+}
+#content-ad{
+    padding: 0;
+    height: 600px;
+    max-width: 300px;
+    background-image: url("ad/nes.jpg");
+    text-align: center;
+    margin: 0 auto;
+}
+#floater-left {
+    float: left;
+    background: white;
+    width: 25%;
+}
+#spacer{
+    margin: 100px 25px 85px 25px;
+    position: relative;
+}
+#floater-right {
+    float: left;
+    width: 50%;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    position: relative;
+    overflow: auto;
+}
+#question{
+    font-size: 16px;
+    font-family: 'Quicksand Light', sans-serif;
+}
+#floater-right-rt {
+    float: right;
+    width: 25%;
+    background: rgb(228, 228, 228);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.0);
+    z-index: -1;
+    height: 100%;
+    position: relative;
+    overflow: auto;
+}
+#pastpaper-text{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: 'Cabin', sans-serif;
+}
+textarea{
+    border: 0;
+    outline: 0;
+    background: transparent;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    line-height: 1.8em;
+    font-size: 16px;
+    padding: 15px;
+    font-family: sans-serif;
+    height: 100px;
+    min-height: 100px;
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+#next{
+    background: rgb(13, 20, 82);
+    border: 0;
+    outline: 0;
+    border-radius: 0px;
+    color: white;
+    font-family: sans-serif;
+    position: absolute;
+    bottom: -65;
+    font-family: sans-serif;
+    left: 125;
+    cursor: pointer;
+    padding: 10px 20px;
+}
+#discuss{
+    position: absolute;
+    left: 0;
+    background: rgb(6, 97, 97);
+    border: 0;
+    border-radius: 0px;
+    outline: 0;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 10px 20px;
+    color: white;
+    bottom: -65;
+    font-family: sans-serif;
+    text-transform: capitalize;
+}
+.comment-contain{
+    margin: 0 30px;
+    display: none;
+    font-family: sans-serif;
+}
+.comment-contain img{
+    border-radius: 100%;
+}
+.close{
+    font-size: 18px;
+    display: none;
+}
+.menu-ham{
+    font-size: 18px;
+    display: none;
+}
+@media only screen and (max-width: 824px) {
+    #floater-right-rt {
+        display: none;
+    }
+    #floater-right {
+        width: auto;
+    }
+    #floater-left {
+        width: 75%;
+        position: fixed;
+        top: 0;
+        overflow: auto;
+        left: -300px;
+    }
+    .close{
+        font-size: 18px;
+        display: none;
+        cursor: pointer;
+    }
+    .menu-ham{
+        font-size: 18px;
+        cursor: pointer;
+        display: block;
+    }
+}

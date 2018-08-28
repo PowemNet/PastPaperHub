@@ -60,6 +60,7 @@ PastPaperHub.prototype.loadPastPapers = function() {
       li.appendChild(a);
       li.onclick = function(){
         var pastPaperClickedDbRef = hardCodedPastPaperDbRef + snap.key;
+        localStorage.setItem("pastPaperClickedDbRef", pastPaperClickedDbRef);
         localStorage.setItem("pastPaperClickedText", data.title);
       }
       this.pastPaperList.appendChild(li);

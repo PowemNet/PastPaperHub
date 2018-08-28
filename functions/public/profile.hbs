@@ -29,14 +29,15 @@
             </div> 
             <span id="account">
                 <div id="user-container">
-                    <div id="user-contain">
-                    <div hidden id="user-pic"></div>
-                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="user-pic">
-                        <a href="/profile"><a class="mdl-menu__item"></a></a>
-                        <a id="sign-out" class="mdl-menu__item"></a>
-                    </ul>
-                    <span hidden id="user-name"></span>
-                    </div>
+                    <div class="user-contain">
+                        <div id="user-pic" class="dropdown">
+                            <div class="submenu" for="user-pic">
+                                <li><a href="/">Home</a></li>
+                                <li><a id="sign-out">Sign Out</a></li>  
+                            </div>
+                            </div>
+                            <span hidden id="user-name"></span>
+                        </div>
                 </div>
             </span>
         </div>

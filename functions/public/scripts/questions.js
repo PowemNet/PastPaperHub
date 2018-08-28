@@ -132,3 +132,4 @@ PastPaperHub.prototype.toggleButton = function() {
 window.addEventListener('load' , function() {
   window.PastPaperHub = new PastPaperHub();
 });
+
