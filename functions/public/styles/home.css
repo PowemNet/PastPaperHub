@@ -1,0 +1,40 @@
+ #forms{
+    padding: 15px;
+    margin: 0 auto ;
+    background: transparent;
+    font-family: 'Quicksand Light', sans-serif;
+    font-size: 18px;
+    text-align: center; 
+    
+}
+.form-design{
+    padding: 10px;
+    font-family: 'Quicksand Light', sans-serif;
+    font-size: 16px;
+    background: rgb(230, 230, 230);
+    width: 13em;
+    border: 0;
+    cursor: pointer; 
+
+}
+
+ .search-button{
+    font-family: 'Quicksand Light', sans-serif;
+    font-size: 18px;
+    width: 10em;
+    background: rgb(4, 23, 46);
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    margin-top: 10px;
+} 
+
+form{
+    float:left;  
+    padding: 5px;
+    
+}
+h4 {
+    font-size: 16px;
+}

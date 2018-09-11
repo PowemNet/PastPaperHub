@@ -36,12 +36,10 @@
 
   <!-- App Styling -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/home.css">
   <link rel="stylesheet" href="styles/main_mdl.css">
 </head>
 <body>
-<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
-
   <!-- Header -->
   <header class="mdl-layout__header mdl-color-text--white mdl-color--light-blue-700">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
@@ -64,8 +62,7 @@
   </header>
 
   {{!-- Main body --}}
-  </div>
-
+  
     <main class="mdl-layout__content mdl-color--grey-100">
     <div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
 
@@ -74,25 +71,68 @@
         <div class="mdl-card__supporting-text mdl-color-text--grey-600">
           <div id="messages">
             <h4>We only have Past Papers for Electronics 1, Computer Engineering, Year 1,  Makerere University</h4>
-            {{!-- <h1></h1>In the meantime, update your profile </h1> <h1>here<h1> <h1> to see your past papers as soon as we add them!!</h1> --}}
-            In the meantime, update your profile<a href="/profile" >here</a> to see your past papers as soon as we add them!!
-            <hr></h1>
-            <p id =  "please-wait-text">Please wait.. </p>
-            <ul id="past-paper-list"></ul>
-          </div>
+            <hr>
+            <div id="forms">
+              <form id="profile-form" action="#">
+                <form>
+                  <div>Course Unit  </div>
+                    <select name = "dropdown" class="form-design" id="course_unit" name="course_unit">
+                      <option value ="All" selected> All </option>
+                    </select>
+                </form>
+                <form>
+                  <div>Year  </div>
+                    <select name = "dropdown" class="form-design" id="year" name="year">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                </form>
+                <form>
+                  <div>Course   </div>
+                    <select name = "dropdown" class="form-design" id="course" name="course">
+                      <option value=""></option>
+                      <option value="Medicine">Medicine</option>
+                      <option value="Computer Engineering">Computer Engineering</option>
+                      <option value="Electrical Engineering">Electrical Engineering</option>
+                      <option value="Marketing">Marketing</option>
+                      <option value="Law">Law</option>
+                    </select>
+                </form>
+                <form>
+                  <div>University  </div>
+                    <select name = "dropdown" class="form-design" id="university" name="university">
+                      <option value=""></option>
+                        <option value="Makerere University">Makerere University</option>
+                        <option value="Kyambogo University">Kyambogo University</option>
+                        <option value="Nkozi University">Nkozi University</option>
+                        <option value="Mbarara University">Mbarara University</option>
+                    </select>
+                </form>
+                   
+                <button id="search-profile" type="submit" class="search-button">
+                  Search
+                </button>
+              </form>
+            </div>
+              <p id =  "please-wait-text">Please wait.. </p>
+              <ul id="past-paper-list"></ul>
+          </div> 
         </div>
       </div>
-
+      
+        
       <div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
         <div class="mdl-snackbar__text"></div>
         <button class="mdl-snackbar__action" type="button"></button>
       </div>
 
     </div>
-  </main>
-
-</div>
-
+    </main>
+  
 <script src="/__/firebase/5.1.0/firebase-app.js"></script>
 <script src="/__/firebase/5.1.0/firebase-auth.js"></script>
 <script src="/__/firebase/5.1.0/firebase-database.js"></script>

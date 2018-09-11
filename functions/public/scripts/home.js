@@ -9,10 +9,19 @@ function PastPaperHub() {
   this.userName = document.getElementById('user-name');
   this.signOutButton = document.getElementById('sign-out');
   this.signInSnackbar = document.getElementById('must-signin-snackbar');
-
   this.signOutButton.addEventListener('click', this.signOut.bind(this));
+  
+  this.profileForm = document.getElementById('profile-form');
+  this.yearInput = document.getElementById('year');
+  this.courseInput = document.getElementById('course');
+  this.universityInput = document.getElementById('university');
   this.initFirebase();
 }
+
+var user;
+var year;
+var course;
+var university;
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
 PastPaperHub.prototype.initFirebase = function() {
@@ -84,14 +93,61 @@ PastPaperHub.prototype.authStateObserver = function(user) {
     // Show user's profile and sign-out button.
     this.userName.removeAttribute('hidden');
     this.userPic.removeAttribute('hidden');
-
+    
   } else { // User is signed out!
     window.location.href = "/login";
   }
-
   // Load existing past papers.
   this.loadPastPapers();
 };
+
+PastPaperHub.prototype.authStateObserver = async function (userObject) {
+  if (userObject) {
+    user = userObject; //set user global object
+    console.log(user);
+    await this.fetchUserMetadata();
+    await this.initUI();
+    // this.saveMessagingDeviceToken();
+  } else { 
+    this.showLoginScreen();
+  }
+};
+
+PastPaperHub.prototype.fetchUserMetadata = function () {
+  return new Promise((resolve, reject) => {
+    firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
+      if(snapshot){
+        course = (snapshot.val() && snapshot.val().course) || 'NOT_SET';
+        university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
+        year = (snapshot.val() && snapshot.val().year) || 'NOT_SET';
+        resolve();
+        return snapshot;
+      }
+      else{
+        throw new Error("error getUniversityFromDb" );
+      }
+    }).catch(function (error) {
+      var errorMessage = error.message;
+      console.log("error getUniversityFromDb:" + errorMessage);
+    });
+  });
+};
+
+PastPaperHub.prototype.initUI = function () {
+  return new Promise((resolve, reject) => {
+    this.selectElement("course", course);
+    this.selectElement("university", university);
+    this.selectElement("year", year);
+    resolve();
+  });
+
+};
+
+PastPaperHub.prototype.selectElement = function (id, valueToSelect)
+{    
+    var element = document.getElementById(id);
+    element.value = valueToSelect;
+}
 
 // Returns true if user is signed-in. Otherwise false and displays a message.
 PastPaperHub.prototype.checkSignedInWithMessage = function() {

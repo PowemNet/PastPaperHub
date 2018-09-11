@@ -49,10 +49,6 @@ h1 {
     padding: 20px;
 }
 
-#save-profile:hover {
-   background-color: #9E9E9E;
-
-}
 h3 {
     text-align: center
 }
@@ -60,12 +56,7 @@ h3 a {
     text-decoration: none;
     color: white;
 }
-.create_profile {
-    padding: 5px;
-    margin-left: 30px;
-}
+
 h6 {
     font-weight: bold;
-}
-
-
+} 
