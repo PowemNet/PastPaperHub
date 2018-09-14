@@ -1,9 +1,9 @@
 'use strict';
-// Initializes FriendlyChat.
-function Profile() {
+function ManageUniversities() {
   // Shortcuts to DOM Elements.
   this.saveButton = document.getElementById('save-university');
   this.universityInput = document.getElementById('university');
+  this.universityList = document.getElementById("university-list");
   this.signInSnackbar = document.getElementById('must-signin-snackbar');
   this.saveButton.addEventListener('click', this.onSaveButtonClickedSubmit.bind(this));
 
@@ -15,13 +15,13 @@ var course;
 var university;
 var year;
 
-Profile.prototype.initFirebaseAndSetUpData = function () {
+ManageUniversities.prototype.initFirebaseAndSetUpData = function () {
   this.auth = firebase.auth();
   this.database = firebase.database();
   this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
 };
 
-Profile.prototype.authStateObserver = async function (userObject) {
+ManageUniversities.prototype.authStateObserver = async function (userObject) {
   if (userObject) {
     user = userObject; //set user global object
     console.log(user);
@@ -32,27 +32,32 @@ Profile.prototype.authStateObserver = async function (userObject) {
   }
 };
 
-Profile.prototype.fetchUniversities = function () {  //todo edit this function to fetch universities not user
+ManageUniversities.prototype.fetchUniversities = function () {  //todo edit this function to fetch universities not user
   return new Promise((resolve, reject) => {
-    // firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {  
-    //   if (snapshot) {
-    //     course = (snapshot.val() && snapshot.val().course) || 'NOT_SET';
-    //     university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
-    //     year = (snapshot.val() && snapshot.val().year) || 'NOT_SET';
-    //     resolve();
-    //     return snapshot;
-    //   }
-    //   else {
-    //     throw new Error("error getUniversityFromDb");
-    //   }
-    // }).catch(function (error) {
-    //   var errorMessage = error.message;
-    //   console.log("error getUniversityFromDb:" + errorMessage);
-    // });
+
+    var setUiItem = function(snap) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      var data = snap.val();
+
+      a.textContent = data.name;
+      // a.setAttribute('href', "/questions");
+      // li.appendChild(a);
+      // li.onclick = function(){
+      //   var pastPaperClickedDbRef = hardCodedPastPaperDbRef + snap.key;
+      //   localStorage.setItem("pastPaperClickedDbRef", pastPaperClickedDbRef);
+      //   localStorage.setItem("pastPaperClickedText", data.title);
+      // }
+      this.universityList.appendChild(li);
+      // this.pleaseWaitText.style.visibility = "hidden";
+  }.bind(this)
+
+  this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_added', setUiItem);  //todo get correct fet here: friday evenign with June
+  this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_changed', setUiItem);
   });
 };
 
-Profile.prototype.initUI = function () {  //set up the list of universities
+ManageUniversities.prototype.initUI = function () {  //set up the list of universities
   return new Promise((resolve, reject) => {
     // this.selectElement("course", course);
     // this.selectElement("university", university);
@@ -62,14 +67,14 @@ Profile.prototype.initUI = function () {  //set up the list of universities
 
 };
 
-Profile.prototype.selectElement = function (id, valueToSelect) {
+ManageUniversities.prototype.selectElement = function (id, valueToSelect) {
   var element = document.getElementById(id);
   element.value = valueToSelect;
 }
 
 const dbRef = firebase.database().ref();
 
-Profile.prototype.saveUniversity = function (university) {
+ManageUniversities.prototype.saveUniversity = function (university) {
   var self = this;
   console.log("---------");
   console.log(university);
@@ -80,6 +85,8 @@ Profile.prototype.saveUniversity = function (university) {
       console.log("failed to save!");
     } else {
       console.log("successfully saved!");
+      await this.fetchUniversities();
+      await this.initUI();
       var data = {
         message: 'University saved!',
         timeout: 2000
@@ -88,7 +95,7 @@ Profile.prototype.saveUniversity = function (university) {
   });
 };
 
-Profile.prototype.onSaveButtonClickedSubmit = function (e) {
+ManageUniversities.prototype.onSaveButtonClickedSubmit = function (e) {
   e.preventDefault();
   if (this.checkSignedIn()) {
     this.saveUniversity(
@@ -100,7 +107,7 @@ Profile.prototype.onSaveButtonClickedSubmit = function (e) {
 };
 
 // Returns true if user is signed-in. Otherwise false and displays a message.
-Profile.prototype.checkSignedIn = function () {
+ManageUniversities.prototype.checkSignedIn = function () {
   // Return true if the user is signed in Firebase
   //   if (this.isUserSignedIn()) {
   //     return true;
@@ -118,5 +125,5 @@ Profile.prototype.checkSignedIn = function () {
 };
 
 window.addEventListener('load', function () {
-  window.Profile = new Profile();
+  window.ManageUniversities = new ManageUniversities();
 });

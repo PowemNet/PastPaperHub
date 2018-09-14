@@ -1,7 +1,5 @@
 'use strict';
-// Initializes FriendlyChat.
 function Profile() {
-  // Shortcuts to DOM Elements.
   this.saveButton = document.getElementById('save-profile');
   this.yearInput = document.getElementById('year');
   this.courseInput = document.getElementById('course');
