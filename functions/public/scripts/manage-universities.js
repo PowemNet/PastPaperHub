@@ -71,23 +71,21 @@ const dbRef = firebase.database().ref();
 
 Profile.prototype.saveUniversity = function (university) {
   var self = this;
-  console.log("university-------" + university);
-  // return this.database.ref('/users/' + user.uid).update({
-  //   year: year,
-  //   course: course,
-  //   university: university
-  // }, function (error) {
-  //   if (error) {
-  //     console.log("failed to update");
-  //   } else {
-  //     var data = {
-  //       message: 'University saved!',
-  //       timeout: 2000
-  //     };
-  //     //self.signInSnackbar.MaterialSnackbar.showSnackbar(data);
-  //     window.history.back();
-  //   }
-  // });
+  console.log("---------");
+  console.log(university);
+  return this.database.ref('/universities/').push({
+    name : university
+  }, function (error) {
+    if (error) {
+      console.log("failed to save!");
+    } else {
+      console.log("successfully saved!");
+      var data = {
+        message: 'University saved!',
+        timeout: 2000
+      };
+    }
+  });
 };
 
 Profile.prototype.onSaveButtonClickedSubmit = function (e) {
