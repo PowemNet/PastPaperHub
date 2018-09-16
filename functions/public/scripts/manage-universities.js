@@ -106,31 +106,30 @@ ManageUniversities.prototype.onEditUniversityButtonClickedSubmit = async functio
   e.preventDefault();
   if (this.checkSignedIn()) {
     await this.appendUniversityListWithNewEditedText();
-    // await this.compareText();
+    await this.compareText();
   }
 };
 
 ManageUniversities.prototype.appendUniversityListWithNewEditedText = function () {
-  var self = this;
   var listItems = this.universityList.getElementsByTagName("li");
   for (var i=0; i < listItems.length; i++) {
-  // console.log('XXXXXXXX: ', listItems[i].getElementsByTagName("input").getAttribute('value'));
-  // console.log('XXXXXXXX: ', listItems[i].getElementsByTagName("input").value);
-  // console.log('XXXXXXXX: ', listItems[i].getElementsByTagName("input").input.value);
-  console.log('XXXXXXXX: ', listItems[i].getElementsByTagName("input").length);
-    universityDbList[i].splice(1, 0, "listItem.value")  
+    universityDbList[i].splice(1, 0, listItems[i].getElementsByTagName("input")[0].value)  
   } 
-  console.log('XXXXXXXX: ', universityDbList[0][0].val().name);
-  console.log('XXXXXXXX: ', universityDbList[0][1]);
 };
 
 ManageUniversities.prototype.compareText = function () {
-  var self = this;
   for (var i=0; i < universityDbList.length; i++) {
-    if (universityDbList[0][0].val().name !== universityDbList[0][1]){
-      this.updateUniversityInDb(universityDbList[0][0].key, niversityDbList[0][1]);
+    if (universityDbList[i][0].val().name !== universityDbList[i][1]){
+      this.updateUniversityInDb(universityDbList[i][0].key, universityDbList[i][1]);
     }
   }
+};
+
+ManageUniversities.prototype.updateUniversityInDb = function (dbKey, text) {
+  var self = this;
+  console.log('XXXXXXXX: KEY', dbKey);
+  console.log('XXXXXXXX: TEXT', text);
+  
 };
 
 // Returns true if user is signed-in. Otherwise false and displays a message.
