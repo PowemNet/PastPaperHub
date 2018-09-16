@@ -18,6 +18,7 @@ var university;
 var year;
 
 var universityDbList = [];
+const dbRef = firebase.database().ref();
 
 ManageUniversities.prototype.initFirebaseAndSetUpData = function () {
   this.auth = firebase.auth();
@@ -45,11 +46,6 @@ ManageUniversities.prototype.fetchUniversities = function () {  //todo edit this
       var data = snap.val();
       var listItem = [snap]
       universityDbList.push(listItem)
-      console.log("snap:")
-      console.log(universityDbList)
-      console.log(universityDbList[0][0].val().name)  //text
-      console.log(universityDbList[0][0].key) //id
-
       input.value = data.name;
       li.appendChild(input);
       this.universityList.appendChild(li);
@@ -64,8 +60,6 @@ ManageUniversities.prototype.selectElement = function (id, valueToSelect) {
   var element = document.getElementById(id);
   element.value = valueToSelect;
 }
-
-const dbRef = firebase.database().ref();
 
 ManageUniversities.prototype.saveUniversity = async function (university) {
   var self = this;
@@ -123,15 +117,30 @@ ManageUniversities.prototype.compareText = function () {
       this.updateUniversityInDb(universityDbList[i][0].key, universityDbList[i][1]);
     }
   }
+
+  //reset local variables and update ui to show new data
+  this.resetUniversityList()
+  this.fetchUniversities()
 };
 
-ManageUniversities.prototype.updateUniversityInDb = function (dbKey, text) {
-  var self = this;
-  console.log('XXXXXXXX: KEY', dbKey);
-  console.log('XXXXXXXX: TEXT', text);
-  
+ManageUniversities.prototype.updateUniversityInDb = function (dbKey, newText) {
+  return this.database.ref('/universities/'+dbKey).update({
+    name: newText
+  }, function (error) {
+    if (error) {
+      console.log("failed to update");
+    } else {
+      console.log("Update successful!")
+    }
+  });
 };
 
+ManageUniversities.prototype.resetUniversityList = function () {
+  //reset local list
+  universityDbList.length = 0
+  //reset HTML list
+  while(universityList.firstChild) universityList.removeChild(universityList.firstChild);
+};
 // Returns true if user is signed-in. Otherwise false and displays a message.
 ManageUniversities.prototype.checkSignedIn = function () {
   // Return true if the user is signed in Firebase
