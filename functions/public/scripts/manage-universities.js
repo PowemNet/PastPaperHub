@@ -1,11 +1,13 @@
 'use strict';
 function ManageUniversities() {
   // Shortcuts to DOM Elements.
-  this.saveButton = document.getElementById('save-university');
+  this.saveNewUniversityButton = document.getElementById('save-new-university');
+  this.saveEditedUniversityButton = document.getElementById('save-edited-university-details');
   this.universityInput = document.getElementById('university');
   this.universityList = document.getElementById("university-list");
   this.signInSnackbar = document.getElementById('must-signin-snackbar');
-  this.saveButton.addEventListener('click', this.onSaveButtonClickedSubmit.bind(this));
+  this.saveNewUniversityButton.addEventListener('click', this.onsaveNewUniversityButtonClicked.bind(this));
+  this.saveEditedUniversityButton.addEventListener('click', this.onEditUniversityButtonClickedSubmit.bind(this));
 
   this.initFirebaseAndSetUpData();
 }
@@ -14,6 +16,8 @@ var user;
 var course;
 var university;
 var year;
+
+var universityDbList = [];
 
 ManageUniversities.prototype.initFirebaseAndSetUpData = function () {
   this.auth = firebase.auth();
@@ -26,45 +30,34 @@ ManageUniversities.prototype.authStateObserver = async function (userObject) {
     user = userObject; //set user global object
     console.log(user);
     await this.fetchUniversities();
-    await this.initUI();
   } else {
     this.showLoginScreen();
   }
 };
 
+var universitiesDbRef = '/universities/';
 ManageUniversities.prototype.fetchUniversities = function () {  //todo edit this function to fetch universities not user
   return new Promise((resolve, reject) => {
 
     var setUiItem = function(snap) {
       var li = document.createElement("li");
-      var a = document.createElement("a");
+      var input = document.createElement("input");
       var data = snap.val();
+      var listItem = [snap]
+      universityDbList.push(listItem)
+      console.log("snap:")
+      console.log(universityDbList)
+      console.log(universityDbList[0][0].val().name)  //text
+      console.log(universityDbList[0][0].key) //id
 
-      a.textContent = data.name;
-      // a.setAttribute('href', "/questions");
-      // li.appendChild(a);
-      // li.onclick = function(){
-      //   var pastPaperClickedDbRef = hardCodedPastPaperDbRef + snap.key;
-      //   localStorage.setItem("pastPaperClickedDbRef", pastPaperClickedDbRef);
-      //   localStorage.setItem("pastPaperClickedText", data.title);
-      // }
+      input.value = data.name;
+      li.appendChild(input);
       this.universityList.appendChild(li);
-      // this.pleaseWaitText.style.visibility = "hidden";
   }.bind(this)
 
-  this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_added', setUiItem);  //todo get correct fet here: friday evenign with June
-  this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_changed', setUiItem);
+  this.database.ref(universitiesDbRef).limitToLast(12).on('child_added', setUiItem);
+  this.database.ref(universitiesDbRef).limitToLast(12).on('child_changed', setUiItem);
   });
-};
-
-ManageUniversities.prototype.initUI = function () {  //set up the list of universities
-  return new Promise((resolve, reject) => {
-    // this.selectElement("course", course);
-    // this.selectElement("university", university);
-    // this.selectElement("year", year);
-    resolve();
-  });
-
 };
 
 ManageUniversities.prototype.selectElement = function (id, valueToSelect) {
@@ -74,19 +67,18 @@ ManageUniversities.prototype.selectElement = function (id, valueToSelect) {
 
 const dbRef = firebase.database().ref();
 
-ManageUniversities.prototype.saveUniversity = function (university) {
+ManageUniversities.prototype.saveUniversity = async function (university) {
   var self = this;
   console.log("---------");
   console.log(university);
   return this.database.ref('/universities/').push({
     name : university
-  }, function (error) {
+  }, async function (error) {
     if (error) {
       console.log("failed to save!");
     } else {
       console.log("successfully saved!");
       await this.fetchUniversities();
-      await this.initUI();
       var data = {
         message: 'University saved!',
         timeout: 2000
@@ -95,7 +87,7 @@ ManageUniversities.prototype.saveUniversity = function (university) {
   });
 };
 
-ManageUniversities.prototype.onSaveButtonClickedSubmit = function (e) {
+ManageUniversities.prototype.onsaveNewUniversityButtonClicked = function (e) {
   e.preventDefault();
   if (this.checkSignedIn()) {
     this.saveUniversity(
@@ -103,6 +95,41 @@ ManageUniversities.prototype.onSaveButtonClickedSubmit = function (e) {
       }.bind(this)).catch(function (error) {
         console.error('Error: ', error);
       });
+  }
+};
+
+ManageUniversities.prototype.onEditUniversityButtonClickedSubmit = async function (e) {
+  //append university list from firebase with new text
+  //compare text from firebase with new appended text for each entry
+  //submit to firebase for entries whose new appeneded text do not match
+
+  e.preventDefault();
+  if (this.checkSignedIn()) {
+    await this.appendUniversityListWithNewEditedText();
+    // await this.compareText();
+  }
+};
+
+ManageUniversities.prototype.appendUniversityListWithNewEditedText = function () {
+  var self = this;
+  var listItems = this.universityList.getElementsByTagName("li");
+  for (var i=0; i < listItems.length; i++) {
+  // console.log('XXXXXXXX: ', listItems[i].getElementsByTagName("input").getAttribute('value'));
+  // console.log('XXXXXXXX: ', listItems[i].getElementsByTagName("input").value);
+  // console.log('XXXXXXXX: ', listItems[i].getElementsByTagName("input").input.value);
+  console.log('XXXXXXXX: ', listItems[i].getElementsByTagName("input").length);
+    universityDbList[i].splice(1, 0, "listItem.value")  
+  } 
+  console.log('XXXXXXXX: ', universityDbList[0][0].val().name);
+  console.log('XXXXXXXX: ', universityDbList[0][1]);
+};
+
+ManageUniversities.prototype.compareText = function () {
+  var self = this;
+  for (var i=0; i < universityDbList.length; i++) {
+    if (universityDbList[0][0].val().name !== universityDbList[0][1]){
+      this.updateUniversityInDb(universityDbList[0][0].key, niversityDbList[0][1]);
+    }
   }
 };
 
