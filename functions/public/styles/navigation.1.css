@@ -1,0 +1,205 @@
+.navigation{
+    padding: 10px 0;
+    font-family: 'Quicksand Light', sans-serif;
+    transition: ease-in-out all 400ms;
+    background: white;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+#logo{
+    padding: 25px;
+    font-family: 'Pacifico', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    transition: all ease-in-out 400ms;
+}
+#account{
+    font-size: 14px;
+}
+a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
+#user-container {
+    position: fixed;
+    display: flex;
+    top: 7.5;
+    z-index: 10;
+    height: auto;
+    right: 15;
+    transition: all ease-in-out 400ms;
+    width: auto;
+    font-family: 'Cabin', sans-serif;
+}
+#user-container #user-pic {
+    position: relative;
+    background-image: url('images/profile_placeholder.png');
+    background-repeat: no-repeat;
+    width: 45px;
+    height: 45px;
+    background: rgb(190, 190, 190);
+    cursor: pointer;
+    right: 10;
+    margin-top: 5px;
+    transition: all ease-in-out 400ms;
+    border-radius: 100%;
+}
+#user-pic:hover .submenu{
+    display: block;
+    transition: all ease-in-out 400ms;
+}
+.submenu{
+    font-family: 'Quicksand', sans-serif;
+    background: white;
+    padding: 5px;
+    transition: all ease-in-out 400ms;
+    position: absolute;
+    right: 10;
+    display: none;
+    margin-top: 40;
+    font-size: 15px;
+    box-shadow: 0 10px 10px  rgba(0, 0, 0, 0.2);
+    width: 100px;
+    line-height: 0.5em;
+    border-radius: 0px;
+    color: #0D1A35;
+}
+.submenu li{
+    list-style-type: none;
+    cursor: pointer;
+    padding: 15px 15px;
+}
+.submenu li:hover{
+    background: rgb(236, 236, 236);
+    border-radius: 5px;
+}
+#user-container #user-name {
+    font-size: 16px;
+    line-height: 36px;
+    position: relative;
+    transition: all ease-in-out 400ms;
+    top: 5;
+    padding-right: 0px;
+    display: none;
+    right: 25;
+    padding-left: 0px;
+}
+/* Dropdown Button */
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+input[type=text] {
+    border-radius: 0px;
+    border: 0;
+    position: relative;
+    color: black;
+    width: 50%;
+    top: -2.5;
+    transition: ease-in-out all 400ms;
+    height: 40px;
+    font-family: 'Quicksand Light', sans-serif;
+    text-align: left;
+    border-radius: 3px;
+    background: rgb(236, 236, 236);
+    padding-left: 10px;
+    padding-right: 40px;
+    font-size: 16px;
+}
+#top-img img{
+    width: 25px;
+    position: absolute;
+    margin-left: -50px;
+    margin-top: 15px;
+    height: auto;
+    transition: all ease-in-out 400ms;
+}
+@media only screen and (max-width: 824px) {
+    input[type=text] {
+        border-radius: 0px;
+        border: 0;
+        position: relative;
+        margin: -15px 0px 0 0px;
+        color: black;
+        transition: all ease-in-out 400ms;
+        width: 40%;
+    }
+    #top-img img{
+        margin-left: -30px;
+        transition: all ease-in-out 400ms;
+    }
+}
+@media only screen and (max-width: 500px) {
+    #user-container #user-pic {
+        top: 0;
+        right: -10;
+        transition: all ease-in-out 400ms;
+    }#logo{
+        font-size: 22px;
+        transition: all ease-in-out 400ms;
+    }
+    #user-container {
+        top: 2.5;
+        transition: all ease-in-out 400ms;
+    }
+    input[type=text] {
+        border-radius: 0px;
+        border: 0;
+        position: relative;
+        margin: -15px 15px 0 50px;
+        color: black;
+        transition: all ease-in-out 400ms;
+        width: 50%;
+        display: none;
+    }
+    #top-img img{
+        width: 25px;
+        position: absolute;
+        right: 75;
+        transition: all ease-in-out 400ms;
+        top: 2.5;
+    }
+}

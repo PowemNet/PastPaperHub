@@ -1,3 +1,4 @@
+
 body{
     margin: 0;
     background: rgb(240, 240, 240);
@@ -5,7 +6,7 @@ body{
 }
 #cover{
     padding: 10px 0;
-    background: rgb(9, 40, 78);
+    background: rgb(3, 23, 34);
     color: white;
 }
 #space{
@@ -46,7 +47,7 @@ body{
     font-family: 'Quicksand Light', sans-serif;
     font-size: 20px;
     width: 250px;
-    background: rgb(9, 40, 78);
+    background: rgb(3, 23, 34);
     border: 0;
     cursor: pointer;
     padding: 10px;
