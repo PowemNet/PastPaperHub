@@ -2,12 +2,10 @@
 // Initializes FriendlyChat.
 function Profile() {
   // Shortcuts to DOM Elements.
-  this.profileForm = document.getElementById('profile-form');
   this.saveButton = document.getElementById('save-profile');
   this.yearInput = document.getElementById('year');
   this.courseInput = document.getElementById('course');
   this.universityInput = document.getElementById('university');
-  this.submitButton = document.getElementById('submit');
   this.signInSnackbar = document.getElementById('must-signin-snackbar');
 
   this.saveButton.addEventListener('click', this.onProfileFormSubmit.bind(this));
