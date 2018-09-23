@@ -45,15 +45,15 @@
         <link rel="stylesheet" type="text/css" href="styles/fonts.css">
         <script src="scripts/lib/jquery-3.3.1.min.js" type="text/javascript"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#000" />
-        <meta name="description" content="Get past papers for free">
+        <meta name="theme-color" content="#fff" />
+        <meta name="description" content="Largest Collection of PastPapers and answers whenever and whereever. Join the interactive discussions with other students">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="PastPaperHub">
         <link rel="icon" 
         type="image/png" 
         href="Assets/Images/LOGO.jpg">
     </head>
 <body>
-<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
-
   <!-- Header -->
      <div class="navigation-home">
             <a href="/"><span id="logo">PastPaperHub</span></a>
@@ -65,9 +65,14 @@
                 {{!-- <span id="top-img">
                     <img src="icons/search.png"/>
                 </span> --}}
-
+                <div id="categories">
+                <li>Discussions</li>
+                <li>Library</li>
+                <li>Forums</li>
+                <span id="premium">Go pro</span>
             </div>
 
+            </div>
             <span id="account">
                 <div id="user-container">
                     <div class="user-contain">
@@ -91,7 +96,7 @@
         <span>
             <input id="input" type="text" name="search" placeholder="Search for Past Papers ">
         </span>
-        
+
 
         <div id="input-title">Course</div>
         <select name = "dropdown" class="form-design" id="course" name="course">
@@ -112,10 +117,30 @@
             <option value="4">University Year Four</option>
             <option value="5">University Year Five</option>
         </select>
+
+        <div id="search-button">
+            <span id="search-text"><br>Search</span>
+        </div>
+
         </div>
     </div>
     <div id="search-point">
 
+            <img src="images/background_photo.jpg"></img>
+    <div id="caption-contain">
+        <div id="background-caption">
+            <div id="head-caption">Download the mobile app</div>
+                Get the best tips, notes, PastPapers and discuss right on your phone
+            </div>
+            <div id="download-app">
+            Download for IOS
+        </div>
+        <div id="download-app">
+            Download for Android
+        </div>
+    </div>
+    <div class="brand-bckimage">
+    </div>
     </div>
     <div id="exam-cards">
       <h4>Access over 23,000 past papers</h4>
@@ -325,6 +350,14 @@
             <img src="icons/off-bookmark.png">
           </div>
       </div>
+    </div>
+    <div id="space"></div>
+    <div id="bottom-nav">
+        <a href="/"><img src="icons/home-w.png"></a>              
+        <a href="#"><img src="icons/saved-g.png"></a> 
+        <a href="#"><img src="icons/discuss-g.png"></a> 
+        <a href="#"><img src="icons/not-g.png"></a> 
+        <a href="/profile"><img src="Icons/user-g.png"></a>
     </div>
 
 </div>
