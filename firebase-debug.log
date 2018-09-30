@@ -4939,3 +4939,172 @@
 [info] [hosting] Rewriting / to local function app
 [info] [hosting] Rewriting / to local function app
 [info] [hosting] Rewriting /Assets/Images/LOGO.jpg to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /favicon.ico to local function app
+[debug] [2018-09-30T16:55:43.133Z] ----------------------------------------------------------------------
+[debug] [2018-09-30T16:55:43.151Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\OWNER\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-09-30T16:55:43.152Z] CLI Version:   4.0.2
+[debug] [2018-09-30T16:55:43.152Z] Platform:      win32
+[debug] [2018-09-30T16:55:43.152Z] Node Version:  v8.11.3
+[debug] [2018-09-30T16:55:43.158Z] Time:          Sun Sep 30 2018 19:55:43 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T16:55:43.158Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-09-30T16:55:43.329Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-30T16:55:43.331Z] > authorizing via signed-in user
+[debug] [2018-09-30T16:55:43.335Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-09-30T16:55:43.336Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/nPPeSFJjdIGXzBaEEfBkE4vU-yOFwjzz2fhpQOJdV0AAFyd1G1RjyJjty2XAVJbD',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Sep 30 2018 19:55:43 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T16:55:45.755Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-30T16:55:47.296Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/past-paper-hub  
+  
+ Sun Sep 30 2018 19:55:47 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T16:55:50.444Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-30T16:55:50.445Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/past-paper-hub/tokens  
+  
+ Sun Sep 30 2018 19:55:50 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T16:55:51.549Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-30T16:55:51.551Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/past-paper-hub  
+  
+ Sun Sep 30 2018 19:55:51 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T16:55:53.515Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\Code\PastPaperHub'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-09-30T16:56:12.926Z] Fetching environment
+[debug] [2018-09-30T16:56:12.933Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581:getServerAppConfig  
+  
+ Sun Sep 30 2018 19:56:12 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T16:56:12.934Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581/clients/_:getWebAppConfig  
+  
+ Sun Sep 30 2018 19:56:12 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T16:56:16.134Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-30T16:56:16.606Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-30T16:56:16.606Z] Starting @google-cloud/functions-emulator
+[info] i  hosting: Serving hosting files from: functions/public
+[info] +  hosting: Local server: http://localhost:5000
+
+[debug] [2018-09-30T16:56:27.873Z] Parsing function triggers
+[info] +  functions: app: http://localhost:5001/past-paper-hub/us-central1/app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /Assets/Images/LOGO.jpg to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting /styles/WoffFonts/Roboto-Light.woff to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting /styles/WoffFonts/Roboto-Light.woff to local function app
+[info] [hosting] Rewriting /profile to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/lib/jquery-3.3.1.min.js to local function app
+[info] [hosting] Rewriting /Assets/Javascripts/particles.min.js to local function app
+[info] [hosting] Rewriting / to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting /styles/WoffFonts/Roboto-Light.woff to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting /styles/WoffFonts/Roboto-Light.woff to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting /styles/WoffFonts/Roboto-Light.woff to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting /styles/WoffFonts/Roboto-Light.woff to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting /styles/WoffFonts/Roboto-Light.woff to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting /styles/WoffFonts/Roboto-Light.woff to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting /styles/WoffFonts/Roboto-Light.woff to local function app
+[info] [hosting] Rewriting /questions to local function app
+[info] [hosting] Rewriting /styles/WoffFonts/Roboto-Light.woff to local function app
+[debug] [2018-09-30T17:08:35.924Z] Error: socket hang up
+    at TLSSocket.onHangUp (_tls_wrap.js:1137:19)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:111:20)
+    at TLSSocket.emit (events.js:208:7)
+    at endReadableNT (_stream_readable.js:1064:12)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-09-30T17:08:35.960Z] Error: socket hang up
+    at TLSSocket.onHangUp (_tls_wrap.js:1137:19)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:111:20)
+    at TLSSocket.emit (events.js:208:7)
+    at endReadableNT (_stream_readable.js:1064:12)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-09-30T17:08:35.963Z] Error: socket hang up
+    at TLSSocket.onHangUp (_tls_wrap.js:1137:19)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:111:20)
+    at TLSSocket.emit (events.js:208:7)
+    at endReadableNT (_stream_readable.js:1064:12)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-09-30T17:08:35.966Z] Error: socket hang up
+    at TLSSocket.onHangUp (_tls_wrap.js:1137:19)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:111:20)
+    at TLSSocket.emit (events.js:208:7)
+    at endReadableNT (_stream_readable.js:1064:12)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2018-09-30T17:10:51.076Z] ----------------------------------------------------------------------
+[debug] [2018-09-30T17:10:51.080Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\OWNER\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-09-30T17:10:51.081Z] CLI Version:   4.0.2
+[debug] [2018-09-30T17:10:51.081Z] Platform:      win32
+[debug] [2018-09-30T17:10:51.081Z] Node Version:  v8.11.3
+[debug] [2018-09-30T17:10:51.082Z] Time:          Sun Sep 30 2018 20:10:51 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T17:10:51.082Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-09-30T17:10:51.205Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-09-30T17:10:51.207Z] > authorizing via signed-in user
+[debug] [2018-09-30T17:10:51.213Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/past-paper-hub  
+  
+ Sun Sep 30 2018 20:10:51 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T17:10:53.398Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-30T17:10:53.399Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/past-paper-hub/tokens  
+  
+ Sun Sep 30 2018 20:10:53 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T17:10:54.559Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-30T17:10:54.560Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/past-paper-hub  
+  
+ Sun Sep 30 2018 20:10:54 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T17:11:00.613Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'D:\Code\PastPaperHub'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-09-30T17:11:20.828Z] Fetching environment
+[debug] [2018-09-30T17:11:20.847Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581:getServerAppConfig  
+  
+ Sun Sep 30 2018 20:11:20 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T17:11:20.848Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/36796845581/clients/_:getWebAppConfig  
+  
+ Sun Sep 30 2018 20:11:20 GMT+0300 (E. Africa Standard Time)
+[debug] [2018-09-30T17:11:26.134Z] <<< HTTP RESPONSE 200
+[debug] [2018-09-30T17:11:26.135Z] Starting @google-cloud/functions-emulator
+[debug] [2018-09-30T17:11:35.040Z] Parsing function triggers
+[info] +  functions: app: http://localhost:5001/past-paper-hub/us-central1/app
+[debug] [2018-09-30T17:11:55.790Z] Error: socket hang up
+    at TLSSocket.onHangUp (_tls_wrap.js:1137:19)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:111:20)
+    at TLSSocket.emit (events.js:208:7)
+    at endReadableNT (_stream_readable.js:1064:12)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickDomainCallback (internal/process/next_tick.js:218:9)
+[error] 
+[error] Error: Server Error. socket hang up
