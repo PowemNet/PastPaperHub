@@ -228,6 +228,7 @@ textarea{
     background: transparent;
     outline: 0;
 }
+
 .menu-ham{
     font-size: 23px;
     transition: all ease-in-out 400ms;
