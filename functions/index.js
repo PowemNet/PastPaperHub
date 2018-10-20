@@ -28,4 +28,8 @@ app.get('/question', (request, response) => {
     response.render('question');
 });
 
+app.get('/manage-universities', (request, response) => {
+    response.render('manage-universities');
+});
+
 exports.app = functions.https.onRequest(app);
