@@ -22,7 +22,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: 'Roboto Light', sans-serif;
+    font-family: 'Cabin', sans-serif;
 }
 #main{
     margin-top: 150px;
@@ -134,6 +134,7 @@ body{
     float: left;
     background: white;
     width: 25%;
+    overflow: auto;
 }
 #spacer{
     margin: 100px 25px 85px 25px;
@@ -243,12 +244,19 @@ textarea{
     #floater-right {
         width: auto;
     }
-    #floater-left {
+    #floater-left-left {
         width: 75%;
         position: fixed;
         top: 0;
+        background: white;
         overflow: auto;
+        height: 100%;;
         left: -300px;
+    }
+    #floater-left {
+        background: white;
+        width: 100%;
+        overflow: auto;
     }
     .close{
         font-size: 18px;

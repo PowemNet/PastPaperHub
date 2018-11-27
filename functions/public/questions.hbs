@@ -50,6 +50,7 @@
         <div class="master-container">
 
         <div id="floater-left">
+            <div id="floater-left-left">
           <div id="accordion">
             <div id="space"></div>
             
@@ -95,6 +96,7 @@
               <p><a data-id="question3-topic6">3. Question 3</a></p>
               </div>
           </div>
+        </div>
         </div>
 
         <div id="floater-right">
@@ -153,6 +155,14 @@
         {{!-- facebook comments plugin --}}
         <div id="fb-root"></div>
 
+         <div id="bottom-nav">
+            <a href="/"><img src="icons/home-g.png"></a>              
+            <a href="/questions"><img src="icons/saved-w.png"></a> 
+            {{!-- <a href="#"><img src="icons/discuss-g.png"></a> 
+            <a href="#"><img src="icons/not-g.png"></a> --}}
+            <a href="/profile"><img src="icons/user-g.png"></a>
+        </div>
+
         <script>
             function textAreaAdjust(o) {
                 o.style.height = "5px";
@@ -163,14 +173,14 @@
 
         <script>
             $(".menu-ham").click(function () {
-                $("#floater-left").animate({left: '0'}, 100);
+                $("#floater-left-left").animate({left: '0'}, 100);
                 $('#floater-right').animate({left: '75%'}, 100);
                 $(".menu-ham").hide();
                 $(".close").show();
             });
 
             $(".close").click(function () {
-                $("#floater-left").animate({left: '-75%'}, 100);
+                $("#floater-left-left").animate({left: '-75%'}, 100);
                 $('#floater-right').animate({left: '0px'}, 100);
                 $(".menu-ham").show();
                 $(".close").hide();
