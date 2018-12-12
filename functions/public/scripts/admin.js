@@ -1,5 +1,5 @@
 'use strict';
-function ManageUniversities() {
+function Admin() {
   // Shortcuts to DOM Elements.
   this.saveNewUniversityButton = document.getElementById('save-new-university');
   this.saveEditedUniversityButton = document.getElementById('save-edited-university-details');
@@ -13,20 +13,17 @@ function ManageUniversities() {
 }
 
 var user;
-var course;
-var university;
-var year;
 
 var universityDbList = [];
 const dbRef = firebase.database().ref();
 
-ManageUniversities.prototype.initFirebaseAndSetUpData = function () {
+Admin.prototype.initFirebaseAndSetUpData = function () {
   this.auth = firebase.auth();
   this.database = firebase.database();
   this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
 };
 
-ManageUniversities.prototype.authStateObserver = async function (userObject) {
+Admin.prototype.authStateObserver = async function (userObject) {
   if (userObject) {
     user = userObject; //set user global object
     console.log(user);
@@ -37,7 +34,7 @@ ManageUniversities.prototype.authStateObserver = async function (userObject) {
 };
 
 var universitiesDbRef = '/universities/';
-ManageUniversities.prototype.fetchUniversities = function () {  //todo edit this function to fetch universities not user
+Admin.prototype.fetchUniversities = function () {  //todo edit this function to fetch universities not user
   return new Promise((resolve, reject) => {
 
     var setUiItem = function(snap) {
@@ -56,12 +53,12 @@ ManageUniversities.prototype.fetchUniversities = function () {  //todo edit this
   });
 };
 
-ManageUniversities.prototype.selectElement = function (id, valueToSelect) {
+Admin.prototype.selectElement = function (id, valueToSelect) {
   var element = document.getElementById(id);
   element.value = valueToSelect;
 }
 
-ManageUniversities.prototype.saveUniversity = async function (university) {
+Admin.prototype.saveUniversity = async function (university) {
   var self = this;
   console.log("---------");
   console.log(university);
@@ -81,7 +78,7 @@ ManageUniversities.prototype.saveUniversity = async function (university) {
   });
 };
 
-ManageUniversities.prototype.onsaveNewUniversityButtonClicked = function (e) {
+Admin.prototype.onsaveNewUniversityButtonClicked = function (e) {
   e.preventDefault();
   if (this.checkSignedIn()) {
     this.saveUniversity(
@@ -92,7 +89,7 @@ ManageUniversities.prototype.onsaveNewUniversityButtonClicked = function (e) {
   }
 };
 
-ManageUniversities.prototype.onEditUniversityButtonClickedSubmit = async function (e) {
+Admin.prototype.onEditUniversityButtonClickedSubmit = async function (e) {
   //append university list from firebase with new text
   //compare text from firebase with new appended text for each entry
   //submit to firebase for entries whose new appeneded text do not match
@@ -104,14 +101,14 @@ ManageUniversities.prototype.onEditUniversityButtonClickedSubmit = async functio
   }
 };
 
-ManageUniversities.prototype.appendUniversityListWithNewEditedText = function () {
+Admin.prototype.appendUniversityListWithNewEditedText = function () {
   var listItems = this.universityList.getElementsByTagName("li");
   for (var i=0; i < listItems.length; i++) {
     universityDbList[i].splice(1, 0, listItems[i].getElementsByTagName("input")[0].value)  
   } 
 };
 
-ManageUniversities.prototype.compareText = function () {
+Admin.prototype.compareText = function () {
   for (var i=0; i < universityDbList.length; i++) {
     if (universityDbList[i][0].val().name !== universityDbList[i][1]){
       this.updateUniversityInDb(universityDbList[i][0].key, universityDbList[i][1]);
@@ -123,7 +120,7 @@ ManageUniversities.prototype.compareText = function () {
   this.fetchUniversities()
 };
 
-ManageUniversities.prototype.updateUniversityInDb = function (dbKey, newText) {
+Admin.prototype.updateUniversityInDb = function (dbKey, newText) {
   return this.database.ref('/universities/'+dbKey).update({
     name: newText
   }, function (error) {
@@ -135,14 +132,14 @@ ManageUniversities.prototype.updateUniversityInDb = function (dbKey, newText) {
   });
 };
 
-ManageUniversities.prototype.resetUniversityList = function () {
+Admin.prototype.resetUniversityList = function () {
   //reset local list
   universityDbList.length = 0
   //reset HTML list
   while(universityList.firstChild) universityList.removeChild(universityList.firstChild);
 };
 // Returns true if user is signed-in. Otherwise false and displays a message.
-ManageUniversities.prototype.checkSignedIn = function () {
+Admin.prototype.checkSignedIn = function () {
   // Return true if the user is signed in Firebase
   //   if (this.isUserSignedIn()) {
   //     return true;
@@ -160,5 +157,5 @@ ManageUniversities.prototype.checkSignedIn = function () {
 };
 
 window.addEventListener('load', function () {
-  window.ManageUniversities = new ManageUniversities();
+  window.Admin = new Admin();
 });
