@@ -44,14 +44,25 @@ ui.get('/admin', (request, response) => {
 api.use(bodyParser.urlencoded({ extended: false }));
 api.use(bodyParser.json());
 
+// api.get('/api/v1/country/:id', (request, response) => {
+//     const countryName = request.body.country_name;
+//     return admin.database().ref('/country').push({country_name: countryName}).then((snapshot) => {
+//         return response.redirect(303, snapshot.ref.toString());
+//     });
+// });
+
 api.post('/api/v1/country', (request, response) => {
+    console.log("posting country with data ---" +request)
     const countryName = request.body.country_name;
     return admin.database().ref('/country').push({country_name: countryName}).then((snapshot) => {
-        return response.redirect(303, snapshot.ref.toString());
+        console.log("Successfully posted country with ref ---" +snapshot.ref)
+        const responseBody = {
+            "key": snapshot.key,
+            "ref": snapshot.ref
+        };
+        return response.json(responseBody);
     });
 });
 
 exports.ui = functions.https.onRequest(ui);
 exports.api = functions.https.onRequest(api);
-
-
