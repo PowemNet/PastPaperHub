@@ -110,14 +110,12 @@ api.post('/api/v1/country', (request, response) => {
 
 //patch country
 api.patch('/api/v1/country/:country_id', (request, response) => {
-    console.log("updating country with data ---" +request);
+    console.log("updating country with data ---" +request.body);
     const countryId = request.params.country_id;
     const valuesToUpdate = request.body;
-    return admin.database().ref('/country/'+countryId).patch({valuesToUpdate}).then((snapshot) => {
-        console.log("Successfully udpdated country with ref ---" +snapshot.ref);
+    return admin.database().ref('/country/'+countryId).update(valuesToUpdate).then((snapshot) => {
         const responseBody = {
-            "key": snapshot.key,
-            "ref": snapshot.ref
+            "status" : "success"
         };
         return response.json(responseBody);
     });
