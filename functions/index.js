@@ -44,18 +44,25 @@ ui.get('/admin', (request, response) => {
 api.use(bodyParser.urlencoded({ extended: false }));
 api.use(bodyParser.json());
 
-// api.get('/api/v1/country/:id', (request, response) => {
-//     const countryName = request.body.country_name;
-//     return admin.database().ref('/country').push({country_name: countryName}).then((snapshot) => {
-//         return response.redirect(303, snapshot.ref.toString());
-//     });
-// });
+//get country by ID
+
+api.get('/api/v1/country/:country_id', (request, response) => {
+    const countryId = request.params.country_id;
+    return admin.database().ref('/country/'+countryId).once("value", function(data) {
+        console.log("Returning country with given ID" + data);
+        return response.json(data);
+    }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
+});
+
+//get all countries and return list
 
 api.post('/api/v1/country', (request, response) => {
-    console.log("posting country with data ---" +request)
+    console.log("posting country with data ---" +request);
     const countryName = request.body.country_name;
     return admin.database().ref('/country').push({country_name: countryName}).then((snapshot) => {
-        console.log("Successfully posted country with ref ---" +snapshot.ref)
+        console.log("Successfully posted country with ref ---" +snapshot.ref);
         const responseBody = {
             "key": snapshot.key,
             "ref": snapshot.ref
@@ -63,6 +70,9 @@ api.post('/api/v1/country', (request, response) => {
         return response.json(responseBody);
     });
 });
+
+//update country
+//delete country
 
 exports.ui = functions.https.onRequest(ui);
 exports.api = functions.https.onRequest(api);
