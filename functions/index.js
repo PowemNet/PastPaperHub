@@ -44,20 +44,42 @@ ui.get('/admin', (request, response) => {
 api.use(bodyParser.urlencoded({ extended: false }));
 api.use(bodyParser.json());
 
-//get country by ID
-
-api.get('/api/v1/country/:country_id', (request, response) => {
-    const countryId = request.params.country_id;
-    return admin.database().ref('/country/'+countryId).once("value", function(data) {
-        console.log("Returning country with given ID" + data);
-        return response.json(data);
+//get all countries and return list
+api.get('/api/v1/country', (request, response) => {
+    var countries = [];
+    return admin.database().ref('/country').once("value", function(data) {
+        data.forEach(function(childData) {
+            const responseBody = {
+                "key": childData.key,
+                "data": childData.val()
+            };
+            countries.push(responseBody)
+        });
+        return response.json(countries);
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
 });
 
-//get all countries and return list
+//get country by ID
+api.get('/api/v1/country/:country_id', (request, response) => {
+    const countryId = request.params.country_id;
+    return admin.database().ref('/country/'+countryId).once("value", function(data) {
+        console.log("Returning country with given ID" + data);
+        const responseBody = {
+            "key": data.key,
+            "data": data.val()
+        };
+        return response.json(responseBody);
+    }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
+});
 
+//get country according to pagination value provided
+
+
+//create country
 api.post('/api/v1/country', (request, response) => {
     console.log("posting country with data ---" +request);
     const countryName = request.body.country_name;
@@ -72,6 +94,7 @@ api.post('/api/v1/country', (request, response) => {
 });
 
 //update country
+
 //delete country
 
 exports.ui = functions.https.onRequest(ui);
