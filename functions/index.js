@@ -137,7 +137,6 @@ api.get('/api/v1/country', (request, response) => {
     findAll(request, response, '/country')
 });
 
-
 //get a certain number of countries
 api.get('/api/v1/country/', (request, response) => {
     findToALimit(request, response, '/country', request.params.limit)
