@@ -1,35 +1,57 @@
 const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+admin.initializeApp();
+const cors = require('cors')({origin: true});
 const express = require('express');
 const engines = require('consolidate');
+const ui = express();
+const api = express();
 
-const app = express();
-app.engine('hbs', engines.handlebars);
-app.set('views', './public');
-app.set('view engine', 'hbs');
-app.use(express.static(__dirname + '/public'));
+var bodyParser = require("body-parser");
 
-app.get('/', (request, response) => {
+// --- UI Rendering ----
+ui.engine('hbs', engines.handlebars);
+ui.set('views', './public');
+ui.set('view engine', 'hbs');
+ui.use(express.static(__dirname + '/public'));
+
+
+ui.get('/', (request, response) => {
      response.render('home');
     });
 
-app.get('/login', (request, response) => {
+ui.get('/login', (request, response) => {
     response.render('login');
 });
 
-app.get('/profile', (request, response) => {
+ui.get('/profile', (request, response) => {
     response.render('profile');
 });
 
-app.get('/questions', (request, response) => {
+ui.get('/questions', (request, response) => {
     response.render('questions');
 });
 
-app.get('/question', (request, response) => {
+ui.get('/question', (request, response) => {
     response.render('question');
 });
 
-app.get('/admin', (request, response) => {
+ui.get('/admin', (request, response) => {
     response.render('admin');
 });
 
-exports.app = functions.https.onRequest(app);
+// --- API ----
+api.use(bodyParser.urlencoded({ extended: false }));
+api.use(bodyParser.json());
+
+api.post('/api/v1/country', (request, response) => {
+    const countryName = request.body.country_name;
+    return admin.database().ref('/country').push({country_name: countryName}).then((snapshot) => {
+        return response.redirect(303, snapshot.ref.toString());
+    });
+});
+
+exports.ui = functions.https.onRequest(ui);
+exports.api = functions.https.onRequest(api);
+
+

@@ -16,8 +16,12 @@
     ],
     "rewrites": [
       {
-        "source": "**",
-        "function": "app"
+        "source": "!/api/**",
+        "function": "ui"
+      },
+      {
+        "source": "/api/**",
+        "function": "api"
       }
     ]
   },
