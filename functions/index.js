@@ -61,6 +61,24 @@ api.get('/api/v1/country', (request, response) => {
     });
 });
 
+//get a certain number of countries
+api.get('/api/v1/country/', (request, response) => {
+    const limit = request.params.limit;
+    var countries = [];
+    return admin.database().ref('/country').limitToFirst(limit).once("value", function(data) {
+        data.forEach(function(childData) {
+            const responseBody = {
+                "key": childData.key,
+                "data": childData.val()
+            };
+            countries.push(responseBody)
+        });
+        return response.json(countries);
+    }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
+});
+
 //get country by ID
 api.get('/api/v1/country/:country_id', (request, response) => {
     const countryId = request.params.country_id;
@@ -76,9 +94,6 @@ api.get('/api/v1/country/:country_id', (request, response) => {
     });
 });
 
-//get country according to pagination value provided
-
-
 //create country
 api.post('/api/v1/country', (request, response) => {
     console.log("posting country with data ---" +request);
@@ -93,9 +108,31 @@ api.post('/api/v1/country', (request, response) => {
     });
 });
 
-//update country
+//patch country
+api.patch('/api/v1/country/:country_id', (request, response) => {
+    console.log("updating country with data ---" +request);
+    const countryId = request.params.country_id;
+    const valuesToUpdate = request.body;
+    return admin.database().ref('/country/'+countryId).patch({valuesToUpdate}).then((snapshot) => {
+        console.log("Successfully udpdated country with ref ---" +snapshot.ref);
+        const responseBody = {
+            "key": snapshot.key,
+            "ref": snapshot.ref
+        };
+        return response.json(responseBody);
+    });
+});
 
 //delete country
+api.delete('/api/v1/country/:country_id', (request, response) => {
+    const countryId = request.params.country_id;
+    return admin.database().ref('/country/'+countryId).remove().then(() => {
+        const responseBody = {
+            "status": "OK"
+        };
+        return response.json(responseBody);
+    });
+});
 
 exports.ui = functions.https.onRequest(ui);
 exports.api = functions.https.onRequest(api);
