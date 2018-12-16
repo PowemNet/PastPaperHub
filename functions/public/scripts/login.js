@@ -63,17 +63,14 @@ Login.prototype.signInWithFacebook = function () {
 Login.prototype.checkIfUserExistsInDb = function () {
   console.log("checkIfUserExistsInDb");
   return new Promise((resolve, reject) => {
-    dbRef.child('users').child(user.uid).once('value', function (snapshot) {
-      userExists = (snapshot.val() !== null);
-      console.log("EXISTS???  " + userExists);
-
-        httpGet(`http://localhost:5005/api/v1/user/check-exists/`+user.uid)
-            .then(data => console.log("---------"+JSON.stringify(data)))
-            .catch(error => console.error(error));
-        // debugger
+      fetch(`http://localhost:5005/api/v1/user/check-exists/`+user.uid)
+          .then(data => data.json())
+          .then(res => {
+              userExists = res.exists
+          })
+          .catch(error => console.error(error))
 
       resolve();
-    });
   })
 };
 
