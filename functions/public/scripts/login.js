@@ -63,7 +63,7 @@ Login.prototype.signInWithFacebook = function () {
 Login.prototype.checkIfUserExistsInDb = function () {
   console.log("checkIfUserExistsInDb");
   return new Promise((resolve, reject) => {
-      fetch(`http://localhost:5005/api/v1/user/check-exists/`+user.uid)
+      fetch(BASE_URL + `/api/v1/user/check-exists/` + user.uid)
           .then(data => data.json())
           .then(res => {
               userExists = res.exists
