@@ -58,7 +58,7 @@ function findAll(request, response, path){
         });
         return response.json(objectList);
     }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
+        console.log("Read failed: " + errorObject.code);
     });
 }
 
@@ -74,13 +74,13 @@ function findToALimit(request, response, path, limit){
         });
         return response.json(objectList);
     }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
+        console.log("Read failed: " + errorObject.code);
     });
 }
 
 function findById(request, response, path) {
     return admin.database().ref(path).once("value", function(data) {
-        console.log("Returning country with given ID" + data);
+        console.log("Returning item with given ID" + data);
         const responseBody = {
             "key": data.key,
             "data": data.val()
@@ -91,10 +91,21 @@ function findById(request, response, path) {
     });
 }
 
+function checkExists(request, response, path, secondaryPath) {
+    return admin.database().ref().child(path).child(secondaryPath).once('value', function (data) {
+        const responseBody = {
+            "exists": (data.val() !== null),
+        };
+        return response.json(responseBody);
+    }, function (errorObject) {
+        console.log("Failed to check if user exists: " + errorObject.code);
+    });
+}
+
 function save(request, response, path, body) {
     console.log("posting with data ---" +request);
     return admin.database().ref(path).push(body).then((snapshot) => {
-        console.log("Successfully posted country with ref ---" +snapshot.ref);
+        console.log("Successfully posted item with ref ---" +snapshot.ref);
         const responseBody = {
             "key": snapshot.key,
             "ref": snapshot.ref
@@ -102,14 +113,6 @@ function save(request, response, path, body) {
         return response.json(responseBody);
     });
 
-    // return admin.database().ref('/country').push({country_name: countryName}).then((snapshot) => {
-    //     console.log("Successfully posted country with ref ---" +snapshot.ref);
-    //     const responseBody = {
-    //         "key": snapshot.key,
-    //         "ref": snapshot.ref
-    //     };
-    //     return response.json(responseBody);
-    // });
 }
 
 function update(request, response, path, body) {
@@ -122,7 +125,7 @@ function update(request, response, path, body) {
     });
 }
 
-function deleteAPi(request, response, path) {
+function deleteById(request, response, path) {
     return admin.database().ref(path).remove().then(() => {
         const responseBody = {
             "status": "OK"
@@ -147,8 +150,13 @@ api.get('/api/v1/country/:country_id', (request, response) => {
     findById(request, response, '/country/'+request.params.country_id)
 });
 
-//create country
+/**
+    Create a new county in the country table
+    @param JSON body with the following params:
+    country_name
+ */
 api.post('/api/v1/country', (request, response) => {
+    // const country = new Country(request.body);
     save(request, response, '/country',request.body)
 
 });
@@ -161,7 +169,46 @@ api.patch('/api/v1/country/:country_id', (request, response) => {
 
 //delete country
 api.delete('/api/v1/country/:country_id', (request, response) => {
-    deleteAPi(request, response,'/country/'+request.params.country_id)
+    deleteById(request, response,'/country/'+request.params.country_id)
+});
+
+// --- USER TABLE ----
+
+//get all users and return list
+api.get('/api/v1/user', (request, response) => {
+    findAll(request, response, '/country')
+});
+
+//get a certain number of users
+api.get('/api/v1/user/', (request, response) => {
+    findToALimit(request, response, '/user', request.params.limit)
+});
+
+//get user by ID
+api.get('/api/v1/user/:user_id', (request, response) => {
+    findById(request, response, '/user/'+request.params.user_id)
+});
+
+//get user by ID
+api.get('/api/v1/user/check-exists/:user_id', (request, response) => {
+    checkExists(request, response, 'users', request.params.user_id)
+});
+
+//create user
+api.post('/api/v1/user', (request, response) => {
+    save(request, response, '/user',request.body)
+
+});
+
+//update user
+api.patch('/api/v1/user/:user_id', (request, response) => {
+    update(request, response,'/user/'+request.params.user_id, request.body)
+
+});
+
+//delete user
+api.delete('/api/v1/user/:user_id', (request, response) => {
+    deleteById(request, response,'/user/'+request.params.user_id)
 });
 
 exports.api = functions.https.onRequest(api);

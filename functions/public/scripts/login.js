@@ -52,7 +52,7 @@ Login.prototype.signInWithFacebook = function () {
       else{
         throw new Error("error logging in" );
       }
-      
+
     }).catch(function (error) {
       var errorMessage = error.message;
       console.log("error logging in: " + errorMessage);
@@ -66,10 +66,17 @@ Login.prototype.checkIfUserExistsInDb = function () {
     dbRef.child('users').child(user.uid).once('value', function (snapshot) {
       userExists = (snapshot.val() !== null);
       console.log("EXISTS???  " + userExists);
+
+        httpGet(`http://localhost:5005/api/v1/user/check-exists/`+user.uid)
+            .then(data => console.log("---------"+JSON.stringify(data)))
+            .catch(error => console.error(error));
+        // debugger
+
       resolve();
     });
   })
 };
+
 
 Login.prototype.getUniversity = function () {
   var self = this;

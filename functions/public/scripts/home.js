@@ -98,7 +98,7 @@ PastPaperHub.prototype.authStateObserver = function(user) {
 PastPaperHub.prototype.checkSignedInWithMessage = function() {
   // Return true if the user is signed in Firebase
   if (this.isUserSignedIn()) {
-    return true;
+    return true;  //todo check if user is actually signed in
   }
 
   // Display a message to the user using a Toast.

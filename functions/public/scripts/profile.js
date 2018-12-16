@@ -74,7 +74,6 @@ const dbRef = firebase.database().ref();
 
 Profile.prototype.saveProfile = function (year, course, university) {
   var self = this;
-  console.log ("user.id0-------"+ user.uid);
   return this.database.ref('/users/'+user.uid).update({
     year: year,
     course: course,
