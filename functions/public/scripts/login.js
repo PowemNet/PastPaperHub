@@ -63,12 +63,16 @@ Login.prototype.signInWithFacebook = function () {
 Login.prototype.checkIfUserExistsInDb = function () {
   console.log("checkIfUserExistsInDb");
   return new Promise((resolve, reject) => {
-      fetch(BASE_URL + `/api/v1/user/check-exists/` + user.uid)
-          .then(data => data.json())
-          .then(res => {
-              userExists = res.exists
-          })
-          .catch(error => console.error(error))
+
+      httpGet(`/api/v1/user/check-exists/` + user.uid).then(res => {
+          userExists = res.exists
+          console.log("-------------yyyyyy"+userExists)
+      }).catch(error => console.error(error))
+
+      // httpPost(`/api/v1/user/check-exists/` + user.uid).then(res => {
+      //     userExists = res.exists
+      //     console.log("-------------yyyyyy"+userExists)
+      // }).catch(error => console.error(error))
 
       resolve();
   })
