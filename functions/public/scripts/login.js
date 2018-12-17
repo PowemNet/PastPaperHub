@@ -65,8 +65,9 @@ Login.prototype.checkIfUserExistsInDb = function () {
 
       httpGet(`/api/v1/user/check-exists/` + user.uid).then(res => {
           userExists = res.exists
+          console.log("----------checkIfUserExistsInDb" + userExists)
+          resolve();
       }).catch(error => console.error(error))
-      resolve();
   })
 };
 
