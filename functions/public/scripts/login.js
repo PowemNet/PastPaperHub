@@ -8,7 +8,6 @@ function Login() {
 
 var user;
 var university = "";
-var userProfileIsSet = false;
 const dbRef = firebase.database().ref();
 
 Login.prototype.initFirebase = function () {
@@ -24,12 +23,12 @@ var userExists;
 
 Login.prototype.signIn = async function () {
   var self = this;
-  await this.signInWithFacebook();
-  await this.checkIfUserExistsInDb();
+    await this.signInWithFacebook();
+    await this.checkIfUserExistsInDb();
   if (!userExists) {
     console.log("Adding user--");
     this.addUserToUsersDb(user);
-    this.checkForProfile();
+      this.checkForProfile();
   } else {
     console.log("NOT Adding user--");
     this.checkForProfile();
@@ -42,7 +41,7 @@ Login.prototype.signInWithFacebook = function () {
     console.log("signInWithFacebook");
     var provider = new firebase.auth.FacebookAuthProvider();
     this.auth.signInWithPopup(provider).then(function (result) {
-      if (result){
+      if (result) {
         var token = result.credential.accessToken;
         user = result.user;
         console.log("created user object");
@@ -66,14 +65,7 @@ Login.prototype.checkIfUserExistsInDb = function () {
 
       httpGet(`/api/v1/user/check-exists/` + user.uid).then(res => {
           userExists = res.exists
-          console.log("-------------yyyyyy"+userExists)
       }).catch(error => console.error(error))
-
-      // httpPost(`/api/v1/user/check-exists/` + user.uid).then(res => {
-      //     userExists = res.exists
-      //     console.log("-------------yyyyyy"+userExists)
-      // }).catch(error => console.error(error))
-
       resolve();
   })
 };
@@ -88,9 +80,15 @@ Login.prototype.getUniversity = function () {
 }
 
 Login.prototype.checkForProfile = async function () {
-  await this.getUniversityFromDb();
-  this.setUserProfileBoolean();
-  if (userProfileIsSet) {
+
+  var userProfileSet
+    //get user by ID then check their profile_set flag
+    httpGet(`/api/v1/user/` + user.uid).then(res => {
+        user = JSON.parse(JSON.stringify(res))
+        userProfileSet = user["data"]["profile_set"] //todo continue from here also check why Adding user-- is always executed
+
+    }).catch(error => console.error(error))
+  if (userProfileSet) {
     this.launchHomeScreen();
   } else {
     this.launchProfileScreen();
@@ -99,7 +97,7 @@ Login.prototype.checkForProfile = async function () {
 
 Login.prototype.getUniversityFromDb = function () {
   console.log("getUniversityFromDb");
-  return firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
+  return firebase.database().ref('/user/' + user.uid).once('value').then(function (snapshot) {
     if(snapshot){
       university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
       console.log(university);
@@ -111,12 +109,6 @@ Login.prototype.getUniversityFromDb = function () {
   });
 };
 
-Login.prototype.setUserProfileBoolean = function () {
-  console.log("setUserProfileBoolean");
-  if (university !== "NOT_SET") {
-    userProfileIsSet = true;
-  }
-};
 
 Login.prototype.launchHomeScreen = function () {
   window.location.href = "/";
@@ -126,13 +118,11 @@ Login.prototype.launchProfileScreen = function () {
   window.location.href = "/profile";
 };
 
-Login.prototype.addUserToUsersDb = function (user) {
-  return this.database.ref('users/' + user.uid).set({
+Login.prototype.addUserToUsersDb = function (user) { //todo extract this and use server side API instead
+  return this.database.ref('user/' + user.uid).set({
     displayName: user.displayName,
     profilePicUrl: user.photoURL,
-    year: "NOT_SET",
-    course: "NOT_SET",
-    university: "NOT_SET"
+    profile_set: false
   }).catch(function (error) {
     console.error('Error adding new user to Firebase Database', error);
   });

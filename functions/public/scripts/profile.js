@@ -110,7 +110,7 @@ Profile.prototype.checkSignedIn = function() {
   // Return true if the user is signed in Firebase
 //   if (this.isUserSignedIn()) {
 //     return true;
-//   } //    TODO UNCOMMNET THIS AND IMPLEMENT IT!
+//   } //    TODO UNCOMMENT THIS AND IMPLEMENT IT!
 
     return true;
 
