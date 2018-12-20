@@ -4,12 +4,24 @@ function Profile() {
   this.yearInput = document.getElementById('year');
   this.courseInput = document.getElementById('course');
   this.universityInput = document.getElementById('university');
-  this.signInSnackbar = document.getElementById('must-signin-snackbar');
+
+  this.dropDownUniversity = document.getElementById('drop-down-university');
+  this.dropDownYear = document.getElementById('drop-down-year');
+  this.dropDownCourse = document.getElementById('drop-down-course');
+
+
+
+    this.signInSnackbar = document.getElementById('must-signin-snackbar');
 
   this.saveButton.addEventListener('click', this.onProfileFormSubmit.bind(this));
 
   this.initFirebaseAndSetUpData();
 }
+
+//profile card
+
+const itemList = document.getElementById('item-list');
+const profileCardTitle = document.getElementById('profile-card-title');
 
 var user;
 var course;
@@ -27,9 +39,9 @@ Profile.prototype.authStateObserver = async function (userObject) {
     user = userObject; //set user global object
     console.log(user);
     await this.fetchUserMetadata();
-    await this.initUI();
-    // this.saveMessagingDeviceToken();
-  } else { 
+    await this.initDropDownMenu();
+    await setUpProfileCard("country");  //set up profile card with country first
+  } else {
     this.showLoginScreen();
   }
 };
@@ -38,9 +50,9 @@ Profile.prototype.fetchUserMetadata = function () {
   return new Promise((resolve, reject) => {
     firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
       if(snapshot){
-        course = (snapshot.val() && snapshot.val().course) || 'NOT_SET';
-        university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
-        year = (snapshot.val() && snapshot.val().year) || 'NOT_SET';
+        course = (snapshot.val() && snapshot.val().course);
+        university = (snapshot.val() && snapshot.val().university);
+        year = (snapshot.val() && snapshot.val().year);
         resolve();
         return snapshot;
       }
@@ -54,15 +66,45 @@ Profile.prototype.fetchUserMetadata = function () {
   });
 };
 
-Profile.prototype.initUI = function () {
+Profile.prototype.initDropDownMenu = function () {
   return new Promise((resolve, reject) => {
-    this.selectElement("course", course);
-    this.selectElement("university", university);
-    this.selectElement("year", year);
+
+    if (university!== null){
+        this.dropDownUniversity.textContent = university
+    }
+    if (year!== null){
+          this.dropDownYear.textContent = year
+    }
+    if (course!== null){
+          this.dropDownCourse.textContent = course
+    }
+
     resolve();
   });
 
 };
+
+/**
+ * Set up..
+ *
+ */
+
+function setUpProfileCard(item) {
+  //todo use when clause here
+    if(item === "country"){
+        profileCardTitle.textContent = "In which country are you studying?"
+        var countryList
+        httpGet(`/api/v1/country`).then(res => {
+            countryList = JSON.parse(JSON.stringify(res))
+            countryList.forEach(function(element) {
+                console.log(element);
+            });
+            // userProfileSet = user["data"]["profile_set"] //todo continue from here also check why Adding user-- is always executed
+
+            return countryList
+        }).catch(error => console.error(error))
+    }
+}
 
 Profile.prototype.selectElement = function (id, valueToSelect)
 {    

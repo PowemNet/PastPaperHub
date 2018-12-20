@@ -87,7 +87,7 @@ Login.prototype.checkForProfile = async function () {
     httpGet(`/api/v1/user/` + user.uid).then(res => {
         user = JSON.parse(JSON.stringify(res))
         userProfileSet = user["data"]["profile_set"] //todo continue from here also check why Adding user-- is always executed
-
+        return userProfileSet
     }).catch(error => console.error(error))
   if (userProfileSet) {
     this.launchHomeScreen();

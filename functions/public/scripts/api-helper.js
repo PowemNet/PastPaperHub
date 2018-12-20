@@ -1,5 +1,11 @@
 function httpGet (url) {
-    return fetch(BASE_URL + url)
+    return fetch(BASE_URL + url, {
+        // mode: "no-cors", // todo remove this for caching and faster perfomance
+        cache: "no-cache", // todo enable cache
+        headers: {
+            "Access-Control-Allow-Origin": "*", //todo remove this and deal with cors on the  server itself
+        },
+    })
         .then(response => response.json())
 }
 
