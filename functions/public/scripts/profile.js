@@ -20,8 +20,8 @@ function Profile() {
 
 //profile card
 
-const itemList = document.getElementById('item-list');
 const profileCardTitle = document.getElementById('profile-card-title');
+const profileSelectItem = document.getElementById('profile-select-item');
 
 var user;
 var course;
@@ -89,20 +89,31 @@ Profile.prototype.initDropDownMenu = function () {
  *
  */
 
-function setUpProfileCard(item) {
+async function  setUpProfileCard(item) {
   //todo use when clause here
     if(item === "country"){
         profileCardTitle.textContent = "In which country are you studying?"
         var countryList
-        httpGet(`/api/v1/country`).then(res => {
+        var countryNameList = []
+
+        await httpGet(`/api/v1/country`).then(res => {
             countryList = JSON.parse(JSON.stringify(res))
             countryList.forEach(function(element) {
-                console.log(element);
+                countryNameList.push(element["data"]["country_name"])
             });
-            // userProfileSet = user["data"]["profile_set"] //todo continue from here also check why Adding user-- is always executed
 
-            return countryList
+            console.log(countryNameList)
+            return countryNameList
         }).catch(error => console.error(error))
+
+        console.log(countryNameList)
+        countryNameList.forEach(function(element) {
+            var option = document.createElement("option");
+            option.textContent = element;
+            option.value = element;
+            profileSelectItem.appendChild(option);
+        });
+
     }
 }
 

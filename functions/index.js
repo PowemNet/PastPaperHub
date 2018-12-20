@@ -1,7 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
-const cors = require('cors')({origin: false});
+var cors = require('cors')
 const express = require('express');
 const engines = require('consolidate');
 const ui = express();
@@ -45,7 +45,11 @@ exports.ui = functions.https.onRequest(ui);
 // --- API ----
 api.use(bodyParser.urlencoded({ extended: false }));
 api.use(bodyParser.json());
-api.use(cors);
+// var corsOptions = {
+//     origin: 'http://localhost:5010',
+//     optionsSuccessStatus: 200
+// }
+// api.use(cors);
 
 function findAll(request, response, path){
     var objectList = [];
