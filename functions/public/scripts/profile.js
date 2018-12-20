@@ -1,6 +1,5 @@
 'use strict';
 function Profile() {
-  this.saveButton = document.getElementById('save-profile');
   this.yearInput = document.getElementById('year');
   this.courseInput = document.getElementById('course');
   this.universityInput = document.getElementById('university');
@@ -11,17 +10,22 @@ function Profile() {
 
 
 
-    this.signInSnackbar = document.getElementById('must-signin-snackbar');
-
-  this.saveButton.addEventListener('click', this.onProfileFormSubmit.bind(this));
+  this.signInSnackbar = document.getElementById('must-signin-snackbar');
 
   this.initFirebaseAndSetUpData();
 }
 
-//profile card
-
+//init UI
 const profileCardTitle = document.getElementById('profile-card-title');
-const profileSelectItem = document.getElementById('profile-select-item');
+const profileCardSelectItem = document.getElementById('profile-select-item');
+const profileCardPleaseWaitText = document.getElementById('please-wait-text');
+const profileCardNextButon = document.getElementById('profile-card-next');
+
+//set on click listeners
+profileCardNextButon.addEventListener('click', onNextButtonClicked.bind(this))
+
+var currentCard = ""
+var itemSelectedJsonBody
 
 var user;
 var course;
@@ -40,7 +44,7 @@ Profile.prototype.authStateObserver = async function (userObject) {
     console.log(user);
     await this.fetchUserMetadata();
     await this.initDropDownMenu();
-    await setUpProfileCard("country");  //set up profile card with country first
+    await setUpProfileCard();
   } else {
     this.showLoginScreen();
   }
@@ -89,33 +93,47 @@ Profile.prototype.initDropDownMenu = function () {
  *
  */
 
-async function  setUpProfileCard(item) {
+function  setUpProfileCard() {
   //todo use when clause here
-    if(item === "country"){
-        profileCardTitle.textContent = "In which country are you studying?"
-        var countryList
-        var countryNameList = []
 
-        await httpGet(`/api/v1/country`).then(res => {
-            countryList = JSON.parse(JSON.stringify(res))
-            countryList.forEach(function(element) {
-                countryNameList.push(element["data"]["country_name"])
-            });
-
-            console.log(countryNameList)
-            return countryNameList
-        }).catch(error => console.error(error))
-
-        console.log(countryNameList)
-        countryNameList.forEach(function(element) {
-            var option = document.createElement("option");
-            option.textContent = element;
-            option.value = element;
-            profileSelectItem.appendChild(option);
-        });
-
+    if(currentCard === ""){
+      showCountryCard()
+    }
+    else if(currentCard === "country") {
+        showUniverstiyCard()
     }
 }
+
+async function showCountryCard() {
+    profileCardTitle.textContent = "In which country are you studying?"
+    var countryList
+    var countryNameList = []
+
+    await httpGet(`/api/v1/country`).then(res => {
+        countryList = JSON.parse(JSON.stringify(res))
+        countryList.forEach(function(element) {
+            countryNameList.push(element["data"]["country_name"])
+        });
+
+        console.log(countryNameList)
+        return countryNameList
+    }).catch(error => console.error(error))
+
+    console.log(countryNameList)
+    countryNameList.forEach(function(element) {
+        var option = document.createElement("option");
+        option.textContent = element;
+        option.value = element;
+        profileCardSelectItem.appendChild(option);
+    });
+    profileCardPleaseWaitText.textContent = "Select from list:"
+
+    currentCard = "country"
+
+    //todo add onclick listener for next button, set current card var, then call setUpProfileCard function again
+
+}
+
 
 Profile.prototype.selectElement = function (id, valueToSelect)
 {    
@@ -125,41 +143,51 @@ Profile.prototype.selectElement = function (id, valueToSelect)
 
 const dbRef = firebase.database().ref();
 
-Profile.prototype.saveProfile = function (year, course, university) {
-  var self = this;
-  return this.database.ref('/users/'+user.uid).update({
-    year: year,
-    course: course,
-    university: university
-  }, function (error) {
-    if (error) {
-      console.log("failed to update");
-    } else {
-      var data = {
-        message: 'Profile saved!',
-        timeout: 2000
-      };
-      //self.signInSnackbar.MaterialSnackbar.showSnackbar(data);
-      window.history.back();
-    }
-  });
-};
+function updateUserProfile() {
+  if (userHasSelectedItem()){
+      console.log ("generateJsonForItemSelected----" + generateJsonForItemSelected())
+  } else {
+    alert("Please select an option")
+  }
+  // var self = this;
+  // return this.database.ref('/users/'+user.uid).update({
+  //   year: year,
+  //   course: course,
+  //   university: university
+  // }, function (error) {
+  //   if (error) {
+  //     console.log("failed to update");
+  //   } else {
+  //     var data = {
+  //       message: 'Profile saved!',
+  //       timeout: 2000
+  //     };
+  //     //self.signInSnackbar.MaterialSnackbar.showSnackbar(data);
+  //     window.history.back();
+  //   }
+  // });
+}
 
-Profile.prototype.onProfileFormSubmit = function(e) {
-  e.preventDefault();
-  if (this.checkSignedIn()) {
-    this.saveProfile(
-        this.yearInput.value, 
-        this.courseInput.value, 
-        this.universityInput.value).then(function() {
-    }.bind(this)).catch(function(error) {
-      console.error('Error: ', error);
-    });
+function userHasSelectedItem (){
+  return profileCardSelectItem.value !== ""
+}
+
+function generateJsonForItemSelected(){
+    var key = currentCard
+    var obj = {};
+    obj[key] = profileCardSelectItem.value;
+  return JSON.stringify(obj);
+}
+
+function onNextButtonClicked() {
+  // e.preventDefault();
+  if (checkSignedIn()) {
+    updateUserProfile()
   }
 };
 
 // Returns true if user is signed-in. Otherwise false and displays a message.
-Profile.prototype.checkSignedIn = function() {
+function checkSignedIn() {
   // Return true if the user is signed in Firebase
 //   if (this.isUserSignedIn()) {
 //     return true;
