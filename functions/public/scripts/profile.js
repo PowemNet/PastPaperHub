@@ -143,29 +143,17 @@ Profile.prototype.selectElement = function (id, valueToSelect)
 
 const dbRef = firebase.database().ref();
 
-function updateUserProfile() {
+async function updateUserProfile() {
   if (userHasSelectedItem()){
-      console.log ("generateJsonForItemSelected----" + generateJsonForItemSelected())
+      // await httpPatch(`/api/v1/user/${user.uid}`, generateJsonForItemSelected()).then(res => {
+          await httpPatch(`/api/v1/user/` + user.uid, generateJsonForItemSelected()).then(res => {
+          user = JSON.parse(JSON.stringify(res))
+          console.log("updated User: " + user)
+          return user
+      }).catch(error => console.error(error))
   } else {
     alert("Please select an option")
   }
-  // var self = this;
-  // return this.database.ref('/users/'+user.uid).update({
-  //   year: year,
-  //   course: course,
-  //   university: university
-  // }, function (error) {
-  //   if (error) {
-  //     console.log("failed to update");
-  //   } else {
-  //     var data = {
-  //       message: 'Profile saved!',
-  //       timeout: 2000
-  //     };
-  //     //self.signInSnackbar.MaterialSnackbar.showSnackbar(data);
-  //     window.history.back();
-  //   }
-  // });
 }
 
 function userHasSelectedItem (){
