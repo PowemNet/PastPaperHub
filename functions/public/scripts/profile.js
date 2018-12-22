@@ -28,9 +28,16 @@ var currentCard = ""
 var itemSelectedJsonBody
 
 var user;
+var country = new Country();
 var course;
 var university;
 var year;
+
+//constants
+const COUNTRY = "country"
+const UNIVERSITY = "university"
+const YEAR = "year"
+const COURSE = "course"
 
 Profile.prototype.initFirebaseAndSetUpData = function() {
   this.auth = firebase.auth();
@@ -46,7 +53,7 @@ Profile.prototype.authStateObserver = async function (userObject) {
     await this.initDropDownMenu();
     await setUpProfileCard();
   } else {
-    this.showLoginScreen();
+    this.showLoginScreen();  //todo seriously set this!
   }
 };
 
@@ -104,60 +111,82 @@ function  setUpProfileCard() {
     }
 }
 
+var countryList
+var countryNameList = []
+var countryIdList = []
 async function showCountryCard() {
     profileCardTitle.textContent = "In which country are you studying?"
-    var countryList
-    var countryNameList = []
 
     await httpGet(`/api/v1/country`).then(res => {
         countryList = JSON.parse(JSON.stringify(res))
         countryList.forEach(function(element) {
             countryNameList.push(element["data"]["country_name"])
+            countryIdList.push(element["key"])
         });
 
         console.log(countryNameList)
         return countryNameList
     }).catch(error => console.error(error))
 
-    console.log(countryNameList)
-    countryNameList.forEach(function(element) {
-        var option = document.createElement("option");
-        option.textContent = element;
-        option.value = element;
-        profileCardSelectItem.appendChild(option);
-    });
+        var i;
+        for (i = 0; i < countryNameList.length; i++) {
+            var option = document.createElement("option");
+            option.textContent = countryNameList[i];
+            option.value = countryIdList[i];
+            profileCardSelectItem.appendChild(option);
+        }
     profileCardPleaseWaitText.textContent = "Select from list:"
 
     currentCard = "country"
 
 }
 
+
+function generateJsonForItemSelected(){
+    var key = currentCard
+    var obj = {};
+    var itemSelectedText = profileCardSelectItem.options[profileCardSelectItem.selectedIndex].text
+    var itemSelectedValue = profileCardSelectItem.value
+
+    updateLocalVariableForType (itemSelectedValue, itemSelectedText)
+    obj[key] = itemSelectedText;
+    return JSON.stringify(obj);
+}
+
+var universityList
+var universityNameList = []
+var universityIdList = []
 async function showUniversityCard() {
     profileCardTitle.textContent = "Which university do you go to?"
-    var universityList
-    var universityNameList = []
 
-    await httpGet(`/api/v1/university`).then(res => {
+    await httpGet(`/api/v1/university/country/` + country.id).then(res => {
         universityList = JSON.parse(JSON.stringify(res))
-        universityList.forEach(function(element) {
-            universityNameList.push(element["data"]["university_name"])
-        });
 
-        console.log(countryNameList)
-        return countryNameList
+        var i
+        for (i = 0; i < universityList.length; i++) {
+            universityNameList[i] = universityList["data"]["country_name"]
+            universityIdList[i] = universityList["key"]
+        }
+        return universityNameList
     }).catch(error => console.error(error))
 
-    console.log(countryNameList)
-    countryNameList.forEach(function(element) {
+    var i;
+    for (i = 0; i < countryNameList.length; i++) {
         var option = document.createElement("option");
-        option.textContent = element;
-        option.value = element;
+
+        option.textContent = universityNameList[i];
+        option.value = universityIdList[i];
         profileCardSelectItem.appendChild(option);
-    });
-    profileCardPleaseWaitText.textContent = "Select from list:"
+    }
+
+    updatePleaseWaitText("Select from list:")
 
     currentCard = "university"
 
+}
+
+function updatePleaseWaitText(text){
+    profileCardPleaseWaitText.textContent = text
 }
 
 
@@ -170,7 +199,8 @@ Profile.prototype.selectElement = function (id, valueToSelect)
 const dbRef = firebase.database().ref();
 
 async function updateUserProfile() {
-  if (userHasSelectedItem()){
+
+    if (userHasSelectedItem()){
       await httpPatch(`/api/v1/user/` + user.uid, generateJsonForItemSelected()).then(res => {
           user = JSON.parse(JSON.stringify(res))
           console.log("updated User: " + user)
@@ -182,23 +212,24 @@ async function updateUserProfile() {
   }
 }
 
-function userHasSelectedItem (){
+function userHasSelectedItem(){
   return profileCardSelectItem.value !== ""
 }
 
-function generateJsonForItemSelected(){
-    var key = currentCard
-    var obj = {};
-    obj[key] = profileCardSelectItem.value;
-  return JSON.stringify(obj);
+function updateLocalVariableForType(value, itemSelectedText) {
+    if (currentCard === COUNTRY) {
+        country.id = value
+        country.name = itemSelectedText
+    }
 }
 
 function onNextButtonClicked() {
   // e.preventDefault();
   if (checkSignedIn()) {
+     updatePleaseWaitText("Please Wait...")
     updateUserProfile()
   }
-};
+}
 
 // Returns true if user is signed-in. Otherwise false and displays a message.
 function checkSignedIn() {

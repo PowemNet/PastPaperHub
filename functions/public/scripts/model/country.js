@@ -1,11 +1,12 @@
 class Country {
-    constructor(countryId, countryName) {
-
-        if (checkIfCountryNameIsValid(countryName)) {
-            this._countryName = countryName;
-        } else {
-            throw new Exception("Invalid country");
-        }
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+        // if (checkIfCountryNameIsValid(name)) {  //todo add this back
+        //
+        // } else {
+        //     throw new Exception("Invalid country");
+        // }
     }
 
     getCountryName() {

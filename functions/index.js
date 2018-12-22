@@ -261,7 +261,7 @@ api.post('/api/v1/university', (request, response) => {
 
 });
 
-//return list of universities by country_id
+//return list of universities
 api.get('/api/v1/university', (request, response) => {
     findAll(request, response, '/university')
 });
