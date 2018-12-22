@@ -100,7 +100,7 @@ function  setUpProfileCard() {
       showCountryCard()
     }
     else if(currentCard === "country") {
-        showUniverstiyCard()
+        showUniversityCard()
     }
 }
 
@@ -130,7 +130,33 @@ async function showCountryCard() {
 
     currentCard = "country"
 
-    //todo add onclick listener for next button, set current card var, then call setUpProfileCard function again
+}
+
+async function showUniversityCard() {
+    profileCardTitle.textContent = "Which university do you go to?"
+    var universityList
+    var universityNameList = []
+
+    await httpGet(`/api/v1/university`).then(res => {
+        universityList = JSON.parse(JSON.stringify(res))
+        universityList.forEach(function(element) {
+            universityNameList.push(element["data"]["university_name"])
+        });
+
+        console.log(countryNameList)
+        return countryNameList
+    }).catch(error => console.error(error))
+
+    console.log(countryNameList)
+    countryNameList.forEach(function(element) {
+        var option = document.createElement("option");
+        option.textContent = element;
+        option.value = element;
+        profileCardSelectItem.appendChild(option);
+    });
+    profileCardPleaseWaitText.textContent = "Select from list:"
+
+    currentCard = "university"
 
 }
 
@@ -145,10 +171,10 @@ const dbRef = firebase.database().ref();
 
 async function updateUserProfile() {
   if (userHasSelectedItem()){
-      // await httpPatch(`/api/v1/user/${user.uid}`, generateJsonForItemSelected()).then(res => {
-          await httpPatch(`/api/v1/user/` + user.uid, generateJsonForItemSelected()).then(res => {
+      await httpPatch(`/api/v1/user/` + user.uid, generateJsonForItemSelected()).then(res => {
           user = JSON.parse(JSON.stringify(res))
           console.log("updated User: " + user)
+          setUpProfileCard()
           return user
       }).catch(error => console.error(error))
   } else {
