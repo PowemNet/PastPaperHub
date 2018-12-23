@@ -104,6 +104,7 @@ function  setUpProfileCard() {
   //todo use when clause here
 
     resetCardUI("Please Wait...")
+    console.log("resetCardUI-----")
 
     if(currentCard === ""){
       showCountryCard()
@@ -121,7 +122,6 @@ async function showCountryCard() {
 
     await httpGet(`/api/v1/country`).then(res => {
         countryList = JSON.parse(JSON.stringify(res))
-        console.log("********"  + countryList)
         countryList.forEach(function(element) {
             countryNameList.push(element["data"]["country_name"])
             countryIdList.push(element["key"])
@@ -167,6 +167,7 @@ async function showUniversityCard() {
 
         var i;
         for (i = 0; i < universityList.length; i++) {
+            console.log("length---"+ universityList.length)
             universityNameList[i] = universityList[i]["data"]["university_name"]
             universityIdList[i] = universityList[i]["key"]
         }
@@ -183,9 +184,9 @@ async function showUniversityCard() {
             profileCardSelectItem.appendChild(option);
         }
 
-        resetCardUI("Select from list:")
+    profileCardPleaseWaitText.textContent = "Select from list:"
 
-        currentCard = "university"
+    currentCard = "university"
 
 }
 
