@@ -107,10 +107,13 @@ function  setUpProfileCard() {
     console.log("resetCardUI-----")
 
     if(currentCard === ""){
-      showCountryCard()
+        showCountryCard()
     }
-    else if(currentCard === "country") {
+    else if(currentCard === COUNTRY) {
         showUniversityCard()
+    }
+    else if(currentCard === UNIVERSITY) {
+        showYearCard()
     }
 }
 
@@ -118,7 +121,7 @@ var countryList
 var countryNameList = []
 var countryIdList = []
 async function showCountryCard() {
-    profileCardTitle.textContent = "In which country are you studying?"
+    profileCardTitle.textContent = "In which Country are you studying?"
 
     await httpGet(`/api/v1/country`).then(res => {
         countryList = JSON.parse(JSON.stringify(res))
@@ -140,10 +143,9 @@ async function showCountryCard() {
         }
     profileCardPleaseWaitText.textContent = "Select from list:"
 
-    currentCard = "country"
+    currentCard = COUNTRY
 
 }
-
 
 function generateJsonForItemSelected(){
     var key = currentCard
@@ -156,18 +158,17 @@ function generateJsonForItemSelected(){
     return JSON.stringify(obj);
 }
 
-var universityList
-var universityNameList = []
-var universityIdList = []
+var universityList = [];
+var universityNameList = [];
+var universityIdList = [];
 async function showUniversityCard() {
-    profileCardTitle.textContent = "Which university do you go to?"
+    profileCardTitle.textContent = "Which University do you go to?"
 
     await httpGet(`/api/v1/university/country/` + country.id).then(res => {
         universityList = JSON.parse(JSON.stringify(res))
 
         var i;
         for (i = 0; i < universityList.length; i++) {
-            console.log("length---"+ universityList.length)
             universityNameList[i] = universityList[i]["data"]["university_name"]
             universityIdList[i] = universityList[i]["key"]
         }
@@ -176,7 +177,7 @@ async function showUniversityCard() {
          }).catch(error => console.error(error))
 
         var i;
-        for (i = 0; i < countryNameList.length; i++) {
+        for (i = 0; i < universityList.length; i++) {
             var option = document.createElement("option");
 
             option.textContent = universityNameList[i];
@@ -185,8 +186,50 @@ async function showUniversityCard() {
         }
 
     profileCardPleaseWaitText.textContent = "Select from list:"
+    currentCard = UNIVERSITY
 
-    currentCard = "university"
+}
+
+// var yearList = []
+async function showYearCard() {
+    profileCardTitle.textContent = "Which Year are you?"
+
+    var i;
+    for (i = 0; i < universityList.length; i++) {
+        if (universityList[i]["key"] === university.id){
+            console.log("FOR LOOP---"+ universityList[i]["data"]["years"])
+            break;
+        }
+    }
+
+    profileCardPleaseWaitText.textContent = "Select from list:"
+    currentCard = YEAR
+
+    // await httpGet(`/api/v1/university/country/` + country.id).then(res => {
+    //     universityList = JSON.parse(JSON.stringify(res))
+    //
+    //     var i;
+    //     for (i = 0; i < universityList.length; i++) {
+    //         console.log("length---"+ universityList.length)
+    //         universityNameList[i] = universityList[i]["data"]["university_name"]
+    //         universityIdList[i] = universityList[i]["key"]
+    //     }
+    //
+    //     return universityNameList
+    // }).catch(error => console.error(error))
+    //
+    // var i;
+    // for (i = 0; i < countryNameList.length; i++) {
+    //     var option = document.createElement("option");
+    //
+    //     option.textContent = universityNameList[i];
+    //     option.value = universityIdList[i];
+    //     profileCardSelectItem.appendChild(option);
+    // }
+    //
+    // profileCardPleaseWaitText.textContent = "Select from list:"
+    //
+    // currentCard = "university"
 
 }
 
@@ -208,8 +251,8 @@ async function updateUserProfile() {
 
     if (userHasSelectedItem()){
       await httpPatch(`/api/v1/user/` + user.uid, generateJsonForItemSelected()).then(res => {
-          user = JSON.parse(JSON.stringify(res))
-          console.log("updated User: " + user)
+          user = JSON.parse(JSON.stringify(res));
+          console.log("updated User: " + user);
           setUpProfileCard()
           return user
       }).catch(error => console.error(error))
@@ -224,12 +267,13 @@ function userHasSelectedItem(){
 
 function updateLocalVariableForType(value, itemSelectedText) {
     if (currentCard === COUNTRY) {
-        country.id = value
+        country.id = value;
         country.name = itemSelectedText
     }
     else if (currentCard === UNIVERSITY) {
-        university.id = value
-        university.name = itemSelectedText
+        university = new University()
+        university.id = value;
+        university.name = itemSelectedText;
         university.countryId = country.id
     }
 }
