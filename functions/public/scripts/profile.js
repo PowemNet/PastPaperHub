@@ -113,7 +113,14 @@ function  setUpProfileCard() {
         showUniversityCard()
     }
     else if(currentCard === UNIVERSITY) {
+        showCourseCard()
+
+    }
+    else if(currentCard === COURSE) {
         showYearCard()
+    }
+    else if(currentCard === YEAR) {
+        // showHomeScreen()  //todo also check that the user profile has been fully and correctly updated
     }
 }
 
@@ -190,47 +197,59 @@ async function showUniversityCard() {
 
 }
 
-// var yearList = []
+var courseList = [];
+var courseNameList = [];
+var courseIdList = [];
+async function showCourseCard() {
+    profileCardTitle.textContent = "Which Course do you do?"
+
+    await httpGet(`/api/v1/course/university/` + university.id).then(res => {
+        courseList = JSON.parse(JSON.stringify(res))
+
+        var i;
+        for (i = 0; i < courseList.length; i++) {
+            courseNameList[i] = courseList[i]["data"]["course_name"]
+            courseIdList[i] = courseList[i]["key"]
+        }
+
+        return courseList
+    }).catch(error => console.error(error))
+
+    var i;
+    for (i = 0; i < courseList.length; i++) {
+        var option = document.createElement("option");
+
+        option.textContent = courseNameList[i];
+        option.value = courseIdList[i];
+        profileCardSelectItem.appendChild(option);
+    }
+
+    profileCardPleaseWaitText.textContent = "Select from list:"
+    currentCard = COURSE
+}
+
+var yearList = [];
 async function showYearCard() {
     profileCardTitle.textContent = "Which Year are you?"
 
     var i;
-    for (i = 0; i < universityList.length; i++) {
-        if (universityList[i]["key"] === university.id){
-            console.log("FOR LOOP---"+ universityList[i]["data"]["years"])
+    for (i = 0; i < courseList.length; i++) {
+        if (courseList[i]["key"] === course.id){
+            yearList =  courseList[i]["data"]["years"]
             break;
         }
     }
 
+    for (i = 0; i < yearList.length; i++) {
+        var option = document.createElement("option");
+
+        option.textContent = yearList[i];
+        option.value = yearList[i];
+        profileCardSelectItem.appendChild(option);
+    }
+
     profileCardPleaseWaitText.textContent = "Select from list:"
     currentCard = YEAR
-
-    // await httpGet(`/api/v1/university/country/` + country.id).then(res => {
-    //     universityList = JSON.parse(JSON.stringify(res))
-    //
-    //     var i;
-    //     for (i = 0; i < universityList.length; i++) {
-    //         console.log("length---"+ universityList.length)
-    //         universityNameList[i] = universityList[i]["data"]["university_name"]
-    //         universityIdList[i] = universityList[i]["key"]
-    //     }
-    //
-    //     return universityNameList
-    // }).catch(error => console.error(error))
-    //
-    // var i;
-    // for (i = 0; i < countryNameList.length; i++) {
-    //     var option = document.createElement("option");
-    //
-    //     option.textContent = universityNameList[i];
-    //     option.value = universityIdList[i];
-    //     profileCardSelectItem.appendChild(option);
-    // }
-    //
-    // profileCardPleaseWaitText.textContent = "Select from list:"
-    //
-    // currentCard = "university"
-
 }
 
 function resetCardUI(text){
@@ -275,6 +294,12 @@ function updateLocalVariableForType(value, itemSelectedText) {
         university.id = value;
         university.name = itemSelectedText;
         university.countryId = country.id
+    }
+    else if (currentCard === COURSE) {
+        course = new Course()
+        course.id = value;
+        course.name = itemSelectedText;
+        course.universityId = university.id
     }
 }
 

@@ -271,5 +271,27 @@ api.get('/api/v1/university/country/:country_id', (request, response) => {
     findByColumn(request, response, '/university', 'country_id', request.params.country_id)
 });
 
+//delete country
+api.delete('/api/v1/country/:country_id', (request, response) => {
+    deleteById(request, response,'/country/'+request.params.country_id)
+});
+
+// --- COURSE TABLE ----
+
+api.post('/api/v1/course', (request, response) => {
+    save(request, response, '/course',request.body)
+
+});
+
+//return list of courses
+api.get('/api/v1/course', (request, response) => {
+    findAll(request, response, '/courses')
+});
+
+//return list of courses by university_id
+api.get('/api/v1/course/university/:university_id', (request, response) => {
+    findByColumn(request, response, '/course', 'university_id', request.params.university_id)
+});
+
 
 exports.api = functions.https.onRequest(api);

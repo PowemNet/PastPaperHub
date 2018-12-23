@@ -42,10 +42,18 @@ function checkIfCountryNameIsValid(countryName) {
 }
 
 class University {
-    constructor(id, name, countryId, years) {
+    constructor(id, name, countryId) {
         this.id = id;
         this.name = name;
         this.countryId = countryId;
+    }
+}
+
+class Course {
+    constructor(id, name, universityId, years) {
+        this.id = id;
+        this.name = name;
+        this.universityId = universityId;
         this.years = years;
     }
 }
