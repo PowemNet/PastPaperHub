@@ -103,6 +103,8 @@ Profile.prototype.initDropDownMenu = function () {
 function  setUpProfileCard() {
   //todo use when clause here
 
+    resetCardUI("Please Wait...")
+
     if(currentCard === ""){
       showCountryCard()
     }
@@ -119,6 +121,7 @@ async function showCountryCard() {
 
     await httpGet(`/api/v1/country`).then(res => {
         countryList = JSON.parse(JSON.stringify(res))
+        console.log("********"  + countryList)
         countryList.forEach(function(element) {
             countryNameList.push(element["data"]["country_name"])
             countryIdList.push(element["key"])
@@ -162,30 +165,36 @@ async function showUniversityCard() {
     await httpGet(`/api/v1/university/country/` + country.id).then(res => {
         universityList = JSON.parse(JSON.stringify(res))
 
-        var i
+        var i;
         for (i = 0; i < universityList.length; i++) {
-            universityNameList[i] = universityList["data"]["country_name"]
-            universityIdList[i] = universityList["key"]
+            universityNameList[i] = universityList[i]["data"]["university_name"]
+            universityIdList[i] = universityList[i]["key"]
         }
+
         return universityNameList
-    }).catch(error => console.error(error))
+         }).catch(error => console.error(error))
 
-    var i;
-    for (i = 0; i < countryNameList.length; i++) {
-        var option = document.createElement("option");
+        var i;
+        for (i = 0; i < countryNameList.length; i++) {
+            var option = document.createElement("option");
 
-        option.textContent = universityNameList[i];
-        option.value = universityIdList[i];
-        profileCardSelectItem.appendChild(option);
-    }
+            option.textContent = universityNameList[i];
+            option.value = universityIdList[i];
+            profileCardSelectItem.appendChild(option);
+        }
 
-    updatePleaseWaitText("Select from list:")
+        resetCardUI("Select from list:")
 
-    currentCard = "university"
+        currentCard = "university"
 
 }
 
-function updatePleaseWaitText(text){
+function resetCardUI(text){
+
+    var i
+    for (i = 1; i < profileCardSelectItem.length; i++) {
+        profileCardSelectItem.remove(i)
+    }
     profileCardPleaseWaitText.textContent = text
 }
 
@@ -226,7 +235,6 @@ function updateLocalVariableForType(value, itemSelectedText) {
 function onNextButtonClicked() {
   // e.preventDefault();
   if (checkSignedIn()) {
-     updatePleaseWaitText("Please Wait...")
     updateUserProfile()
   }
 }

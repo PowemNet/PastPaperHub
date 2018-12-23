@@ -1,14 +1,17 @@
 function httpGet (url) {
-    console.log ("GETing data with url: " + url)
-    return fetch(BASE_URL + url, {})
+    const fullUrl = BASE_URL + url
+    console.log ("GETing data with url: " + fullUrl)
+    return fetch(fullUrl, {})
         .then(response => response.json())
 }
 
 function httpPost(url = ``, data = {}) {
-    console.log ("POSTing data with url: " + url + " and data: " + data)
-    return fetch(url, {
+    const fullUrl = BASE_URL + url
+    console.log ("POSTing data with url: " + fullUrl + " and data: " + data)
+    return fetch(fullUrl, {
         method: "POST",//PUT, DELETE
         headers: {
+            "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8",
         },
         body: JSON.stringify(data),
@@ -17,13 +20,14 @@ function httpPost(url = ``, data = {}) {
 }
 
 function httpPatch(url = ``, data = {}) {
-    console.log ("PATCHing data with url: " + url + " and data: " + data)
-    return fetch(url, {
+    const fullUrl = BASE_URL + url
+    console.log ("PATCHing data with url: " + fullUrl + " and data: " + data)
+    return fetch(fullUrl, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json; charset=utf-8",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ country: "testCunt" }),
     })
         .then(response => response.json());
 }
