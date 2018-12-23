@@ -29,9 +29,9 @@ var itemSelectedJsonBody
 
 var user;
 var country = new Country();
-var course;
-var university;
+var university = new University();
 var year;
+var course;
 
 //constants
 const COUNTRY = "country"
@@ -191,11 +191,7 @@ async function showUniversityCard() {
 }
 
 function resetCardUI(text){
-
-    var i
-    for (i = 1; i < profileCardSelectItem.length; i++) {
-        profileCardSelectItem.remove(i)
-    }
+    profileCardSelectItem.options.length = 1;
     profileCardPleaseWaitText.textContent = text
 }
 
@@ -230,6 +226,11 @@ function updateLocalVariableForType(value, itemSelectedText) {
     if (currentCard === COUNTRY) {
         country.id = value
         country.name = itemSelectedText
+    }
+    else if (currentCard === UNIVERSITY) {
+        university.id = value
+        university.name = itemSelectedText
+        university.countryId = country.id
     }
 }
 

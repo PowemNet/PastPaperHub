@@ -2,11 +2,6 @@ class Country {
     constructor(id, name) {
         this.id = id;
         this.name = name;
-        // if (checkIfCountryNameIsValid(name)) {  //todo add this back
-        //
-        // } else {
-        //     throw new Exception("Invalid country");
-        // }
     }
 
     getCountryName() {
@@ -44,4 +39,13 @@ function checkIfCountryNameIsAString(countryName) {
 
 function checkIfCountryNameIsValid(countryName) {
  return checkIfCountryNameIsInCountryList(countryName) && checkIfCountryNameIsAString(countryName)
+}
+
+class University {
+    constructor(id, name, countryId, years) {
+        this.id = id;
+        this.name = name;
+        this.countryId = countryId;
+        this.years = years;
+    }
 }
