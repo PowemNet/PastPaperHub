@@ -27,7 +27,7 @@ function httpPatch(url = ``, data = {}) {
         headers: {
             "Content-Type": "application/json; charset=utf-8",
         },
-        body: JSON.stringify({ country: "testCunt" }),
+        body: data,
     })
         .then(response => response.json());
 }

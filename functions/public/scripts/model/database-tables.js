@@ -41,6 +41,12 @@ function checkIfCountryNameIsValid(countryName) {
  return checkIfCountryNameIsInCountryList(countryName) && checkIfCountryNameIsAString(countryName)
 }
 
+class User {
+    constructor(uid) {
+        this.uid = uid;
+    }
+}
+
 class University {
     constructor(id, name, countryId) {
         this.id = id;

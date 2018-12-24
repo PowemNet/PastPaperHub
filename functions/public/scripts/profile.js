@@ -27,7 +27,7 @@ profileCardNextButon.addEventListener('click', onNextButtonClicked.bind(this))
 var currentCard = ""
 var itemSelectedJsonBody
 
-var user;
+var user = new User();
 var country = new Country();
 var university = new University();
 var year;
@@ -48,12 +48,11 @@ Profile.prototype.initFirebaseAndSetUpData = function() {
 Profile.prototype.authStateObserver = async function (userObject) {
   if (userObject) {
     user = userObject; //set user global object
-    console.log(user);
     await this.fetchUserMetadata();
     await this.initDropDownMenu();
     await setUpProfileCard();
   } else {
-    this.showLoginScreen();  //todo seriously set this!
+    this.lauchLoginScreen();  //todo seriously set this!
   }
 };
 
@@ -104,7 +103,6 @@ function  setUpProfileCard() {
   //todo use when clause here
 
     resetCardUI("Please Wait...")
-    console.log("resetCardUI-----")
 
     if(currentCard === ""){
         showCountryCard()
@@ -120,7 +118,7 @@ function  setUpProfileCard() {
         showYearCard()
     }
     else if(currentCard === YEAR) {
-        // showHomeScreen()  //todo also check that the user profile has been fully and correctly updated
+        launchHomeScreen()
     }
 }
 
@@ -162,6 +160,19 @@ function generateJsonForItemSelected(){
 
     updateLocalVariableForType (itemSelectedValue, itemSelectedText)
     obj[key] = itemSelectedText;
+    if (currentCard === YEAR){ //set profile flag
+        obj["profile_set"] = true
+    }
+    const generateJsonForItemSelected = JSON.stringify(obj)
+    return generateJsonForItemSelected;
+}
+
+function generateJsonForSettingProfileFlag(flagValue){
+    var key = "profile_set"
+    var obj = {};
+    var value = flagValue
+
+    obj[key] = value;
     return JSON.stringify(obj);
 }
 
@@ -267,13 +278,11 @@ Profile.prototype.selectElement = function (id, valueToSelect)
 const dbRef = firebase.database().ref();
 
 async function updateUserProfile() {
-
+    console.log("updating with userID:----- " + user.uid)
     if (userHasSelectedItem()){
       await httpPatch(`/api/v1/user/` + user.uid, generateJsonForItemSelected()).then(res => {
-          user = JSON.parse(JSON.stringify(res));
-          console.log("updated User: " + user);
           setUpProfileCard()
-          return user
+          return JSON.stringify(res)
       }).catch(error => console.error(error))
   } else {
     alert("Please select an option")
@@ -327,6 +336,10 @@ function checkSignedIn() {
 //   this.signInSnackbar.MaterialSnackbar.showSnackbar(data);
 //   return false;
 };
+
+function launchHomeScreen () {
+    window.location.href = "/";
+}
 
 window.addEventListener('load' , function() {
   window.Profile = new Profile();
