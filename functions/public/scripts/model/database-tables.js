@@ -42,8 +42,8 @@ function checkIfCountryNameIsValid(countryName) {
 }
 
 class User {
-    constructor(uid) {
-        this.uid = uid;
+    constructor(id) {
+        this.id = id;
     }
 }
 

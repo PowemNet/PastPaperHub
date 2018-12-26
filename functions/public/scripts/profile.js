@@ -1,42 +1,47 @@
 'use strict';
-function Profile() {
-  this.yearInput = document.getElementById('year');
-  this.courseInput = document.getElementById('course');
-  this.universityInput = document.getElementById('university');
 
-  this.dropDownUniversity = document.getElementById('drop-down-university');
-  this.dropDownYear = document.getElementById('drop-down-year');
-  this.dropDownCourse = document.getElementById('drop-down-course');
+/**
+ * set up UI elements from html
 
+ */
+//drop down
+const dropDownUniversity = document.getElementById('drop-down-university');
+const dropDownYear = document.getElementById('drop-down-year');
+const dropDownCourse = document.getElementById('drop-down-course');
 
-
-  this.signInSnackbar = document.getElementById('must-signin-snackbar');
-
-  this.initFirebaseAndSetUpData();
-}
-
-//init UI
+//profile card
 const profileCardTitle = document.getElementById('profile-card-title');
 const profileCardSelectItem = document.getElementById('profile-select-item');
 const profileCardPleaseWaitText = document.getElementById('please-wait-text');
 const profileCardNextButon = document.getElementById('profile-card-next');
+
+//snack bar
+const signInSnackbar = document.getElementById('must-signin-snackbar');
+
+/**
+ * set up Constants
+ * //todo extract these to a different file
+ */
+const COUNTRY = "country"
+const UNIVERSITY = "university"
+const YEAR = "year"
+const COURSE = "course"
 
 //set on click listeners
 profileCardNextButon.addEventListener('click', onNextButtonClicked.bind(this))
 
 var currentCard = ""  //todo refactor this. there are too many class level variables floating around. variables should be passed around in methods
 
-var user = new User();
-var country = new Country();
-var university = new University();
+var user;
+var country;
+var university;
 var year;
 var course;
 
-//constants
-const COUNTRY = "country"
-const UNIVERSITY = "university"
-const YEAR = "year"
-const COURSE = "course"
+function Profile() {
+    this.initFirebaseAndSetUpData();
+}
+
 
 Profile.prototype.initFirebaseAndSetUpData = function() {
   this.auth = firebase.auth();
@@ -44,48 +49,44 @@ Profile.prototype.initFirebaseAndSetUpData = function() {
   this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
 };
 
-Profile.prototype.authStateObserver = async function (userObject) {
-  if (userObject) {
-    user = userObject; //set user global object
-    await fetchUserMetadata();
-    await initDropDownMenu();
+Profile.prototype.authStateObserver = async function (facebookUser) {
+  if (facebookUser) {
+    await setUpheaderAndUserData(facebookUser)
     await setUpProfileCard();
   } else {
     this.lauchLoginScreen();  //todo seriously set this!
   }
 };
 
-async function fetchUserMetadata () {
-  return new Promise((resolve, reject) => {
-    firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
-      if(snapshot){
-        course = (snapshot.val() && snapshot.val().course);
-        university = (snapshot.val() && snapshot.val().university);
-        year = (snapshot.val() && snapshot.val().year);
-        resolve();
-        return snapshot;
-      }
-      else{
-        throw new Error("error getUniversityFromDb" );
-      }
-    }).catch(function (error) {
-      var errorMessage = error.message;
-      console.log("error getUniversityFromDb:" + errorMessage);
-    });
-  });
+async function setUpheaderAndUserData(facebookUser) {
+    user = facebookUser  //todo change user.uid usages to use user.id from firebase.. delete this line
+    await fetchUserMetadata(facebookUser.uid);
+    await initDropDownMenu();
+}
+
+async function fetchUserMetadata (facebookUserId) {
+    await httpGet(`/api/v1/user/` + facebookUserId).then(res => {
+        user = JSON.parse(JSON.stringify(res))
+        console.log ("#########USER---" +user)
+        console.log ("#########USER---" +user.key)
+        console.log ("#########USER---" +user.data)
+        console.log ("#########USER---" +user["data"]["country"])
+
+        return universityNameList
+    }).catch(error => console.error(error))
 }
 
 function initDropDownMenu(university, course, year) {
   return new Promise((resolve, reject) => {
 
     if (university!== null){
-        this.dropDownUniversity.textContent = university
+        dropDownUniversity.textContent = university
     }
     if (course!== null){
-          this.dropDownCourse.textContent = course
+          dropDownCourse.textContent = course
      }
     if (year!== null){
-          this.dropDownYear.textContent = year
+          dropDownYear.textContent = year
     }
     resolve();
   });
@@ -156,7 +157,7 @@ function generateJsonForItemSelected(){
     var itemSelectedText = profileCardSelectItem.options[profileCardSelectItem.selectedIndex].text
     var itemSelectedValue = profileCardSelectItem.value
 
-    updateLocalVariableForType (itemSelectedValue, itemSelectedText)
+    initialiseDataObjects (itemSelectedValue, itemSelectedText)
     obj[key] = itemSelectedText;
     if (currentCard === YEAR){ //set profile flag
         obj["profile_set"] = true
@@ -291,8 +292,9 @@ function userHasSelectedItem(){
   return profileCardSelectItem.value !== ""
 }
 
-function updateLocalVariableForType(value, itemSelectedText) {
+function initialiseDataObjects(value, itemSelectedText) {
     if (currentCard === COUNTRY) {
+        country = new Country()
         country.id = value;
         country.name = itemSelectedText
     }
