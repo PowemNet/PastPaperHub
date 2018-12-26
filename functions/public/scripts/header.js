@@ -20,8 +20,8 @@ Header.prototype.initFirebase = function() {
 };
 
 // Triggers when the auth state change for instance when the user signs-in or signs-out.
-Header.prototype.authStateObserver = function(user) {
-  if (user) { // User is signed in!
+Header.prototype.authStateObserver = function(authUser) {
+  if (authUser) { // User is signed in!
     // Get the signed-in user's profile pic and name.
     var profilePicUrl = this.getProfilePicUrl();
     var userName = this.getUserName();
@@ -33,6 +33,11 @@ Header.prototype.authStateObserver = function(user) {
     // Show user's profile and sign-out button.
     this.userName.removeAttribute('hidden');
     this.userPic.removeAttribute('hidden');
+
+    //set up header drop down menu
+
+    //set up firebase db user object for use in other scripts
+
 
   } else { // User is signed out!
     window.location.href = "/login";

@@ -6,30 +6,61 @@
 
 </header>
 
-  <div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
-    <div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-      <h3>
-        <i class="material-icons">account_balance</i> PastPaper Hub</h3>
-    </div>
-    <div id="user-container">
-      <div hidden id="user-pic"></div>
-      <div hidden id="user-name"></div>
-      </button>
-      <button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-        <i class="material-icons">account_circle</i>Sign-in with Facebook
-      </button>
-    </div>
+  <!--<div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">-->
+    <!--<div class="mdl-layout__header-row mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">-->
+      <!--<h3>-->
+        <!--<i class="material-icons">account_balance</i> PastPaper Hub</h3>-->
+    <!--</div>-->
+    <!--<div id="user-container">-->
+      <!--<div hidden id="user-pic"></div>-->
+      <!--<div hidden id="user-name"></div>-->
+      <!--</button>-->
+      <!--<button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">-->
+        <!--<i class="material-icons">account_circle</i>Sign-in with Facebook-->
+      <!--</button>-->
+    <!--</div>-->
 
-    <div>
-      <button hidden id="btn-settings" class="mdl-button mdl-js-button mdl-button--icon">
-        <i class="material-icons">settings</i>
-      </button>
-      <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="btn-settings">
-        <li class="mdl-menu__item">Profile</li>
-        <li id="sign-out" class="mdl-menu__item">Sign Out</li>
-      </ul>
-    </div>
+    <!--<div>-->
+      <!--<button hidden id="btn-settings" class="mdl-button mdl-js-button mdl-button--icon">-->
+        <!--<i class="material-icons">settings</i>-->
+      <!--</button>-->
+      <!--<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="btn-settings">-->
+        <!--<li class="mdl-menu__item">Profile</li>-->
+        <!--<li id="sign-out" class="mdl-menu__item">Sign Out</li>-->
+      <!--</ul>-->
+    <!--</div>-->
 
-  </div>
+  <!--</div>-->
+
+    <div class="navigation">
+        <a href="/"><span id="logo">PastPaperHub</span></a>
+
+        <span>
+                    <input type="text" name="search" placeholder="Search for Past Papers ">
+                </span>
+
+        <span id="top-img">
+                    <img src="icons/search.png"/>
+                </span>
+
+    </div>
+    <span id="account">
+                <div id="user-container">
+                    <div class="user-contain">
+                        <div id="user-pic" class="dropdown">
+                            <div class="submenu" for="user-pic">
+                                <li><a href="/">Home</a></li>
+                                <li id="drop-down-university">University Not Set</li>
+                                <li id="drop-down-year">Year Not Set</li>
+                                <li id="drop-down-course">Course Not Set</li>
+                                <li>Edit Profile</li>
+                                <li><a id="sign-out">Sign Out</a></li>
+                            </div>
+                            </div>
+                            <span hidden id="user-name"></span>
+                        </div>
+                </div>
+            </span>
+</div>
 
 </div>

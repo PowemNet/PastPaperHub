@@ -24,8 +24,7 @@ const profileCardNextButon = document.getElementById('profile-card-next');
 //set on click listeners
 profileCardNextButon.addEventListener('click', onNextButtonClicked.bind(this))
 
-var currentCard = ""
-var itemSelectedJsonBody
+var currentCard = ""  //todo refactor this. there are too many class level variables floating around. variables should be passed around in methods
 
 var user = new User();
 var country = new Country();
@@ -48,15 +47,15 @@ Profile.prototype.initFirebaseAndSetUpData = function() {
 Profile.prototype.authStateObserver = async function (userObject) {
   if (userObject) {
     user = userObject; //set user global object
-    await this.fetchUserMetadata();
-    await this.initDropDownMenu();
+    await fetchUserMetadata();
+    await initDropDownMenu();
     await setUpProfileCard();
   } else {
     this.lauchLoginScreen();  //todo seriously set this!
   }
 };
 
-Profile.prototype.fetchUserMetadata = function () {
+async function fetchUserMetadata () {
   return new Promise((resolve, reject) => {
     firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
       if(snapshot){
@@ -74,25 +73,24 @@ Profile.prototype.fetchUserMetadata = function () {
       console.log("error getUniversityFromDb:" + errorMessage);
     });
   });
-};
+}
 
-Profile.prototype.initDropDownMenu = function () {
+function initDropDownMenu(university, course, year) {
   return new Promise((resolve, reject) => {
 
     if (university!== null){
         this.dropDownUniversity.textContent = university
     }
+    if (course!== null){
+          this.dropDownCourse.textContent = course
+     }
     if (year!== null){
           this.dropDownYear.textContent = year
     }
-    if (course!== null){
-          this.dropDownCourse.textContent = course
-    }
-
     resolve();
   });
 
-};
+}
 
 /**
  * Set up..
