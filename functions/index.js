@@ -304,7 +304,7 @@ api.get('/api/v1/course_unit', (request, response) => {
 
 //return list of course_units by course_id
 api.get('/api/v1/course_unit/course/:course_id', (request, response) => {
-    findByColumn(request, response, '/course_unit', 'course_id', request.params.university_id)
+    findByColumn(request, response, '/course_unit', 'course_id', request.params.course_id)
 });
 
 // --- PAST_PAPER TABLE ----
@@ -320,7 +320,7 @@ api.get('/api/v1/past_paper', (request, response) => {
 
 //return list of past papers by course_id
 api.get('/api/v1/past_paper/course_unit/:course_unit_id', (request, response) => {
-    findByColumn(request, response, '/past_paper', 'course_unit_id', request.params.university_id)
+    findByColumn(request, response, '/past_paper', 'course_unit_id', request.params.course_unit_id)
 });
 
 
@@ -337,7 +337,7 @@ api.get('/api/v1/question', (request, response) => {
 
 //return list of questions by past_paper_id
 api.get('/api/v1/question/past_paper/:past_paper_id', (request, response) => {
-    findByColumn(request, response, '/question', 'past_paper_id', request.params.university_id)
+    findByColumn(request, response, '/question', 'past_paper_id', request.params.past_paper_id)
 });
 
 exports.api = functions.https.onRequest(api);
