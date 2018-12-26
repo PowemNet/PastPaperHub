@@ -13,7 +13,6 @@ Header.prototype.initFirebase = function() {
   this.auth = firebase.auth();
   this.database = firebase.database();
   this.storage = firebase.storage();
-  this.messaging = firebase.messaging();
 
   // Initiates Firebase auth and listen to auth state changes.
   this.auth.onAuthStateChanged(this.authStateObserver.bind(this));

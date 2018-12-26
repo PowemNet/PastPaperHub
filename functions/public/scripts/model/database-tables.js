@@ -1,3 +1,16 @@
+class User {
+    constructor(id, country, course, displayName, profilePicUrl, profileSet, university, year) {
+        this.id = id;
+        this.country = country;
+        this.course = course;
+        this.displayName = displayName;
+        this.profilePicUrl = profilePicUrl;
+        this.profileSet = profileSet;
+        this.university = university;
+        this.year = year;
+    }
+}
+
 class Country {
     constructor(id, name) {
         this.id = id;
@@ -12,6 +25,23 @@ class Country {
         this._countryName = countryName;
     }
 
+}
+
+class University {
+    constructor(id, name, countryId) {
+        this.id = id;
+        this.name = name;
+        this.countryId = countryId;
+    }
+}
+
+class Course {
+    constructor(id, name, universityId, years) {
+        this.id = id;
+        this.name = name;
+        this.universityId = universityId;
+        this.years = years;
+    }
 }
 
 function checkIfCountryNameIsInCountryList(countryName) {
@@ -41,25 +71,3 @@ function checkIfCountryNameIsValid(countryName) {
  return checkIfCountryNameIsInCountryList(countryName) && checkIfCountryNameIsAString(countryName)
 }
 
-class User {
-    constructor(id) {
-        this.id = id;
-    }
-}
-
-class University {
-    constructor(id, name, countryId) {
-        this.id = id;
-        this.name = name;
-        this.countryId = countryId;
-    }
-}
-
-class Course {
-    constructor(id, name, universityId, years) {
-        this.id = id;
-        this.name = name;
-        this.universityId = universityId;
-        this.years = years;
-    }
-}

@@ -39,11 +39,11 @@ var year;
 var course;
 
 function Profile() {
-    this.initFirebaseAndSetUpData();
+    this.initFirebaseAndStart();
 }
 
 
-Profile.prototype.initFirebaseAndSetUpData = function() {
+Profile.prototype.initFirebaseAndStart = function() {
   this.auth = firebase.auth();
   this.database = firebase.database();
   this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
@@ -59,20 +59,25 @@ Profile.prototype.authStateObserver = async function (facebookUser) {
 };
 
 async function setUpheaderAndUserData(facebookUser) {
-    user = facebookUser  //todo change user.uid usages to use user.id from firebase.. delete this line
-    await fetchUserMetadata(facebookUser.uid);
+    await fetchAndIntialiseUserData(facebookUser.uid);
     await initDropDownMenu();
 }
 
-async function fetchUserMetadata (facebookUserId) {
+async function fetchAndIntialiseUserData (facebookUserId) {
     await httpGet(`/api/v1/user/` + facebookUserId).then(res => {
-        user = JSON.parse(JSON.stringify(res))
-        console.log ("#########USER---" +user)
-        console.log ("#########USER---" +user.key)
-        console.log ("#########USER---" +user.data)
-        console.log ("#########USER---" +user["data"]["country"])
+        res = JSON.parse(JSON.stringify(res))
 
-        return universityNameList
+        user = new User()
+        user.id = res["key"]
+        user.country = res["data"]["country"]
+        user.course = res["data"]["course"]
+        user.displayName = res["data"]["displayName"]
+        user.profilePicUrl = res["data"]["profilePicUrl"]
+        user.profileSet = res["data"]["profile_set"]
+        user.university = res["data"]["university"]
+        user.year = res["data"]["year"]
+
+        return user
     }).catch(error => console.error(error))
 }
 
@@ -277,9 +282,9 @@ Profile.prototype.selectElement = function (id, valueToSelect)
 const dbRef = firebase.database().ref();
 
 async function updateUserProfile() {
-    console.log("updating with userID:----- " + user.uid)
+    console.log("updating with userID:----- " + user.id)
     if (userHasSelectedItem()){
-      await httpPatch(`/api/v1/user/` + user.uid, generateJsonForItemSelected()).then(res => {
+      await httpPatch(`/api/v1/user/` + user.id, generateJsonForItemSelected()).then(res => {
           setUpProfileCard()
           return JSON.stringify(res)
       }).catch(error => console.error(error))
