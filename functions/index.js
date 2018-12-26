@@ -216,7 +216,6 @@ api.delete('/api/v1/user/:user_id', (request, response) => {
 });
 
 // --- COUNTRY TABLE ----
-
 /**
  Create a new county in the country table
  @param JSON body with the following params:
@@ -255,7 +254,6 @@ api.delete('/api/v1/country/:country_id', (request, response) => {
 });
 
 // --- UNIVERSITY TABLE ----
-
 api.post('/api/v1/university', (request, response) => {
     save(request, response, '/university',request.body)
 
@@ -277,7 +275,6 @@ api.delete('/api/v1/country/:country_id', (request, response) => {
 });
 
 // --- COURSE TABLE ----
-
 api.post('/api/v1/course', (request, response) => {
     save(request, response, '/course',request.body)
 
@@ -293,5 +290,54 @@ api.get('/api/v1/course/university/:university_id', (request, response) => {
     findByColumn(request, response, '/course', 'university_id', request.params.university_id)
 });
 
+
+// --- COURSE_UNIT TABLE ----
+api.post('/api/v1/course_unit', (request, response) => {
+    save(request, response, '/course',request.body)
+
+});
+
+//return list of course units
+api.get('/api/v1/course_unit', (request, response) => {
+    findAll(request, response, '/course-unit')
+});
+
+//return list of course_units by course_id
+api.get('/api/v1/course_unit/course/:course_id', (request, response) => {
+    findByColumn(request, response, '/course_unit', 'course_id', request.params.university_id)
+});
+
+// --- PAST_PAPER TABLE ----
+api.post('/api/v1/past_paper', (request, response) => {
+    save(request, response, '/past_paper',request.body)
+
+});
+
+//return list of past papers
+api.get('/api/v1/past_paper', (request, response) => {
+    findAll(request, response, '/past_paper')
+});
+
+//return list of past papers by course_id
+api.get('/api/v1/past_paper/course_unit/:course_unit_id', (request, response) => {
+    findByColumn(request, response, '/past_paper', 'course_unit_id', request.params.university_id)
+});
+
+
+// --- QUESTION TABLE ----
+api.post('/api/v1/question', (request, response) => {
+    save(request, response, '/question',request.body)
+
+});
+
+//return list of questions
+api.get('/api/v1/question', (request, response) => {
+    findAll(request, response, '/question')
+});
+
+//return list of questions by past_paper_id
+api.get('/api/v1/question/past_paper/:past_paper_id', (request, response) => {
+    findByColumn(request, response, '/question', 'past_paper_id', request.params.university_id)
+});
 
 exports.api = functions.https.onRequest(api);

@@ -75,10 +75,23 @@
 {{!-- Main body --}}
 </div>
 
-<main >
-    <div >
-        <h4 id="please-wait-text" >Please wait.. </h4>
-        <!--<ul id="past-paper-list"></ul> WILL NEED THIS ON SEARCH RESULTS PAGE-->
+<main>
+    <div>
+        <h4 id="please-wait-text">Please wait.. </h4>
+
+        <!--SEARCH AREA-->
+        <div id="forms">
+            <form id="search-form" action="#">
+                <form>
+                    <div id="search-title"> Select course unit to search</div>
+                    <select name="dropdown" class="form-design" id="search-select-item" name="search-select-item">
+                        <option value=""></option>
+                    </select>
+                </form>
+                <button id="search-button-next" type="submit" class="save-button">Search</button>
+            </form>
+        </div>
+
 
     </div>
 </main>

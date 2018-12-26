@@ -4,18 +4,21 @@
  * set up UI elements from html
 
  */
+//header
+const userPic = document.getElementById('user-pic');
+const userName = document.getElementById('user-name');
+const signOutButton = document.getElementById('sign-out');
+const signInSnackbar = document.getElementById('must-signin-snackbar');
+
 //drop down
 const dropDownUniversity = document.getElementById('drop-down-university');
 const dropDownYear = document.getElementById('drop-down-year');
 const dropDownCourse = document.getElementById('drop-down-course');
 
-const messageList = document.getElementById('messages');
-const pleaseWaitText = document.getElementById("please-wait-text");
-const pastPaperList = document.getElementById("past-paper-list");
-const userPic = document.getElementById('user-pic');
-const userName = document.getElementById('user-name');
-const signOutButton = document.getElementById('sign-out');
-const signInSnackbar = document.getElementById('must-signin-snackbar');
+//search card
+const searchSelectItem = document.getElementById('profile-select-item');
+const pleaseWaitText = document.getElementById('please-wait-text');
+const searchNextButon = document.getElementById('profile-card-next');
 
 //set on click listeners
 signOutButton.addEventListener('click', this.signOut.bind(this));
@@ -38,6 +41,7 @@ PastPaperHub.prototype.init = function() {
 PastPaperHub.prototype.authStateObserver = async function(facebookUser) {
     if (facebookUser) {
         await setUpHeaderAndUserData(facebookUser)
+        await setUpSearchUi();
 
     } else { // User is signed out!
         window.location.href = "/login";
@@ -96,6 +100,33 @@ function initDropDownMenu(user) {
         }
         resolve();
     });
+}
+
+var countryList
+var countryNameList = []
+var countryIdList = []
+async function setUpSearchUi() {
+    await httpGet(`/api/v1/country`).then(res => {
+        countryList = JSON.parse(JSON.stringify(res))
+        countryList.forEach(function(element) {
+            countryNameList.push(element["data"]["country_name"])
+            countryIdList.push(element["key"])
+        });
+
+        console.log(countryNameList)
+        return countryNameList
+    }).catch(error => console.error(error))
+
+    var i;
+    for (i = 0; i < countryNameList.length; i++) {
+        var option = document.createElement("option");
+        option.textContent = countryNameList[i];
+        option.value = countryIdList[i];
+        profileCardSelectItem.appendChild(option);
+    }
+    profileCardPleaseWaitText.textContent = "Select from list:"
+
+    currentCard = COUNTRY
 
 }
 
