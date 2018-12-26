@@ -39,11 +39,11 @@ var year;
 var course;
 
 function Profile() {
-    this.initFirebaseAndStart();
+    this.init();
 }
 
 
-Profile.prototype.initFirebaseAndStart = function() {
+Profile.prototype.init = function() {
   this.auth = firebase.auth();
   this.database = firebase.database();
   this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
@@ -86,13 +86,13 @@ async function fetchAndIntialiseUserData (facebookUserId) {
 function initDropDownMenu(user) {
   return new Promise((resolve, reject) => {
 
-    if (university!== null){
+    if (user.university!== null){
         dropDownUniversity.textContent = user.university
     }
-    if (course!== null){
+    if (user.course!== null){
           dropDownCourse.textContent = user.course
      }
-    if (year!== null){
+    if (user.year!== null){
           dropDownYear.textContent = "Year " + user.year
     }
     resolve();

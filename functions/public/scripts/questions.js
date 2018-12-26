@@ -11,11 +11,11 @@ function PastPaperHub() {
   this.signInSnackbar = document.getElementById('must-signin-snackbar');
 
   this.signOutButton.addEventListener('click', this.signOut.bind(this));
-  this.initFirebase();
+  this.init();
 }
 
 // Sets up shortcuts to Firebase features and initiate firebase auth.
-PastPaperHub.prototype.initFirebase = function() {
+PastPaperHub.prototype.init = function() {
   // Shortcuts to Firebase SDK features.
   this.auth = firebase.auth();
   this.database = firebase.database();
