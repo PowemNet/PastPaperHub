@@ -303,18 +303,18 @@ function initialiseDataObjects(value, itemSelectedText) {
     if (currentCard === COUNTRY) {
         country = new Country()
         country.id = value;
-        country.name = itemSelectedText
+        country.countryName = itemSelectedText
     }
     else if (currentCard === UNIVERSITY) {
         university = new University()
         university.id = value;
-        university.name = itemSelectedText;
+        university.universityName = itemSelectedText;
         university.countryId = country.id
     }
     else if (currentCard === COURSE) {
         course = new Course()
         course.id = value;
-        course.name = itemSelectedText;
+        course.courseName = itemSelectedText;
         course.universityId = university.id
     }
 }

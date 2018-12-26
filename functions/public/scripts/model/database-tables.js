@@ -12,9 +12,9 @@ class User {
 }
 
 class Country {
-    constructor(id, name) {
+    constructor(id, countryName) {
         this.id = id;
-        this.name = name;
+        this.countryName = countryName;
     }
 
     getCountryName() {
@@ -28,19 +28,43 @@ class Country {
 }
 
 class University {
-    constructor(id, name, countryId) {
+    constructor(id, universityName, countryId) {
         this.id = id;
-        this.name = name;
+        this.universityName = universityName;
         this.countryId = countryId;
     }
 }
 
 class Course {
-    constructor(id, name, universityId, years) {
+    constructor(id, courseName, universityId, years) {
         this.id = id;
-        this.name = name;
+        this.courseName = courseName;
         this.universityId = universityId;
         this.years = years;
+    }
+}
+
+class CourseUnit {
+    constructor(id, courseUnitName, courseId) {
+        this.id = id;
+        this.courseUnitName = courseUnitName;
+        this.courseId = courseId;
+    }
+}
+
+class PastPaper {
+    constructor(id, pastPaperName, courseUnitId) {
+        this.id = id;
+        this.pastPaperName = pastPaperName;
+        this.courseUnitId = courseUnitId;
+    }
+}
+
+class Question {
+    constructor(id, questionName, pastPaperId) {
+        this.id = id;
+        this.questionName = questionName;
+        this.pastPaperId = pastPaperId;
     }
 }
 
