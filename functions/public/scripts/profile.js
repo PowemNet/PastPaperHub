@@ -54,13 +54,13 @@ Profile.prototype.authStateObserver = async function (facebookUser) {
     await setUpheaderAndUserData(facebookUser)
     await setUpProfileCard();
   } else {
-    this.lauchLoginScreen();  //todo seriously set this!
+    launchHomeScreen();
   }
 };
 
 async function setUpheaderAndUserData(facebookUser) {
-    await fetchAndIntialiseUserData(facebookUser.uid);
-    await initDropDownMenu();
+    user = await fetchAndIntialiseUserData(facebookUser.uid);
+    await initDropDownMenu(user);
 }
 
 async function fetchAndIntialiseUserData (facebookUserId) {
@@ -79,19 +79,21 @@ async function fetchAndIntialiseUserData (facebookUserId) {
 
         return user
     }).catch(error => console.error(error))
+
+    return user
 }
 
-function initDropDownMenu(university, course, year) {
+function initDropDownMenu(user) {
   return new Promise((resolve, reject) => {
 
     if (university!== null){
-        dropDownUniversity.textContent = university
+        dropDownUniversity.textContent = user.university
     }
     if (course!== null){
-          dropDownCourse.textContent = course
+          dropDownCourse.textContent = user.course
      }
     if (year!== null){
-          dropDownYear.textContent = year
+          dropDownYear.textContent = "Year " + user.year
     }
     resolve();
   });
@@ -340,7 +342,7 @@ function checkSignedIn() {
 //   };
 //   this.signInSnackbar.MaterialSnackbar.showSnackbar(data);
 //   return false;
-};
+}
 
 function launchHomeScreen () {
     window.location.href = "/";
