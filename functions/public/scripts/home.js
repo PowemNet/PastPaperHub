@@ -102,26 +102,26 @@ function initDropDownMenu(user) {
     });
 }
 
-var courseList
-var courseNameList = []
-var courseIdList = []
+var courseUnitList
+var courseUnitNameList = []
+var courseUnitIdList = []
 async function setUpSearchUi() {
-    await httpGet(`/api/v1/course_unit` + user.courseId).then(res => {
-        courseList = JSON.parse(JSON.stringify(res))
-        courseList.forEach(function(element) {
-            courseNameList.push(element["data"]["country_name"])
-            courseIdList.push(element["key"])
+    await httpGet(`/api/v1/course_unit/course/` + user.course).then(res => {
+        courseUnitList = JSON.parse(JSON.stringify(res))
+        courseUnitList.forEach(function(element) {
+            courseUnitNameList.push(element["data"]["course_unit_name"])
+            courseUnitIdList.push(element["key"])
         });
 
-        console.log(courseNameList)
-        return courseNameList
+        console.log(courseUnitNameList)
+        return courseUnitNameList
     }).catch(error => console.error(error))
 
     var i;
-    for (i = 0; i < courseNameList.length; i++) {
+    for (i = 0; i < courseUnitNameList.length; i++) {
         var option = document.createElement("option");
-        option.textContent = courseNameList[i];
-        option.value = courseIdList[i];
+        option.textContent = courseUnitNameList[i];
+        option.value = courseUnitIdList[i];
         searchSelectItem.appendChild(option);
     }
     pleaseWaitText.textContent = "Select from list:"

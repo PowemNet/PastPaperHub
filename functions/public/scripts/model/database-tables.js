@@ -1,9 +1,8 @@
 class User {
-    constructor(id, country, course, courseId, displayName, profilePicUrl, profileSet, university, year) {
+    constructor(id, country, course, displayName, profilePicUrl, profileSet, university, year) {
         this.id = id;
         this.country = country;
         this.course = course;
-        this.courseId = courseId;
         this.displayName = displayName;
         this.profilePicUrl = profilePicUrl;
         this.profileSet = profileSet;
