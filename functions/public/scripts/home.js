@@ -18,9 +18,14 @@ const dropDownCourse = document.getElementById('drop-down-course');
 //search card
 const searchSelectItem = document.getElementById('search-select-item');
 const pleaseWaitText = document.getElementById('please-wait-text');
-const searchNextButon = document.getElementById('profile-card-next');
+const searchButton = document.getElementById('search-button');
+
+//search results
+const pleaseWaitTextSearchResults = document.getElementById('please-wait-text-search-results');
+const searchResultsList = document.getElementById('search-results-list');
 
 //set on click listeners
+searchButton.addEventListener('click', onSearchButtonClicked.bind(this))
 signOutButton.addEventListener('click', this.signOut.bind(this));
 
 var user;
@@ -128,8 +133,51 @@ async function setUpSearchUi() {
 
 }
 
+async function onSearchButtonClicked() {
+    await fetchPastPapers()
+    showSearchResults()
+}
+
+var pastPaperList
+var pastPaperNameList = []
+var pastPaperIdList = []
+async function fetchPastPapers(courseUnitId) {
+    if (userHasSelectedItem()){
+        await httpGet(`/api/v1/past_paper/course_unit/` + courseUnitId).then(res => {
+            pastPaperList = JSON.parse(JSON.stringify(res))
+            pastPaperList.forEach(function(element) {
+                pastPaperNameList.push(element["data"]["past_paper_name"])
+                pastPaperIdList.push(element["key"])
+                var pastPaper = new PastPaper()
+                //todo set up object here
+                showSearchResult(pastPaper)
+            });
+
+            console.log(pastPaperList)
+            return pastPaperList
+        }).catch(error => console.error(error))
+    } else {
+        alert("Please select an option")
+    }
+
+}
+function showSearchResult(pastPaper) {
+    pleaseWaitTextSearchResults.style.visibility = "hidden"
+
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+
+        a.textContent = pastPaper.pastPaperName;
+        a.setAttribute('href', "/questions" + pastPaper.id);  //todo.. add pp id to link in href.. let questions page load according to what's in the link
+        li.appendChild(a);
+
+}
+
+function userHasSelectedItem(){
+    return searchSelectItem.value !== ""
+}
+
 function signOut() {
-  // Sign out of Firebase.
   this.auth.signOut();
 }
 

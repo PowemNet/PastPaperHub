@@ -320,7 +320,6 @@ function initialiseDataObjects(value, itemSelectedText) {
 }
 
 function onNextButtonClicked() {
-  // e.preventDefault();
   if (checkSignedIn()) {
     updateUserProfile()
   }
