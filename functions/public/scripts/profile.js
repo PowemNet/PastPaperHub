@@ -22,10 +22,10 @@ const signInSnackbar = document.getElementById('must-signin-snackbar');
  * set up Constants
  * //todo extract these to a different file
  */
-const COUNTRY = "country"
-const UNIVERSITY = "university"
-const YEAR = "year"
-const COURSE = "course"
+const COUNTRY = "country";
+const UNIVERSITY = "university";
+const YEAR = "year";
+const COURSE = "course";
 
 //set on click listeners
 profileCardNextButon.addEventListener('click', onNextButtonClicked.bind(this))
@@ -149,7 +149,7 @@ async function showCountryCard() {
         for (i = 0; i < countryNameList.length; i++) {
             var option = document.createElement("option");
             option.textContent = countryNameList[i];
-            option.value = countryIdList[i];
+            option.value = countryIdList[i];  //store Id as value
             profileCardSelectItem.appendChild(option);
         }
     profileCardPleaseWaitText.textContent = "Select from list:"
@@ -162,10 +162,10 @@ function generateJsonForItemSelected(){
     var key = currentCard
     var obj = {};
     var itemSelectedText = profileCardSelectItem.options[profileCardSelectItem.selectedIndex].text
-    var itemSelectedValue = profileCardSelectItem.value
+    var itemSelectedValue = profileCardSelectItem.options[profileCardSelectItem.selectedIndex].value
 
     initialiseDataObjects (itemSelectedValue, itemSelectedText)
-    obj[key] = itemSelectedText;
+    obj[key] = itemSelectedValue;
     if (currentCard === YEAR){ //set profile flag
         obj["profile_set"] = true
     }
@@ -205,7 +205,7 @@ async function showUniversityCard() {
             var option = document.createElement("option");
 
             option.textContent = universityNameList[i];
-            option.value = universityIdList[i];
+            option.value = universityIdList[i];  //store Id as value
             profileCardSelectItem.appendChild(option);
         }
 
@@ -237,7 +237,7 @@ async function showCourseCard() {
         var option = document.createElement("option");
 
         option.textContent = courseNameList[i];
-        option.value = courseIdList[i];
+        option.value = courseIdList[i];  //store Id as value
         profileCardSelectItem.appendChild(option);
     }
 
@@ -261,7 +261,7 @@ async function showYearCard() {
         var option = document.createElement("option");
 
         option.textContent = yearList[i];
-        option.value = yearList[i];
+        option.value = yearList[i];  //store Id as value
         profileCardSelectItem.appendChild(option);
     }
 

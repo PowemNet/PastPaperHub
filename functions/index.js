@@ -293,19 +293,20 @@ api.get('/api/v1/course/university/:university_id', (request, response) => {
 
 // --- COURSE_UNIT TABLE ----
 api.post('/api/v1/course_unit', (request, response) => {
-    save(request, response, '/course',request.body)
+    save(request, response, '/course_unit',request.body)
 
 });
 
 //return list of course units
 api.get('/api/v1/course_unit', (request, response) => {
-    findAll(request, response, '/course-unit')
+    findAll(request, response, '/course_unit')
 });
 
 //return list of course_units by course_id
 api.get('/api/v1/course_unit/course/:course_id', (request, response) => {
     findByColumn(request, response, '/course_unit', 'course_id', request.params.course_id)
 });
+
 
 // --- PAST_PAPER TABLE ----
 api.post('/api/v1/past_paper', (request, response) => {
@@ -323,11 +324,21 @@ api.get('/api/v1/past_paper/course_unit/:course_unit_id', (request, response) =>
     findByColumn(request, response, '/past_paper', 'course_unit_id', request.params.course_unit_id)
 });
 
+api.patch('/api/v1/past_paper/:past_paper_id', (request, response) => {
+    update(request, response,'/past_paper/'+request.params.past_paper_id, request.body)
+
+});
+
 
 // --- QUESTION TABLE ----
 api.post('/api/v1/question', (request, response) => {
     save(request, response, '/question',request.body)
 
+});
+
+//get question by ID
+api.get('/api/v1/question/:question_id', (request, response) => {
+    findById(request, response, '/question/'+request.params.question_id)
 });
 
 //return list of questions
@@ -340,4 +351,12 @@ api.get('/api/v1/question/past_paper/:past_paper_id', (request, response) => {
     findByColumn(request, response, '/question', 'past_paper_id', request.params.past_paper_id)
 });
 
+api.patch('/api/v1/question/:question_id', (request, response) => {
+    update(request, response,'/question/'+request.params.question_id, request.body)
+
+});
+
+api.delete('/api/v1/question/:question_id', (request, response) => {
+    deleteById(request, response,'/question/'+request.params.question_id)
+});
 exports.api = functions.https.onRequest(api);

@@ -16,7 +16,7 @@ const dropDownYear = document.getElementById('drop-down-year');
 const dropDownCourse = document.getElementById('drop-down-course');
 
 //search card
-const searchSelectItem = document.getElementById('profile-select-item');
+const searchSelectItem = document.getElementById('search-select-item');
 const pleaseWaitText = document.getElementById('please-wait-text');
 const searchNextButon = document.getElementById('profile-card-next');
 
@@ -102,31 +102,29 @@ function initDropDownMenu(user) {
     });
 }
 
-var countryList
-var countryNameList = []
-var countryIdList = []
+var courseList
+var courseNameList = []
+var courseIdList = []
 async function setUpSearchUi() {
-    await httpGet(`/api/v1/country`).then(res => {
-        countryList = JSON.parse(JSON.stringify(res))
-        countryList.forEach(function(element) {
-            countryNameList.push(element["data"]["country_name"])
-            countryIdList.push(element["key"])
+    await httpGet(`/api/v1/course_unit` + user.courseId).then(res => {
+        courseList = JSON.parse(JSON.stringify(res))
+        courseList.forEach(function(element) {
+            courseNameList.push(element["data"]["country_name"])
+            courseIdList.push(element["key"])
         });
 
-        console.log(countryNameList)
-        return countryNameList
+        console.log(courseNameList)
+        return courseNameList
     }).catch(error => console.error(error))
 
     var i;
-    for (i = 0; i < countryNameList.length; i++) {
+    for (i = 0; i < courseNameList.length; i++) {
         var option = document.createElement("option");
-        option.textContent = countryNameList[i];
-        option.value = countryIdList[i];
-        profileCardSelectItem.appendChild(option);
+        option.textContent = courseNameList[i];
+        option.value = courseIdList[i];
+        searchSelectItem.appendChild(option);
     }
-    profileCardPleaseWaitText.textContent = "Select from list:"
-
-    currentCard = COUNTRY
+    pleaseWaitText.textContent = "Select from list:"
 
 }
 
