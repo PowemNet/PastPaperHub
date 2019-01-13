@@ -14,16 +14,17 @@ function PastPaperHub() {
   this.init();
 }
 
+const pastPaperId = document.getElementById('past-paper-id');
+
 // Sets up shortcuts to Firebase features and initiate firebase auth.
 PastPaperHub.prototype.init = function() {
-  // Shortcuts to Firebase SDK features.
   this.auth = firebase.auth();
   this.database = firebase.database();
   this.storage = firebase.storage();
   this.messaging = firebase.messaging();
 
-  // Initiates Firebase auth and listen to auth state changes.
-  this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
+  console.log(pastPaperId.textContent) //todo: use this ID to fetch data then populate arrays to be used to dynamically set questions fields
+  // this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
 };
 
 // Signs-out of Friendly Chat.

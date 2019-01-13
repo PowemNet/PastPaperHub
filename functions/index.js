@@ -11,7 +11,7 @@ var bodyParser = require("body-parser");
 
 // --- UI Rendering ----
 ui.engine('hbs', engines.handlebars);
-ui.set('views', './public');
+ui.set('views', './public/views');
 ui.set('view engine', 'hbs');
 ui.use(express.static(__dirname + '/public'));
 
@@ -26,6 +26,11 @@ ui.get('/login', (request, response) => {
 
 ui.get('/profile', (request, response) => {
     response.render('profile');
+});
+
+ui.get('/questions/:pastPaperId', (request, response) => {
+    var pastPaperId = request.params.pastPaperId;
+    response.render('questions', { pastPaperId: pastPaperId });
 });
 
 ui.get('/questions', (request, response) => {

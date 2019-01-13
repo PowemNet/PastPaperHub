@@ -1,0 +1,270 @@
+<html>
+<head>
+    <!--- more info to be added here e.g favicon -->
+    <title>PastPaperHub</title>
+    <link rel="stylesheet" type="text/css" href="../styles/header.css">
+    <link rel="stylesheet" type="text/css" href="../styles/navigation.css">
+    <link rel="stylesheet" type="text/css" href="../styles/questions.css">
+    <link rel="stylesheet" type="text/css" href="../styles/fonts.css">
+    <script src="../scripts/lib/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff"/>
+    <meta name="description"
+          content="Largest Collection of PastPapers and answers whenever and whereever. Join the interactive discussions with other students">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="PastPaperHub">
+    <link rel="icon"
+          type="image/png"
+          href="Assets/Images/LOGO.jpg">
+</head>
+<body>
+<div class="navigation">
+    <a href="/"><span id="logo">PastPaperHub</span></a>
+
+    <span>
+        <input type="text" name="search" placeholder="Search for Past Papers ">
+    </span>
+
+    <p id="past-paper-id" hidden> {{pastPaperId}}</p>
+
+    <span id="top-img">
+        <img src="../icons/search.png"/>
+    </span>
+
+</div>
+
+
+<span id="account">
+                <div id="user-container">
+                    <div class="user-contain">
+                        <div id="user-pic" class="dropdown">
+                            <div class="submenu" for="user-pic">
+                                <li><a href="/profile">Profile</a></li>
+                                <li><a id="sign-out">Sign Out</a></li>
+                            </div>
+                            </div>
+                            <span hidden id="user-name"></span>
+                        </div>
+                </div>
+            </span>
+</div>
+
+<div class="master-container">
+
+    <div id="floater-left">
+        <div id="accordion">
+            <div id="space"></div>
+
+            <button class="accordion">Magnetism</button>
+            <div class="panel">
+                <p class="current"><a href="#" data-id="question1-topic1">1. Question 1</a></p>
+                <p><a href="#" data-id="question2-topic1">2. Question 2</a></p>
+                <p><a href="#" data-id="question3-topic1">3. Question 3</a></p>
+            </div>
+
+            <button class="accordion">Relativity</button>
+            <div class="panel">
+                <p><a href="#" data-id="question1-topic2">1. Question 1</a></p>
+                <p><a href="#" data-id="question2-topic2">2. Question 2</a></p>
+                <p><a href="#" data-id="question3-topic2">3. Question 3</a></p>
+            </div>
+
+            <button class="accordion">Motion</button>
+            <div class="panel">
+                <p><a href="#" data-id="question1-topic3">1. Question 1</a></p>
+                <p><a href="#" data-id="question2-topic3">2. Question 2</a></p>
+                <p><a href="#" data-id="question3-topic3">3. Question 3</a></p>
+            </div>
+
+            <button class="accordion">Moment & Momentum</button>
+            <div class="panel">
+                <p><a data-id="question1-topic4">1. Question 1</a></p>
+                <p><a data-id="question2-topic4">2. Question 2</a></p>
+                <p><a data-id="question3-topic4">3. Question 3</a></p>
+            </div>
+
+            <button class="accordion">Reflection</button>
+            <div class="panel">
+                <p><a data-id="question1-topic5">1. Question 1</a></p>
+                <p><a data-id="question2-topic5">2. Question 2</a></p>
+                <p><a data-id="question3-topic5">3. Question 3</a></p>
+            </div>
+
+            <button class="accordion">Rarefaction</button>
+            <div class="panel">
+                <p><a data-id="question1-topic6">1. Question 1</a></p>
+                <p><a data-id="question2-topic6">2. Question 2</a></p>
+                <p><a data-id="question3-topic6">3. Question 3</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="floater-right">
+        <div id="content">
+            <div id="spacer">
+                <button class="menu-ham">&#9776;</button>
+                <button class="close">&times;</button>
+
+                <h4 id="pastpaper-text"></h4>
+                <h5 id="question"></h5>
+                <h5 id="question2-topic1" class="pbox">2. This is an example of Question 2 of Topic 1</h5>
+                <h5 id="question3-topic1" class="pbox">3. This is an example of Question 3 of Topic 1</h5>
+
+                <h5 id="question1-topic2" class="pbox">1. This is an example of Question 1 of Topic 2</h5>
+                <h5 id="question2-topic2" class="pbox">2. This is an example of Question 2 of Topic 2</h5>
+                <h5 id="question3-topic2" class="pbox">3. This is an example of Question 3 of Topic 2</h5>
+
+                <h5 id="question1-topic3" class="pbox">1. This is an example of Question 1 of Topic 3</h5>
+                <h5 id="question2-topic3" class="pbox">2. This is an example of Question 2 of Topic 3</h5>
+                <h5 id="question3-topic3" class="pbox">3. This is an example of Question 3 of Topic 3</h5>
+
+                <h5 id="question1-topic4" class="pbox">1. This is an example of Question 1 of Topic 4</h5>
+                <h5 id="question2-topic4" class="pbox">2. This is an example of Question 2 of Topic 4</h5>
+                <h5 id="question3-topic4" class="pbox">3. This is an example of Question 3 of Topic 4</h5>
+
+                <h5 id="question1-topic5" class="pbox">1. This is an example of Question 1 of Topic 5</h5>
+                <h5 id="question2-topic5" class="pbox">2. This is an example of Question 2 of Topic 5</h5>
+                <h5 id="question3-topic5" class="pbox">3. This is an example of Question 3 of Topic 5</h5>
+
+                <h5 id="question1-topic6" class="pbox">1. This is an example of Question 1 of Topic 6</h5>
+                <h5 id="question2-topic6" class="pbox">2. This is an example of Question 2 of Topic 6</h5>
+                <h5 id="question3-topic6" class="pbox">3. This is an example of Question 3 of Topic 6</h5>
+
+                <textarea onkeyup="textAreaAdjust(this)" placeholder="Type your answer"/></textarea>
+
+                <button id="discuss">Discussions</button>
+                <button id="next">Next Question</button>
+            </div>
+            <div class="comment-contain">
+                <div id="facebook-div" class="fb-comments" data-numposts="5"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="floater-right-rt">
+        <div id="space-ad"></div>
+        {{!-- <div id="sponsored">ADVERTISEMENT</div> --}}
+        <div id="content-ad">
+
+        </div>
+    </div>
+
+</div>
+
+
+{{!-- facebook comments plugin --}}
+<div id="fb-root"></div>
+
+<script>
+    function textAreaAdjust(o) {
+        o.style.height = "5px";
+        o.style.height = (6.5 + o.scrollHeight) + "px";
+    }
+</script>
+
+
+<script>
+    $(".menu-ham").click(function () {
+        $("#floater-left").animate({left: '0'}, 100);
+        $('#floater-right').animate({left: '75%'}, 100);
+        $(".menu-ham").hide();
+        $(".close").show();
+    });
+    $(".close").click(function () {
+        $("#floater-left").animate({left: '-75%'}, 100);
+        $('#floater-right').animate({left: '0px'}, 100);
+        $(".menu-ham").show();
+        $(".close").hide();
+    });
+</script>
+
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            this.classList.toggle("active");
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>
+
+
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0&appId=2107401669585891&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }
+    (document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        const facebookHref = localStorage.getItem("questionClickedDbRef");
+        $(".fb-comments").attr('data-href', 'https://www.pastpaperhub.com/' + facebookHref);
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#accordion').on('click', 'a', function () {
+            $('.current').not($(this).closest('p').addClass('current')).removeClass('current');
+            // fade out all open subcontents
+            $('.pbox:visible').fadeOut(600);
+            // fade in new selected subcontent
+            $('.pbox[id=' + $(this).attr('data-id') + ']').fadeIn(600);
+
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#discuss').on('click', function () {
+            $('.comment-contain').slideToggle(600);
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $('#next').on('click', function () {
+            $('.current').not($(this).closest('p').addClass('current')).removeClass('current');
+            // fade out all open subcontents
+            $('.pbox:visible').fadeOut(600);
+            // fade in new selected subcontent
+            $('.pbox[id=' + $(this).attr('data-id') + ']').fadeIn(600);
+
+        });
+    });
+</script>
+
+<script src="/__/firebase/5.1.0/firebase-app.js"></script>
+<script src="/__/firebase/5.1.0/firebase-auth.js"></script>
+<script src="/__/firebase/5.1.0/firebase-database.js"></script>
+<script src="/__/firebase/5.1.0/firebase-storage.js"></script>
+<script src="/__/firebase/5.1.0/firebase-messaging.js"></script>
+<script src="/__/firebase/init.js"></script>
+
+<script src="../scripts/questions.js" type="text/javascript"></script>
+<script src="../scripts/header.js" type="text/javascript"></script>
+<script src="../scripts/lib/jquery-3.3.1.min.js" type="text/javascript"></script>
+</body>
+</html>

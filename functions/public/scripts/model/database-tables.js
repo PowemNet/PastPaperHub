@@ -61,10 +61,12 @@ class PastPaper {
 }
 
 class Question {
-    constructor(id, questionName, pastPaperId) {
+    constructor(id, questionNumber, questionName, pastPaperId, commentsId) {
         this.id = id;
+        this.questionNumber = questionNumber;
         this.questionName = questionName;
         this.pastPaperId = pastPaperId;
+        this.commentsId = commentsId;
     }
 }
 
