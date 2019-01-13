@@ -21,7 +21,6 @@ const pleaseWaitText = document.getElementById('please-wait-text');
 const searchButton = document.getElementById('search-button');
 
 //search results
-const pleaseWaitTextSearchResults = document.getElementById('please-wait-text-search-results');
 const searchResultsList = document.getElementById('search-results-list');
 
 //set on click listeners
@@ -52,8 +51,6 @@ PastPaperHub.prototype.authStateObserver = async function(facebookUser) {
         window.location.href = "/login";
     }
 
-    // Load existing past papers.
-    loadPastPapers();
 };
 
 async function setUpHeaderAndUserData(facebookUser) {
@@ -134,14 +131,14 @@ async function setUpSearchUi() {
 }
 
 async function onSearchButtonClicked() {
-    await fetchPastPapers()
-    showSearchResults()
+    var itemSelectedValue = searchSelectItem.options[searchSelectItem.selectedIndex].value
+    await fetchPastPapersAndShowSearchResults(itemSelectedValue)
 }
 
 var pastPaperList
 var pastPaperNameList = []
 var pastPaperIdList = []
-async function fetchPastPapers(courseUnitId) {
+async function fetchPastPapersAndShowSearchResults(courseUnitId) {
     if (userHasSelectedItem()){
         await httpGet(`/api/v1/past_paper/course_unit/` + courseUnitId).then(res => {
             pastPaperList = JSON.parse(JSON.stringify(res))
@@ -149,7 +146,8 @@ async function fetchPastPapers(courseUnitId) {
                 pastPaperNameList.push(element["data"]["past_paper_name"])
                 pastPaperIdList.push(element["key"])
                 var pastPaper = new PastPaper()
-                //todo set up object here
+                pastPaper.pastPaperName = element["data"]["past_paper_name"]
+                pastPaper.id = element["key"]
                 showSearchResult(pastPaper)
             });
 
@@ -162,15 +160,14 @@ async function fetchPastPapers(courseUnitId) {
 
 }
 function showSearchResult(pastPaper) {
-    pleaseWaitTextSearchResults.style.visibility = "hidden"
 
-        var li = document.createElement("li");
-        var a = document.createElement("a");
+    var li = document.createElement("li");
+    var a = document.createElement("a");
 
-        a.textContent = pastPaper.pastPaperName;
-        a.setAttribute('href', "/questions" + pastPaper.id);  //todo.. add pp id to link in href.. let questions page load according to what's in the link
-        li.appendChild(a);
-
+    a.textContent = pastPaper.pastPaperName;
+    a.setAttribute('href', "/questions/" + pastPaper.id);  //todo.. add pp id to link in href.. let questions page load according to what's in the link
+    li.appendChild(a);
+    searchResultsList.appendChild(li);
 }
 
 function userHasSelectedItem(){
@@ -186,46 +183,6 @@ PastPaperHub.prototype.isUserSignedIn = function() {
   return !!this.auth.currentUser;
 }
 
-var hardCodedPastPaperDbRef = '/pastpapers/university/makerere/comp_eng/year_1/electronics/';
-// Loads pastpapers and listens for upcoming ones.
-function loadPastPapers() {
-  // var setItem = function(snap) {
-  //     var li = document.createElement("li");
-  //     var a = document.createElement("a");
-  //     var data = snap.val();
-  //
-  //     a.textContent = data.title;
-  //     a.setAttribute('href', "/questions");
-  //     li.appendChild(a);
-  //     li.onclick = function(){
-  //       var pastPaperClickedDbRef = hardCodedPastPaperDbRef + snap.key;
-  //       localStorage.setItem("pastPaperClickedDbRef", pastPaperClickedDbRef);
-  //       localStorage.setItem("pastPaperClickedText", data.title);
-  //     }
-  //     pastPaperList.appendChild(li);
-  //     pleaseWaitText.style.visibility = "hidden";
-  // }.bind(this)
-  //
-  // this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_added', setItem);
-  // this.database.ref(hardCodedPastPaperDbRef).limitToLast(12).on('child_changed', setItem);
-}
-
-// Returns true if user is signed-in. Otherwise false and displays a message.
-PastPaperHub.prototype.checkSignedInWithMessage = function() {
-  // Return true if the user is signed in Firebase
-  if (this.isUserSignedIn()) {
-    return true;  //todo check if user is actually signed in
-  }
-
-  // Display a message to the user using a Toast.
-  var data = {
-    message: 'You must sign-in first',
-    timeout: 2000
-  };
-  signInSnackbar.MaterialSnackbar.showSnackbar(data);
-  return false;
-};
-
 // Resets the given MaterialTextField.
 PastPaperHub.resetMaterialTextfield = function(element) {
   element.value = '';
@@ -234,16 +191,6 @@ PastPaperHub.resetMaterialTextfield = function(element) {
 
 // A loading image URL.
 PastPaperHub.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
-
-// Enables or disables the submit button depending on the values of the input
-// fields.
-PastPaperHub.prototype.toggleButton = function() {
-  if (this.messageInput.value) {
-    this.submitButton.removeAttribute('disabled');
-  } else {
-    this.submitButton.setAttribute('disabled', 'true');
-  }
-};
 
 window.addEventListener('load' , function() {
   window.PastPaperHub = new PastPaperHub();
