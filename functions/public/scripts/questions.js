@@ -10,6 +10,9 @@ const signInSnackbar = document.getElementById('must-signin-snackbar');
 
 // signOutButton.addEventListener('click', this.signOut.bind(this));
 
+const leftContentList = document.getElementById('left-content-list');
+const rightContentList = document.getElementById('right-content-list');
+
 const pastPaperId = document.getElementById('past-paper-id');
 
 var user;
@@ -25,10 +28,12 @@ Questions.prototype.init = function () {
     this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
 };
 
+var questionList = []
 Questions.prototype.authStateObserver = async function (facebookUser) {
     if (facebookUser) {
         await setUpheaderAndUserData(facebookUser)
         await fetchQuestionsFromDb(pastPaperId.textContent);
+        await setUpUi(questionList)
     } else {
         launchHomeScreen();
     }
@@ -77,7 +82,6 @@ async function fetchAndIntialiseUserData(facebookUserId) {
 // }
 
 var returnedList
-var questionList = []
 async function fetchQuestionsFromDb(pastPaperId) {
 
     var url = "/api/v1/question/past_paper/" + pastPaperId.replace(" ", "")
@@ -95,6 +99,35 @@ async function fetchQuestionsFromDb(pastPaperId) {
         return questionList
     }).catch(error => console.error(error))
 }
+
+function setUpUi(questionList) {
+    var i;
+    for (i = 0; i < questionList.length; i++) {
+
+        //set up right content
+        var h5 = document.createElement("h5");
+        h5.setAttribute('id', i) //set id to be used by left content
+        h5.setAttribute('class', "pbox")
+        h5.textContent = questionList[i].questionName
+        rightContentList.appendChild(h5)
+
+
+        //set up left content
+        var p = document.createElement("p");
+        var a = document.createElement("a");
+
+        a.textContent = questionList[i].questionNumber;
+        a.setAttribute('href', "#");
+        a.setAttribute('data-id', i);
+        if (i === 0 ) {
+            a.setAttribute('class', "current");
+        }
+        p.appendChild(a);
+        leftContentList.appendChild(p);
+    }
+
+}
+
 
 function launchHomeScreen() {
     window.location.href = "/";
