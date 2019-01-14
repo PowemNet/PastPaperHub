@@ -1,136 +1,125 @@
 'use strict';
 
-// Initializes PastPaperHub.
-function PastPaperHub() {
-  this.messageList = document.getElementById('messages');
-  this.pleaseWaitText = document.getElementById("please-wait-text");
-  this.pastPaperList = document.getElementById("past-paper-list");
-  this.userPic = document.getElementById('user-pic');
-  this.userName = document.getElementById('user-name');
-  this.signOutButton = document.getElementById('sign-out');
-  this.signInSnackbar = document.getElementById('must-signin-snackbar');
+const messageList = document.getElementById('messages');
+const pleaseWaitText = document.getElementById("please-wait-text");
+const pastPaperList = document.getElementById("past-paper-list");
+const userPic = document.getElementById('user-pic');
+const userName = document.getElementById('user-name');
+const signOutButton = document.getElementById('sign-out');
+const signInSnackbar = document.getElementById('must-signin-snackbar');
 
-  this.signOutButton.addEventListener('click', this.signOut.bind(this));
-  this.init();
-}
+// signOutButton.addEventListener('click', this.signOut.bind(this));
 
 const pastPaperId = document.getElementById('past-paper-id');
 
-// Sets up shortcuts to Firebase features and initiate firebase auth.
-PastPaperHub.prototype.init = function() {
-  this.auth = firebase.auth();
-  this.database = firebase.database();
-  this.storage = firebase.storage();
-  this.messaging = firebase.messaging();
+var user;
 
-  console.log(pastPaperId.textContent) //todo: use this ID to fetch data then populate arrays to be used to dynamically set questions fields
-  // this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
-};
-
-// Signs-out of Friendly Chat.
-PastPaperHub.prototype.signOut = function() {
-  // Sign out of Firebase.
-  this.auth.signOut();
-};
-
-// Returns the signed-in user's profile Pic URL.
-PastPaperHub.prototype.getProfilePicUrl = function() {
-  return this.auth.currentUser.photoURL || 'images/profile_placeholder.png'; //todo check why this doesnt work
+function Questions() {
+    this.init();
 }
 
-// Returns the signed-in user's display name.
-PastPaperHub.prototype.getUserName = function() {
-  return this.auth.currentUser.displayName;
+Questions.prototype.init = function () {
+    this.auth = firebase.auth();
+    this.database = firebase.database();
+
+    this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
+};
+
+Questions.prototype.authStateObserver = async function (facebookUser) {
+    if (facebookUser) {
+        await setUpheaderAndUserData(facebookUser)
+        await fetchQuestionsFromDb(pastPaperId.textContent);
+    } else {
+        launchHomeScreen();
+    }
+};
+
+async function setUpheaderAndUserData(facebookUser) {
+    user = await fetchAndIntialiseUserData(facebookUser.uid);
+    // await initDropDownMenu(user);
 }
 
-// Returns true if a user is signed-in.
-PastPaperHub.prototype.isUserSignedIn = function() {
-  return !!this.auth.currentUser;
+async function fetchAndIntialiseUserData(facebookUserId) {
+    await httpGet("/api/v1/user/" + facebookUserId).then(res => {
+        res = JSON.parse(JSON.stringify(res))
+
+        user = new User()
+        user.id = res["key"]
+        user.country = res["data"]["country"]
+        user.course = res["data"]["course"]
+        user.displayName = res["data"]["displayName"]
+        user.profilePicUrl = res["data"]["profilePicUrl"]
+        user.profileSet = res["data"]["profile_set"]
+        user.university = res["data"]["university"]
+        user.year = res["data"]["year"]
+
+        return user
+    }).catch(error => console.error(error))
+
+    return user
 }
 
-const pastPaperDbRef = localStorage.getItem("pastPaperClickedDbRef");
-var questionsDbRef = pastPaperDbRef + "/questions";
-PastPaperHub.prototype.loadQuestions = function() {
-  var setItem = function(snap) {
-      var li = document.createElement("li");
-      var a = document.createElement("a");
-      var data = snap.val();
+// function initDropDownMenu(user) {
+//     return new Promise((resolve, reject) => {
+//
+//         if (user.university !== null) {
+//             dropDownUniversity.textContent = user.university
+//         }
+//         if (user.course !== null) {
+//             dropDownCourse.textContent = user.course
+//         }
+//         if (user.year !== null) {
+//             dropDownYear.textContent = "Year " + user.year
+//         }
+//         resolve();
+//     });
+//
+// }
 
-      a.textContent = data.text;
-      a.setAttribute('href', "/question");
-      li.appendChild(a);
-      li.onclick = function(){
-        var questionClickedDbRef = questionsDbRef + "/"+snap.key;
-        localStorage.setItem("questionClickedDbRef", questionClickedDbRef);
-        localStorage.setItem("questionClickedText", data.text);
-      }
-      this.pastPaperList.appendChild(li);
-      this.pleaseWaitText.style.visibility = "hidden";
-  }.bind(this)
+var returnedList
+var questionList = []
+async function fetchQuestionsFromDb(pastPaperId) {
 
-  this.database.ref(questionsDbRef).limitToLast(12).on('child_added', setItem);
-  this.database.ref(questionsDbRef).limitToLast(12).on('child_changed', setItem);
-};
+    var url = "/api/v1/question/past_paper/" + pastPaperId.replace(" ", "")
+    await httpGet(url).then(res => {
+        returnedList = JSON.parse(JSON.stringify(res))
+        returnedList.forEach(function(element) {
+            var question = new Question()  //todo automatically deserialise json into JS object
+            question.id = element["key"]
+            question.questionNumber = element["data"]["question_number"]
+            question.questionName = element["data"]["question_name"]
+            questionList.push(question)
+        });
 
-// Triggers when the auth state change for instance when the user signs-in or signs-out.
-PastPaperHub.prototype.authStateObserver = function(user) {
-  if (user) { // User is signed in!
-    // Get the signed-in user's profile pic and name.
-    var profilePicUrl = this.getProfilePicUrl();
-    var userName = this.getUserName();
+        console.log(questionList)
+        return questionList
+    }).catch(error => console.error(error))
+}
 
-    // Set the user's profile pic and name.
-    this.userPic.style.backgroundImage = 'url(' + (profilePicUrl || '/images/profile_placeholder.png') + ')';
-    this.userName.textContent = userName;
+function launchHomeScreen() {
+    window.location.href = "/";
+}
 
-    // Show user's profile and sign-out button.
-    this.userName.removeAttribute('hidden');
-    this.userPic.removeAttribute('hidden');
+// todo this looks like it will be usefull
+function checkSignedInWithMessage() {
+    // Return true if the user is signed in Firebase
+    if (this.isUserSignedIn()) {
+        return true;
+    }
 
-  } else { // User is signed out!
-    window.location.href = "/login";
-  }
-
-  // Load existing past papers.
-  this.loadQuestions();
-};
-
-// Returns true if user is signed-in. Otherwise false and displays a message.
-PastPaperHub.prototype.checkSignedInWithMessage = function() {
-  // Return true if the user is signed in Firebase
-  if (this.isUserSignedIn()) {
-    return true;
-  }
-
-  // Display a message to the user using a Toast.
-  var data = {
-    message: 'You must sign-in first',
-    timeout: 2000
-  };
-  this.signInSnackbar.MaterialSnackbar.showSnackbar(data);
-  return false;
-};
-
-// Resets the given MaterialTextField.
-PastPaperHub.resetMaterialTextfield = function(element) {
-  element.value = '';
-  element.parentNode.MaterialTextfield.boundUpdateClassesHandler();
-};
+    // Display a message to the user using a Toast.
+    var data = {
+        message: 'You must sign-in first',
+        timeout: 2000
+    };
+    signInSnackbar.MaterialSnackbar.showSnackbar(data);
+    return false;
+}
 
 // A loading image URL.
-PastPaperHub.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
+Questions.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
 
-// Enables or disables the submit button depending on the values of the input
-// fields.
-PastPaperHub.prototype.toggleButton = function() {
-  if (this.messageInput.value) {
-    this.submitButton.removeAttribute('disabled');
-  } else {
-    this.submitButton.setAttribute('disabled', 'true');
-  }
-};
-
-window.addEventListener('load' , function() {
-  window.PastPaperHub = new PastPaperHub();
+window.addEventListener('load', function () {
+    window.Questions = new Questions();
 });
 
