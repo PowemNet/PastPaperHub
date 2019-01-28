@@ -28,7 +28,7 @@ Questions.prototype.init = function () {
     this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
 };
 
-var questionList = []
+var questionList = [];
 Questions.prototype.authStateObserver = async function (facebookUser) {
     if (facebookUser) {
         await setUpheaderAndUserData(facebookUser)

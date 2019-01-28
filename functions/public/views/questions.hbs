@@ -98,6 +98,15 @@
 {{!-- facebook comments plugin --}}
 <div id="fb-root"></div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        const facebookHref = localStorage.getItem("questionClickedDbRef");
+        $(".fb-comments").attr('data-href', 'https://www.pastpaperhub.com/' + facebookHref);
+    });
+</script>
+
+
+{{!-- Scripts for rest of the UI --}}
 <script>
     function textAreaAdjust(o) {
         o.style.height = "5px";
@@ -153,15 +162,6 @@
     }
     (document, 'script', 'facebook-jssdk'));
 </script>
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        const facebookHref = localStorage.getItem("questionClickedDbRef");
-        $(".fb-comments").attr('data-href', 'https://www.pastpaperhub.com/' + facebookHref);
-    });
-</script>
-
 
 <script>
     $(document).ready(function () {
