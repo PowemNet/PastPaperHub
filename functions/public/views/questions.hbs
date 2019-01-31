@@ -18,6 +18,19 @@
           href="Assets/Images/LOGO.jpg">
 </head>
 <body>
+<!--Include the JavaScript SDK for Facebook-->
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0&appId=2107401669585891&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }
+    (document, 'script', 'facebook-jssdk'));
+</script>
+
 <div class="navigation">
     <a href="/"><span id="logo">PastPaperHub</span></a>
 
@@ -68,19 +81,23 @@
                 <button class="menu-ham">&#9776;</button>
                 <button class="close">&times;</button>
 
-                <h4 id="pastpaper-text"></h4>
-                <h5 id="question"></h5>
+                <!--<h4 id="pastpaper-text"></h4>-->
+                <!--<h5 id="question"></h5>-->
 
-                <ul id="right-content-list"></ul>
+                <ul id="right-content-list">
+                    <!--<div id="facebook-div" class="fb-comments" data-numposts="5" data-href="https://developers.facebook.com/docs/plugins/comments#configurator"></div>-->
+
+                </ul>
 
                 <textarea onkeyup="textAreaAdjust(this)" placeholder="Type your answer"/></textarea>
 
                 <button id="discuss">Discussions</button>
                 <button id="next">Next Question</button>
             </div>
-            <div class="comment-contain">
-                <div id="facebook-div" class="fb-comments" data-numposts="5"></div>
-            </div>
+            <!--<div class="comment-contain">  //todo put this class back inorder to auto hide the comments when they first load-->
+                <!--<div id="facebook-div" class="fb-comments" data-numposts="5" data-href="https://developers.facebook.com/docs/plugins/comments#configurator"></div>-->
+
+            <!--</div>-->
         </div>
     </div>
 
@@ -97,14 +114,6 @@
 
 {{!-- facebook comments plugin --}}
 <div id="fb-root"></div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        const facebookHref = localStorage.getItem("questionClickedDbRef");
-        $(".fb-comments").attr('data-href', 'https://www.pastpaperhub.com/' + facebookHref);
-    });
-</script>
-
 
 {{!-- Scripts for rest of the UI --}}
 <script>
@@ -150,19 +159,6 @@
     }
 </script>
 
-
-<script>
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0&appId=2107401669585891&autoLogAppEvents=1';
-        fjs.parentNode.insertBefore(js, fjs);
-    }
-    (document, 'script', 'facebook-jssdk'));
-</script>
-
 <script>
     $(document).ready(function () {
         $('#accordion').on('click', 'a', function () {
@@ -176,7 +172,7 @@
     });
 </script>
 
-
+<!--show and hide comments-->
 <script>
     $(document).ready(function () {
         $('#discuss').on('click', function () {

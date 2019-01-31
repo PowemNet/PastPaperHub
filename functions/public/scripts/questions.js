@@ -106,10 +106,24 @@ function setUpUi(questionList) {
 
         //set up right content
         var h5 = document.createElement("h5");
-        h5.setAttribute('id', i) //set id to be used by left content
-        h5.setAttribute('class', "pbox")
-        h5.textContent = questionList[i].questionName
-        rightContentList.appendChild(h5)
+        h5.textContent = questionList[i].questionName;
+
+        //set up facebook comments
+        var commentsDiv = document.createElement("div");
+        commentsDiv.setAttribute('id', "facebook-div");
+        commentsDiv.setAttribute('class', "fb-comments");
+        commentsDiv.setAttribute('data-numposts', "5");
+        // commentsDiv.setAttribute('data-href', questionList[i].commentsId);
+        commentsDiv.setAttribute('data-href', "https://developers.facebook.com/docs/plugins/comments#configurator"); //hard code for now
+
+
+        var div = document.createElement("div");
+        div.setAttribute('id', i); //set id to be used by left content
+        div.setAttribute('class',
+            "pbox");
+        div.appendChild(h5)
+        div.appendChild(commentsDiv)
+        rightContentList.appendChild(div);
 
 
         //set up left content

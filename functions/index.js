@@ -342,20 +342,10 @@ api.patch('/api/v1/past_paper/:past_paper_id', (request, response) => {
 // --- QUESTION TABLE ----
 api.post('/api/v1/question', async (request, response) => {
     console.log("THIS IS THE REQUEST---------" + JSON.stringify(request.body))
-    const saveQuestionResponse = await save(request, response, '/question')
-
-    // const questionKey = JSON.stringify(saveQuestionResponse)["key"];
-    // console.log("THIS IS THE REQPONSE FROM CFEAE QN: "+ JSON.stringify(saveQuestionResponse))
-    // console.log("THIS IS THE REQPONSE FROM CFEAE QN------------------: "+ saveQuestionResponse.body)
-    // console.log("THIS IS THE REQPONSE FROM CFEAE QN------------------: "+ saveQuestionResponse.json)
-    // console.log("THIS IS THE REQPONSE FROM CFEAE QN------------------: "+ JSON.parse(JSON.stringify(saveQuestionResponse)))
-    console.log("THIS IS THE REQPONSE FROM CFEAE QN------------------:" + util.inspect(saveQuestionResponse))
-    const questionKey = saveQuestionResponse["key"];
-    await addCommentsId(questionKey, response)
-
+   save(request, response, '/question')
 });
 
-async function addCommentsId(questionKey, response) {
+async function addCommentsId(questionKey, response) {  //todo find a way to make an async function which creates a comment then updates the comment ID. This will be a manual step for now
     const commentsId = "https://www.pastpaperhub.com/" + questionKey;
 
     console.log("THE KEY IS---"+ questionKey)
