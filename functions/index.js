@@ -208,7 +208,7 @@ api.get('/api/v1/user/:user_id', (request, response) => {
     findById(request, response, '/user/'+request.params.user_id)
 });
 
-//get user by ID
+//check user exists
 api.get('/api/v1/user/check-exists/:user_id', (request, response) => {
     checkExists(request, response, 'user', request.params.user_id)
 });
@@ -271,6 +271,11 @@ api.post('/api/v1/university', (request, response) => {
 //return list of universities
 api.get('/api/v1/university', (request, response) => {
     findAll(request, response, '/university')
+});
+
+//get university by ID
+api.get('/api/v1/university/:university_id', (request, response) => {
+    findById(request, response, '/university/'+request.params.university_id)
 });
 
 //return list of universities by country_id
