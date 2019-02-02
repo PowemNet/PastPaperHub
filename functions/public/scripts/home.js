@@ -89,10 +89,17 @@ function setUpHeaderUi(user) {
     userPic.removeAttribute('hidden');
 }
 
-function initDropDownMenu(user) {
+async function initDropDownMenu(user) {
+    var university = new University()
+    await httpGet('/api/v1/university/' + user.university).then(res => {
+        res = JSON.parse(JSON.stringify(res))
+        university.universityName = res["data"]["university_name"]
+        return university
+    }).catch(error => console.error(error))
+    
     return new Promise((resolve, reject) => {
         if (user.university!== null){
-            dropDownUniversity.textContent = user.university
+            dropDownUniversity.textContent = university.universityName
         }
         if (user.course!== null){
             dropDownCourse.textContent = user.course
