@@ -112,11 +112,16 @@ function setUpUi(questionList) {
 
         //set up facebook comments
         loadFacebookAPI();
+        // var commentsParentDiv = document.createElement("div");
+        // commentsParentDiv.setAttribute('class', "comment-contain");
+
         var commentsDiv = document.createElement("div");
         commentsDiv.setAttribute('id', "facebook-div");
         commentsDiv.setAttribute('class', "fb-comments");
         commentsDiv.setAttribute('data-numposts', "5");
-        commentsDiv.setAttribute('data-href', questionList[i].commentsId); //todo hard code for now
+        commentsDiv.setAttribute('data-href', questionList[i].commentsId);
+
+        // commentsParentDiv.setAttribute('div', commentsDiv)
 
         //set up right content div
         var div = document.createElement("div");
