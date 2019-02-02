@@ -14,6 +14,7 @@ const leftContentList = document.getElementById('left-content-list');
 const rightContentList = document.getElementById('right-content-list');
 
 const pastPaperId = document.getElementById('past-paper-id');
+const facebookDiv = document.getElementById('facebook-div');
 
 var user;
 
@@ -84,14 +85,15 @@ async function fetchAndIntialiseUserData(facebookUserId) {
 var returnedList
 async function fetchQuestionsFromDb(pastPaperId) {
 
-    var url = "/api/v1/question/past_paper/" + pastPaperId.replace(" ", "")
+    var url = "/api/v1/question/past_paper/" + pastPaperId.replace(" ", "");
     await httpGet(url).then(res => {
-        returnedList = JSON.parse(JSON.stringify(res))
+        returnedList = JSON.parse(JSON.stringify(res));
         returnedList.forEach(function(element) {
-            var question = new Question()  //todo automatically deserialise json into JS object
-            question.id = element["key"]
-            question.questionNumber = element["data"]["question_number"]
-            question.questionName = element["data"]["question_name"]
+            var question = new Question();  //todo automatically deserialise json into JS object
+            question.id = element["key"];
+            question.questionNumber = element["data"]["question_number"];
+            question.questionName = element["data"]["question_name"];
+            question.commentsId = element["data"]["comments_id"];
             questionList.push(question)
         });
 
@@ -104,19 +106,19 @@ function setUpUi(questionList) {
     var i;
     for (i = 0; i < questionList.length; i++) {
 
-        //set up right content
+        //set up question title
         var h5 = document.createElement("h5");
         h5.textContent = questionList[i].questionName;
 
         //set up facebook comments
+        loadFacebookAPI();
         var commentsDiv = document.createElement("div");
         commentsDiv.setAttribute('id', "facebook-div");
         commentsDiv.setAttribute('class', "fb-comments");
         commentsDiv.setAttribute('data-numposts', "5");
-        // commentsDiv.setAttribute('data-href', questionList[i].commentsId);
-        commentsDiv.setAttribute('data-href', "https://developers.facebook.com/docs/plugins/comments#configurator"); //hard code for now
+        commentsDiv.setAttribute('data-href', questionList[i].commentsId); //todo hard code for now
 
-
+        //set up right content div
         var div = document.createElement("div");
         div.setAttribute('id', i); //set id to be used by left content
         div.setAttribute('class',
@@ -140,6 +142,12 @@ function setUpUi(questionList) {
         leftContentList.appendChild(p);
     }
 
+}
+
+function loadFacebookAPI() {
+    var js = document.createElement('script');
+    js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=YOUR_APP_ID&version=v2.0';
+    document.body.appendChild(js);
 }
 
 
