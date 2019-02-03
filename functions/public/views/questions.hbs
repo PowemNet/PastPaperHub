@@ -18,7 +18,8 @@
           href="Assets/Images/LOGO.jpg">
 </head>
 <body>
-<!--Include the JavaScript SDK for Facebook-->
+
+{{!-- facebook comments plugin --}}
 <div id="fb-root"></div>
 
 <div class="navigation">
@@ -74,12 +75,10 @@
                 <!--<h4 id="pastpaper-text"></h4>-->
                 <!--<h5 id="question"></h5>-->
 
-                <ul id="right-content-list">
+                <ul id="right-content-list"></ul>
 
-                </ul>
-
-                <button id="discuss">Discussions</button>
-                <button id="next">Next Question</button>
+                <!--<button id="btn-answers">Answers</button> removing this for now because we cant show/hide the comments, but would like to do it in the future-->
+                <!--<button id="next">Next Question</button>-->
             </div>
         </div>
     </div>
@@ -93,10 +92,6 @@
     </div>
 
 </div>
-
-
-{{!-- facebook comments plugin --}}
-<!--<div id="fb-root"></div>-->
 
 {{!-- Scripts for rest of the UI --}}
 <script>
@@ -154,16 +149,6 @@
         });
     });
 </script>
-
-<!--show and hide comments-->
-<script>
-    $(document).ready(function () {
-        $('#discuss').on('click', function () {
-            $('.comment-contain').slideToggle(600);
-        });
-    });
-</script>
-
 
 <script>
     $(document).ready(function () {

@@ -1,20 +1,11 @@
 'use strict';
 
-const messageList = document.getElementById('messages');
-const pleaseWaitText = document.getElementById("please-wait-text");
-const pastPaperList = document.getElementById("past-paper-list");
-const userPic = document.getElementById('user-pic');
-const userName = document.getElementById('user-name');
-const signOutButton = document.getElementById('sign-out');
 const signInSnackbar = document.getElementById('must-signin-snackbar');
-
-// signOutButton.addEventListener('click', this.signOut.bind(this));
 
 const leftContentList = document.getElementById('left-content-list');
 const rightContentList = document.getElementById('right-content-list');
 
 const pastPaperId = document.getElementById('past-paper-id');
-const facebookDiv = document.getElementById('facebook-div');
 
 var user;
 
@@ -42,7 +33,6 @@ Questions.prototype.authStateObserver = async function (facebookUser) {
 
 async function setUpheaderAndUserData(facebookUser) {
     user = await fetchAndIntialiseUserData(facebookUser.uid);
-    // await initDropDownMenu(user);
 }
 
 async function fetchAndIntialiseUserData(facebookUserId) {
@@ -64,23 +54,6 @@ async function fetchAndIntialiseUserData(facebookUserId) {
 
     return user
 }
-
-// function initDropDownMenu(user) {
-//     return new Promise((resolve, reject) => {
-//
-//         if (user.university !== null) {
-//             dropDownUniversity.textContent = user.university
-//         }
-//         if (user.course !== null) {
-//             dropDownCourse.textContent = user.course
-//         }
-//         if (user.year !== null) {
-//             dropDownYear.textContent = "Year " + user.year
-//         }
-//         resolve();
-//     });
-//
-// }
 
 var returnedList
 async function fetchQuestionsFromDb(pastPaperId) {
@@ -112,16 +85,12 @@ function setUpUi(questionList) {
 
         //set up facebook comments
         loadFacebookAPI();
-        // var commentsParentDiv = document.createElement("div");
-        // commentsParentDiv.setAttribute('class', "comment-contain");
 
         var commentsDiv = document.createElement("div");
-        commentsDiv.setAttribute('id', "facebook-div");
+        commentsDiv.setAttribute('id', "comments-div");
         commentsDiv.setAttribute('class', "fb-comments");
         commentsDiv.setAttribute('data-numposts', "5");
         commentsDiv.setAttribute('data-href', questionList[i].commentsId);
-
-        // commentsParentDiv.setAttribute('div', commentsDiv)
 
         //set up right content div
         var div = document.createElement("div");
@@ -154,7 +123,6 @@ function loadFacebookAPI() {
     js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=YOUR_APP_ID&version=v2.0';
     document.body.appendChild(js);
 }
-
 
 function launchHomeScreen() {
     window.location.href = "/";
