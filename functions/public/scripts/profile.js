@@ -291,7 +291,7 @@ async function updateUserProfile() {
           return JSON.stringify(res)
       }).catch(error => console.error(error))
   } else {
-    alert("Please select an option")
+    // alert("Please select an option") //todo fix this - #113
   }
 }
 

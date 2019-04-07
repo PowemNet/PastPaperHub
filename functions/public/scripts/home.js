@@ -33,12 +33,11 @@ function PastPaperHub() {
     this.init();
 }
 
-// Sets up shortcuts to Firebase features and initiate firebase auth.
 PastPaperHub.prototype.init = function() {
   this.auth = firebase.auth();
-  this.database = firebase.database();
-  this.storage = firebase.storage();
-  this.messaging = firebase.messaging();
+  // this.database = firebase.database();
+  // this.storage = firebase.storage();
+  // this.messaging = firebase.messaging();
   this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
 };
 
@@ -162,7 +161,7 @@ async function fetchPastPapersAndShowSearchResults(courseUnitId) {
             return pastPaperList
         }).catch(error => console.error(error))
     } else {
-        alert("Please select an option")
+        // alert("Please select an option") //todo fix this - #113
     }
 
 }
