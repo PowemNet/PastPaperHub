@@ -51,12 +51,48 @@ Profile.prototype.init = function() {
 
 Profile.prototype.authStateObserver = async function (facebookUser) {
   if (facebookUser) {
-    await setUpheaderAndUserData(facebookUser)
+    await setUpheaderAndUserData(facebookUser);
+    await checkProfileSet(facebookUser);
     await setUpProfileCard();
   } else {
     launchHomeScreen();
   }
 };
+
+async function checkProfileSet(facebookUser) {
+    if (user.profileSet) {
+        var dialog = showWarning();
+        if (dialog) {
+            updateUserProfile();
+        } else {
+            showHomeScreen();
+        }
+    }
+}
+
+async function updateUserProfile() {
+    var jsonObject = {};
+    jsonObject["profile_set"] = false;
+    jsonObject["country"] = "";
+    jsonObject["course"] = "";
+    jsonObject["university"] = "";
+    jsonObject["year"] = "";
+
+    const json = JSON.stringify(jsonObject);
+    await httpPatch(`/api/v1/user/` + user.id, json)
+        .then(res => {
+            return JSON.stringify(res);
+        })
+        .catch(error => console.error(error));
+}
+
+function showHomeScreen() {
+    window.location.href = "/";
+}
+
+function showWarning() {
+    return window.confirm("This will reset your profile.");
+}
 
 async function setUpheaderAndUserData(facebookUser) {
     user = await fetchAndIntialiseUserData(facebookUser.uid);
@@ -283,7 +319,7 @@ Profile.prototype.selectElement = function (id, valueToSelect)
 
 const dbRef = firebase.database().ref();
 
-async function updateUserProfile() {
+async function updateUserProfileForCard() {
     console.log("updating with userID:----- " + user.id)
     if (userHasSelectedItem()){
       await httpPatch(`/api/v1/user/` + user.id, generateJsonForItemSelected()).then(res => {
@@ -321,7 +357,7 @@ function initialiseDataObjects(value, itemSelectedText) {
 
 function onNextButtonClicked() {
   if (checkSignedIn()) {
-    updateUserProfile()
+    updateUserProfileForCard()
   }
 }
 
