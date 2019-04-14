@@ -91,7 +91,7 @@ function showHomeScreen() {
 }
 
 function showWarning() {
-    return window.confirm("This will reset your profile.");
+    return window.confirm("This will reset your Profile.");
 }
 
 async function setUpheaderAndUserData(facebookUser) {
@@ -319,6 +319,9 @@ Profile.prototype.selectElement = function (id, valueToSelect)
 
 const dbRef = firebase.database().ref();
 
+/**
+ *
+ */
 async function updateUserProfileForCard() {
     console.log("updating with userID:----- " + user.id)
     if (userHasSelectedItem()){
