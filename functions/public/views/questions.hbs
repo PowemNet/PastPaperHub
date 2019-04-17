@@ -1,0 +1,180 @@
+<html>
+<head>
+    <!--- more info to be added here e.g favicon -->
+    <title>PastPaperHub</title>
+    <link rel="stylesheet" type="text/css" href="../styles/header.css">
+    <link rel="stylesheet" type="text/css" href="../styles/navigation.css">
+    <link rel="stylesheet" type="text/css" href="../styles/questions.css">
+    <link rel="stylesheet" type="text/css" href="../styles/fonts.css">
+    <script src="../scripts/lib/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff"/>
+    <meta name="description"
+          content="Largest Collection of PastPapers and answers whenever and whereever. Join the interactive discussions with other students">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="PastPaperHub">
+    <link rel="icon"
+          type="image/png"
+          href="Assets/Images/LOGO.jpg">
+</head>
+<body>
+
+{{!-- facebook comments plugin --}}
+<div id="fb-root"></div>
+
+<div class="navigation">
+    <a href="/"><span id="logo">PastPaperHub</span></a>
+
+    <span>
+        <input type="text" name="search" placeholder="Search for Past Papers ">
+    </span>
+
+    <p id="past-paper-id" hidden> {{pastPaperId}}</p>
+
+    <span id="top-img">
+        <img src="../icons/search.png"/>
+    </span>
+
+</div>
+
+<span id="account">
+                <div id="user-container">
+                    <div class="user-contain">
+                        <div id="user-pic" class="dropdown">
+                            <div class="submenu" for="user-pic">
+                                <li><a href="/profile">Profile</a></li>
+                                <li><a id="sign-out">Sign Out</a></li>
+                            </div>
+                            </div>
+                            <span hidden id="user-name"></span>
+                        </div>
+                </div>
+            </span>
+</div>
+
+<div class="master-container">
+
+    <div id="floater-left">
+        <div id="accordion">
+            <div id="space"></div>
+
+            <button class="accordion">Questions</button>
+            <div class="panel">
+                <ul id="left-content-list"></ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="floater-right">
+        <div id="content">
+            <div id="spacer">
+                <button class="menu-ham">&#9776;</button>
+                <button class="close">&times;</button>
+
+                <!--<h4 id="pastpaper-text"></h4>-->
+                <!--<h5 id="question"></h5>-->
+
+                <ul id="right-content-list"></ul>
+
+                <!--<button id="btn-answers">Answers</button> removing this for now because we cant show/hide the comments, but would like to do it in the future-->
+                <!--<button id="next">Next Question</button>-->
+            </div>
+        </div>
+    </div>
+
+    <div id="floater-right-rt">
+        <div id="space-ad"></div>
+        {{!-- <div id="sponsored">ADVERTISEMENT</div> --}}
+        <div id="content-ad">
+
+        </div>
+    </div>
+
+</div>
+
+{{!-- Scripts for rest of the UI --}}
+<script>
+    function textAreaAdjust(o) {
+        o.style.height = "5px";
+        o.style.height = (6.5 + o.scrollHeight) + "px";
+    }
+</script>
+
+
+<script>
+    $(".menu-ham").click(function () {
+        $("#floater-left").animate({left: '0'}, 100);
+        $('#floater-right').animate({left: '75%'}, 100);
+        $(".menu-ham").hide();
+        $(".close").show();
+    });
+    $(".close").click(function () {
+        $("#floater-left").animate({left: '-75%'}, 100);
+        $('#floater-right').animate({left: '0px'}, 100);
+        $(".menu-ham").show();
+        $(".close").hide();
+    });
+</script>
+
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+            /* Toggle between adding and removing the "active" class,
+            to highlight the button that controls the panel */
+            this.classList.toggle("active");
+            /* Toggle between hiding and showing the active panel */
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    }
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#accordion').on('click', 'a', function () {
+            $('.current').not($(this).closest('p').addClass('current')).removeClass('current');
+            // fade out all open subcontents
+            $('.pbox:visible').fadeOut(600);
+            // fade in new selected subcontent
+            $('.pbox[id=' + $(this).attr('data-id') + ']').fadeIn(600);
+
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#next').on('click', function () {
+            $('.current').not($(this).closest('p').addClass('current')).removeClass('current');
+            // fade out all open subcontents
+            $('.pbox:visible').fadeOut(600);
+            // fade in new selected subcontent
+            $('.pbox[id=' + $(this).attr('data-id') + ']').fadeIn(600);
+
+        });
+    });
+</script>
+
+<script src="/__/firebase/5.1.0/firebase-app.js"></script>
+<script src="/__/firebase/5.1.0/firebase-auth.js"></script>
+<script src="/__/firebase/5.1.0/firebase-database.js"></script>
+<script src="/__/firebase/5.1.0/firebase-storage.js"></script>
+<script src="/__/firebase/5.1.0/firebase-messaging.js"></script>
+<script src="/__/firebase/init.js"></script>
+
+<script src="../scripts/api-helper.js" type="text/javascript"></script>
+<script src="../scripts/config.js" type="text/javascript"></script>
+<script src="../scripts/model/database-tables.js" type="text/javascript"></script>
+<script src="../scripts/questions.js" type="text/javascript"></script>
+<script src="../scripts/header.js" type="text/javascript"></script>
+<script src="../scripts/lib/jquery-3.3.1.min.js" type="text/javascript"></script>
+</body>
+</html>

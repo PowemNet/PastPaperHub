@@ -1,70 +1,315 @@
 'use strict';
-// Initializes FriendlyChat.
-function Profile() {
-  // Shortcuts to DOM Elements.
-  this.saveButton = document.getElementById('save-profile');
-  this.yearInput = document.getElementById('year');
-  this.courseInput = document.getElementById('course');
-  this.universityInput = document.getElementById('university');
-  this.signInSnackbar = document.getElementById('must-signin-snackbar');
 
-  this.saveButton.addEventListener('click', this.onProfileFormSubmit.bind(this));
+/**
+ * set up UI elements from html
 
-  this.initFirebaseAndSetUpData();
-}
+ */
+//drop down
+const dropDownUniversity = document.getElementById('drop-down-university');
+const dropDownYear = document.getElementById('drop-down-year');
+const dropDownCourse = document.getElementById('drop-down-course');
+
+//profile card
+const profileCardTitle = document.getElementById('profile-card-title');
+const profileCardSelectItem = document.getElementById('profile-select-item');
+const profileCardPleaseWaitText = document.getElementById('please-wait-text');
+const profileCardNextButon = document.getElementById('profile-card-next');
+
+//snack bar
+const signInSnackbar = document.getElementById('must-signin-snackbar');
+
+/**
+ * set up Constants
+ * //todo extract these to a different file
+ */
+const COUNTRY = "country";
+const UNIVERSITY = "university";
+const YEAR = "year";
+const COURSE = "course";
+
+//set on click listeners
+profileCardNextButon.addEventListener('click', onNextButtonClicked.bind(this))
+
+var currentCard = ""  //todo refactor this. there are too many class level variables floating around. variables should be passed around in methods
 
 var user;
-var course;
+var country;
 var university;
 var year;
+var course;
 
-Profile.prototype.initFirebaseAndSetUpData = function() {
+function Profile() {
+    this.init();
+}
+
+
+Profile.prototype.init = function() {
   this.auth = firebase.auth();
   this.database = firebase.database();
   this.auth.onAuthStateChanged(this.authStateObserver.bind(this));
 };
 
-Profile.prototype.authStateObserver = async function (userObject) {
-  if (userObject) {
-    user = userObject; //set user global object
-    console.log(user);
-    await this.fetchUserMetadata();
-    await this.initUI();
-    // this.saveMessagingDeviceToken();
-  } else { 
-    this.showLoginScreen();
+Profile.prototype.authStateObserver = async function (facebookUser) {
+  if (facebookUser) {
+    await setUpheaderAndUserData(facebookUser);
+    await checkProfileSet(facebookUser);
+    await setUpProfileCard();
+  } else {
+    launchHomeScreen();
   }
 };
 
-Profile.prototype.fetchUserMetadata = function () {
-  return new Promise((resolve, reject) => {
-    firebase.database().ref('/users/' + user.uid).once('value').then(function (snapshot) {
-      if(snapshot){
-        course = (snapshot.val() && snapshot.val().course) || 'NOT_SET';
-        university = (snapshot.val() && snapshot.val().university) || 'NOT_SET';
-        year = (snapshot.val() && snapshot.val().year) || 'NOT_SET';
-        resolve();
-        return snapshot;
-      }
-      else{
-        throw new Error("error getUniversityFromDb" );
-      }
-    }).catch(function (error) {
-      var errorMessage = error.message;
-      console.log("error getUniversityFromDb:" + errorMessage);
-    });
-  });
-};
+async function checkProfileSet(facebookUser) {
+    if (user.profileSet) {
+        var dialog = showWarning();
+        if (dialog) {
+            updateUserProfile();
+        } else {
+            showHomeScreen();
+        }
+    }
+}
 
-Profile.prototype.initUI = function () {
+async function updateUserProfile() {
+    var jsonObject = {};
+    jsonObject["profile_set"] = false;
+    jsonObject["country"] = "";
+    jsonObject["course"] = "";
+    jsonObject["university"] = "";
+    jsonObject["year"] = "";
+
+    const json = JSON.stringify(jsonObject);
+    await httpPatch(`/api/v1/user/` + user.id, json)
+        .then(res => {
+            return JSON.stringify(res);
+        })
+        .catch(error => console.error(error));
+}
+
+function showHomeScreen() {
+    window.location.href = "/";
+}
+
+function showWarning() {
+    return window.confirm("This will reset your Profile.");
+}
+
+async function setUpheaderAndUserData(facebookUser) {
+    user = await fetchAndIntialiseUserData(facebookUser.uid);
+    await initDropDownMenu(user);
+}
+
+async function fetchAndIntialiseUserData (facebookUserId) {
+    await httpGet(`/api/v1/user/` + facebookUserId).then(res => {
+        res = JSON.parse(JSON.stringify(res))
+
+        user = new User()
+        user.id = res["key"]
+        user.country = res["data"]["country"]
+        user.course = res["data"]["course"]
+        user.displayName = res["data"]["displayName"]
+        user.profilePicUrl = res["data"]["profilePicUrl"]
+        user.profileSet = res["data"]["profile_set"]
+        user.university = res["data"]["university"]
+        user.year = res["data"]["year"]
+
+        return user
+    }).catch(error => console.error(error))
+
+    return user
+}
+
+function initDropDownMenu(user) {
   return new Promise((resolve, reject) => {
-    this.selectElement("course", course);
-    this.selectElement("university", university);
-    this.selectElement("year", year);
+
+    if (user.university!== null){
+        dropDownUniversity.textContent = user.university
+    }
+    if (user.course!== null){
+          dropDownCourse.textContent = user.course
+     }
+    if (user.year!== null){
+          dropDownYear.textContent = "Year " + user.year
+    }
     resolve();
   });
 
-};
+}
+
+/**
+ * Set up..
+ *
+ */
+
+function  setUpProfileCard() {
+  //todo use when clause here
+
+    resetCardUI("Please Wait...")
+
+    if(currentCard === ""){
+        showCountryCard()
+    }
+    else if(currentCard === COUNTRY) {
+        showUniversityCard()
+    }
+    else if(currentCard === UNIVERSITY) {
+        showCourseCard()
+
+    }
+    else if(currentCard === COURSE) {
+        showYearCard()
+    }
+    else if(currentCard === YEAR) {
+        launchHomeScreen()
+    }
+}
+
+var countryList
+var countryNameList = []
+var countryIdList = []
+async function showCountryCard() {
+    profileCardTitle.textContent = "In which Country are you studying?"
+
+    await httpGet(`/api/v1/country`).then(res => {
+        countryList = JSON.parse(JSON.stringify(res))
+        countryList.forEach(function(element) {
+            countryNameList.push(element["data"]["country_name"])
+            countryIdList.push(element["key"])
+        });
+
+        console.log(countryNameList)
+        return countryNameList
+    }).catch(error => console.error(error))
+
+        var i;
+        for (i = 0; i < countryNameList.length; i++) {
+            var option = document.createElement("option");
+            option.textContent = countryNameList[i];
+            option.value = countryIdList[i];  //store Id as value
+            profileCardSelectItem.appendChild(option);
+        }
+    profileCardPleaseWaitText.textContent = "Select from list:"
+
+    currentCard = COUNTRY
+
+}
+
+function generateJsonForItemSelected(){
+    var key = currentCard
+    var obj = {};
+    var itemSelectedText = profileCardSelectItem.options[profileCardSelectItem.selectedIndex].text
+    var itemSelectedValue = profileCardSelectItem.options[profileCardSelectItem.selectedIndex].value
+
+    initialiseDataObjects (itemSelectedValue, itemSelectedText)
+    obj[key] = itemSelectedValue;
+    if (currentCard === YEAR){ //set profile flag
+        obj["profile_set"] = true
+    }
+    const generateJsonForItemSelected = JSON.stringify(obj)
+    return generateJsonForItemSelected;
+}
+
+function generateJsonForSettingProfileFlag(flagValue){
+    var key = "profile_set"
+    var obj = {};
+    var value = flagValue
+
+    obj[key] = value;
+    return JSON.stringify(obj);
+}
+
+var universityList = [];
+var universityNameList = [];
+var universityIdList = [];
+async function showUniversityCard() {
+    profileCardTitle.textContent = "Which University do you go to?"
+
+    await httpGet(`/api/v1/university/country/` + country.id).then(res => {
+        universityList = JSON.parse(JSON.stringify(res))
+
+        var i;
+        for (i = 0; i < universityList.length; i++) {
+            universityNameList[i] = universityList[i]["data"]["university_name"]
+            universityIdList[i] = universityList[i]["key"]
+        }
+
+        return universityNameList
+         }).catch(error => console.error(error))
+
+        var i;
+        for (i = 0; i < universityList.length; i++) {
+            var option = document.createElement("option");
+
+            option.textContent = universityNameList[i];
+            option.value = universityIdList[i];  //store Id as value
+            profileCardSelectItem.appendChild(option);
+        }
+
+    profileCardPleaseWaitText.textContent = "Select from list:"
+    currentCard = UNIVERSITY
+
+}
+
+var courseList = [];
+var courseNameList = [];
+var courseIdList = [];
+async function showCourseCard() {
+    profileCardTitle.textContent = "Which Course do you do?"
+
+    await httpGet(`/api/v1/course/university/` + university.id).then(res => {
+        courseList = JSON.parse(JSON.stringify(res))
+
+        var i;
+        for (i = 0; i < courseList.length; i++) {
+            courseNameList[i] = courseList[i]["data"]["course_name"]
+            courseIdList[i] = courseList[i]["key"]
+        }
+
+        return courseList
+    }).catch(error => console.error(error))
+
+    var i;
+    for (i = 0; i < courseList.length; i++) {
+        var option = document.createElement("option");
+
+        option.textContent = courseNameList[i];
+        option.value = courseIdList[i];  //store Id as value
+        profileCardSelectItem.appendChild(option);
+    }
+
+    profileCardPleaseWaitText.textContent = "Select from list:"
+    currentCard = COURSE
+}
+
+var yearList = [];
+async function showYearCard() {
+    profileCardTitle.textContent = "Which Year are you?"
+
+    var i;
+    for (i = 0; i < courseList.length; i++) {
+        if (courseList[i]["key"] === course.id){
+            yearList =  courseList[i]["data"]["years"]
+            break;
+        }
+    }
+
+    for (i = 0; i < yearList.length; i++) {
+        var option = document.createElement("option");
+
+        option.textContent = yearList[i];
+        option.value = yearList[i];  //store Id as value
+        profileCardSelectItem.appendChild(option);
+    }
+
+    profileCardPleaseWaitText.textContent = "Select from list:"
+    currentCard = YEAR
+}
+
+function resetCardUI(text){
+    profileCardSelectItem.options.length = 1;
+    profileCardPleaseWaitText.textContent = text
+}
+
 
 Profile.prototype.selectElement = function (id, valueToSelect)
 {    
@@ -74,46 +319,57 @@ Profile.prototype.selectElement = function (id, valueToSelect)
 
 const dbRef = firebase.database().ref();
 
-Profile.prototype.saveProfile = function (year, course, university) {
-  var self = this;
-  console.log ("user.id0-------"+ user.uid);
-  return this.database.ref('/users/'+user.uid).update({
-    year: year,
-    course: course,
-    university: university
-  }, function (error) {
-    if (error) {
-      console.log("failed to update");
-    } else {
-      var data = {
-        message: 'Profile saved!',
-        timeout: 2000
-      };
-      //self.signInSnackbar.MaterialSnackbar.showSnackbar(data);
-      window.history.back();
-    }
-  });
-};
-
-Profile.prototype.onProfileFormSubmit = function(e) {
-  e.preventDefault();
-  if (this.checkSignedIn()) {
-    this.saveProfile(
-        this.yearInput.value, 
-        this.courseInput.value, 
-        this.universityInput.value).then(function() {
-    }.bind(this)).catch(function(error) {
-      console.error('Error: ', error);
-    });
+/**
+ *
+ */
+async function updateUserProfileForCard() {
+    console.log("updating with userID:----- " + user.id)
+    if (userHasSelectedItem()){
+      await httpPatch(`/api/v1/user/` + user.id, generateJsonForItemSelected()).then(res => {
+          setUpProfileCard()
+          return JSON.stringify(res)
+      }).catch(error => console.error(error))
+  } else {
+    // alert("Please select an option") //todo fix this - #113
   }
-};
+}
+
+function userHasSelectedItem(){
+  return profileCardSelectItem.value !== ""
+}
+
+function initialiseDataObjects(value, itemSelectedText) {
+    if (currentCard === COUNTRY) {
+        country = new Country()
+        country.id = value;
+        country.countryName = itemSelectedText
+    }
+    else if (currentCard === UNIVERSITY) {
+        university = new University()
+        university.id = value;
+        university.universityName = itemSelectedText;
+        university.countryId = country.id
+    }
+    else if (currentCard === COURSE) {
+        course = new Course()
+        course.id = value;
+        course.courseName = itemSelectedText;
+        course.universityId = university.id
+    }
+}
+
+function onNextButtonClicked() {
+  if (checkSignedIn()) {
+    updateUserProfileForCard()
+  }
+}
 
 // Returns true if user is signed-in. Otherwise false and displays a message.
-Profile.prototype.checkSignedIn = function() {
+function checkSignedIn() {
   // Return true if the user is signed in Firebase
 //   if (this.isUserSignedIn()) {
 //     return true;
-//   } //    TODO UNCOMMNET THIS AND IMPLEMENT IT!
+//   } //    TODO UNCOMMENT THIS AND IMPLEMENT IT!
 
     return true;
 
@@ -124,7 +380,11 @@ Profile.prototype.checkSignedIn = function() {
 //   };
 //   this.signInSnackbar.MaterialSnackbar.showSnackbar(data);
 //   return false;
-};
+}
+
+function launchHomeScreen () {
+    window.location.href = "/";
+}
 
 window.addEventListener('load' , function() {
   window.Profile = new Profile();

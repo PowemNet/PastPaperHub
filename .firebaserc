@@ -1,5 +1,6 @@
 {
   "projects": {
-    "staging": "past-paper-hub"
+    "staging": "past-paper-hub",
+    "prod": "past-paper-hub-prod"
   }
 }

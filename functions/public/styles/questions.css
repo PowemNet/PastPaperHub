@@ -193,11 +193,12 @@ textarea{
     position: absolute;
     bottom: -65;
     font-family: sans-serif;
-    left: 125;
+    left: 0;
+    /*left: 125;*/
     cursor: pointer;
     padding: 10px 20px;
 }
-#discuss{
+#btn-answers{
     position: absolute;
     left: 0;
     background: rgb(6, 97, 97);
