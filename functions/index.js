@@ -1,13 +1,13 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
-var cors = require('cors')
+var cors = require('cors');
 const express = require('express');
 const engines = require('consolidate');
 const ui = express();
 const api = express();
 
-const util = require('util')
+const util = require('util');
 
 var bodyParser = require("body-parser");
 
@@ -26,12 +26,21 @@ ui.get('/login', (request, response) => {
     response.render('login');
 });
 
+// ui.get('/profile', (request, response) => {
+//     response.render('profile');
+// });
+
+//todo add docs for how we're rendering pages and why they are all POST requests and why it's such a bad implementation!
+
 ui.get('/profile', (request, response) => {
-    response.render('profile');
+    var headerData = request.body.headerData;
+    var contentFile = request.body.contentFile;
+    response.render('base', { headerData: headerData, contentFile: contentFile });
 });
 
 ui.get('/questions/:pastPaperId', (request, response) => {
     var pastPaperId = request.params.pastPaperId;
+
     response.render('questions', { pastPaperId: pastPaperId });
 });
 

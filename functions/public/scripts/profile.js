@@ -15,6 +15,9 @@ const profileCardSelectItem = document.getElementById('profile-select-item');
 const profileCardPleaseWaitText = document.getElementById('please-wait-text');
 const profileCardNextButon = document.getElementById('profile-card-next');
 
+const headerData = document.getElementById('headerData');
+
+
 //snack bar
 const signInSnackbar = document.getElementById('must-signin-snackbar');
 
@@ -95,23 +98,27 @@ function showWarning() {
 }
 
 async function setUpheaderAndUserData(facebookUser) {
+
+    console.log("headerData----" + headerData);
+    console.log("headerData----" + headerData.textContent);
+
     user = await fetchAndIntialiseUserData(facebookUser.uid);
     await initDropDownMenu(user);
 }
 
 async function fetchAndIntialiseUserData (facebookUserId) {
     await httpGet(`/api/v1/user/` + facebookUserId).then(res => {
-        res = JSON.parse(JSON.stringify(res))
+        res = JSON.parse(JSON.stringify(res));
 
-        user = new User()
-        user.id = res["key"]
-        user.country = res["data"]["country"]
-        user.course = res["data"]["course"]
-        user.displayName = res["data"]["displayName"]
-        user.profilePicUrl = res["data"]["profilePicUrl"]
-        user.profileSet = res["data"]["profile_set"]
-        user.university = res["data"]["university"]
-        user.year = res["data"]["year"]
+        user = new User();
+        user.id = res["key"];
+        user.country = res["data"]["country"];
+        user.course = res["data"]["course"];
+        user.displayName = res["data"]["displayName"];
+        user.profilePicUrl = res["data"]["profilePicUrl"];
+        user.profileSet = res["data"]["profile_set"];
+        user.university = res["data"]["university"];
+        user.year = res["data"]["year"];
 
         return user
     }).catch(error => console.error(error))

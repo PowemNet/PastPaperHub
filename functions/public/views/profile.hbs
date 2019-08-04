@@ -1,86 +1,8 @@
 <html>
-<head>
-    <!--- more info to be added here e.g favicon -->
-    <title>PastPaperHub</title>
-    <link rel="stylesheet" type="text/css" href="../styles/header.css">
-    <link rel="stylesheet" type="text/css" href="../styles/navigation.css">
-    <link rel="stylesheet" type="text/css" href="../styles/fonts.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#000"/>
-    <meta name="description" content="Get past papers for free">
-
-    <script src="../scripts/header.js" type="text/javascript"></script>
-
-    <script src="Assets/Javascripts/lib/jquery-3.3.1.min.js"></script>
-    <link rel="icon"
-          type="image/png"
-          href="Assets/Images/LOGO.jpg">
-    <script src="Assets/Javascripts/particles.min.js"></script>
-</head>
-<body>
-
-<!--HEADER: This should be in header.hbs-->
-<div class="navigation">
-    <a href="/"><span id="logo">PastPaperHub</span></a>
-
-    <!--DROP DOWN-->
-</div>
-            <span id="account">
-                <div id="user-container">
-                    <div class="user-contain">
-                        <div id="user-pic" class="dropdown">
-                            <div class="submenu" for="user-pic">
-                                <li><a href="/">Home</a></li>
-                                <li id="drop-down-university">University Not Set</li>
-                                <li id="drop-down-year">Year Not Set</li>
-                                <li id="drop-down-course">Course Not Set</li>
-                                <li><a href="/profile">Edit Profile</a></li>
-                                <li><a id="sign-out">Sign Out</a></li>
-                            </div>
-                            </div>
-                            <span hidden id="user-name"></span>
-                        </div>
-                </div>
-            </span>
-</div>
-
-<!--COVER-->
-
 <div id="cover">
     <div id="space"></div>
     <div id="text-cover">
         <h4>Setup your profile to improve your experience with PastPaper Hub</h4>
     </div>
 </div>
-
-
-<!--USER PROFILE CARDS-->
-<div id="forms">
-    <form id="profile-form" action="#">
-        <form>
-            <div id="profile-card-title"></div>
-            <p id="please-wait-text">Please wait.. </p>
-            <select name="dropdown" class="form-design" id="profile-select-item" name="profile-select-item">
-                <option value=""></option>
-            </select>
-        </form>
-        <button id="profile-card-next" type="submit" class="save-button">Next</button>
-    </form>
-</div>
-
-<div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
-    <div class="mdl-snackbar__text"></div>
-
-    <script src="/__/firebase/5.1.0/firebase-app.js"></script>
-    <script src="/__/firebase/5.1.0/firebase-auth.js"></script>
-    <script src="/__/firebase/5.1.0/firebase-database.js"></script>
-    <script src="/__/firebase/5.1.0/firebase-storage.js"></script>
-    <script src="/__/firebase/init.js"></script>
-
-    <script src="../scripts/api-helper.js" type="text/javascript"></script>
-    <script src="../scripts/config.js" type="text/javascript"></script>
-    <script src="../scripts/model/database-tables.js" type="text/javascript"></script>
-    <script src="../scripts/profile.js" type="text/javascript"></script>
-
-</body>
 </html>
